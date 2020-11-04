@@ -40,11 +40,10 @@ The application will then be extended to include a notes feature where the user 
 
 **Sprint 1- Goals**
 - [x] Get the product board approved
-- [ ] Create the 3 tier project layout
+- [x] Create the 3 tier project layout
 - [x] Create a basic README template
-- [ ] To create the initial structure of the database
-- [ ] Populate the database with some data
-- [ ] Populate the database with some data
+- [x] To create the initial structure of the database
+- [x] Populate the database with some data
 - [ ] Create the initial methods
 - [ ] Create an MVP of the project with functional CRUD methods and passing tests
 - [ ] Make sure the all the methods are fully tested and pass

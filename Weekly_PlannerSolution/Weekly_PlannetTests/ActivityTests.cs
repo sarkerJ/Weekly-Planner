@@ -3,8 +3,7 @@ using Weekly_Planner_BusinessLayer;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Weekly_PlannerDataLayer;
-
-
+using System;
 
 namespace Weekly_PlannetTests
 {
@@ -77,6 +76,28 @@ namespace Weekly_PlannetTests
 
                 var getActivity = db.Activities.Where(a => a.Name == "Test").Select(s => new { s.Name, s.Content }).FirstOrDefault();
                 Assert.AreEqual(("Test", "Have to check if content and title are correct"), (getActivity.Name, getActivity.Content));
+
+            }
+        }
+
+        [Test]
+        public void CreatingAnActivityWithAnEmptyTitle_ThrowsAnException()
+        {
+            using (var db = new WeeklyPlannerDBContext())
+            {
+                var ex = Assert.Throws<ArgumentException>(() => _crudManager.CreateActivity("", "I have to test the create activity method", "Monday"));
+                Assert.AreEqual("Title cannot be empty!", ex.Message);
+
+            }
+        }
+
+        [Test]
+        public void CreatingAnActivityWithAnEmptyContent_ThrowsAnException()
+        {
+            using (var db = new WeeklyPlannerDBContext())
+            {
+                var ex = Assert.Throws<ArgumentException>(() => _crudManager.CreateActivity("Test", "", "Monday"));
+                Assert.AreEqual("The activity's content cannot be empty!", ex.Message);
 
             }
         }

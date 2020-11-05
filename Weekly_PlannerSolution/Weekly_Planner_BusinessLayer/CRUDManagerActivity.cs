@@ -11,6 +11,10 @@ namespace Weekly_Planner_BusinessLayer
         //Create an Activity
         public void CreateActivity(string title, string content, string day)
         {
+            if (title.Count() == 0) throw new ArgumentException("Title cannot be empty!");
+
+            if (content.Count() == 0) throw new ArgumentException("The activity's content cannot be empty!");
+
             using(var db = new WeeklyPlannerDBContext())
             {
                 var getDay = db.WeekDays.Where(w => w.Day == day.Trim()).FirstOrDefault();
@@ -30,9 +34,12 @@ namespace Weekly_Planner_BusinessLayer
         //Modifying an Activity
         public void EditActivity(int activityID, string title, string content, string day)
         {
+            if (title.Count() == 0) throw new ArgumentException("Title cannot be empty!");
+
+            if (content.Count() == 0) throw new ArgumentException("The activity's content cannot be empty!");
+
             using (var db = new WeeklyPlannerDBContext())
             {
-
                 var currentActivity = db.Activities.Where(a => a.ActivityId == activityID).FirstOrDefault();
 
                 var getDay = db.WeekDays.Where(w => w.Day == day.Trim()).FirstOrDefault();

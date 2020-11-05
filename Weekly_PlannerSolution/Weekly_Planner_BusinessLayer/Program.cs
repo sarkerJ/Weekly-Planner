@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using Weekly_PlannerDataLayer;
+using Microsoft.EntityFrameworkCore;
 
 namespace Weekly_Planner_BusinessLayer
 {
@@ -10,8 +11,17 @@ namespace Weekly_Planner_BusinessLayer
     {
         static void Main(string[] args)
         {
+            CRUDManagerActivity ncd = new CRUDManagerActivity();
+
             using (var db = new WeeklyPlannerDBContext())
             {
+
+                var currentActivity = db.Activities.Where(p => p.ActivityId == 1).Include(o=> o.WeekDays).FirstOrDefault();
+
+                Console.WriteLine(currentActivity.ActivityId);
+                Console.WriteLine(currentActivity.Content);
+                Console.WriteLine(currentActivity.WeekDays.Day);
+
 
                 //NotesColourCategory newColour = new NotesColourCategory()
                 //{

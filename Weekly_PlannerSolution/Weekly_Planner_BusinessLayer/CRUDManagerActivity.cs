@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using Weekly_PlannerDataLayer;
+using Microsoft.EntityFrameworkCore;
 
 namespace Weekly_Planner_BusinessLayer
 {
@@ -20,8 +21,21 @@ namespace Weekly_Planner_BusinessLayer
 
         public void setSelectedDay(object selectedItem)
         {
-            currentDay = (WeekDay)selectedItem;
+            try
+            {
+                currentDay = (WeekDay)selectedItem;
+            }
+            catch (Exception)
+            {
+                using(var db = new WeeklyPlannerDBContext())
+                {
+                    var getDay = db.Activities.Where(a => a.ActivityId == currentActivity.ActivityId).Include(o => o.WeekDays).FirstOrDefault();
+                    currentDay = getDay.WeekDays;
+                }
+            }
         }
+
+        
 
         public List<Activity> ListOfActivities(string day)
         {

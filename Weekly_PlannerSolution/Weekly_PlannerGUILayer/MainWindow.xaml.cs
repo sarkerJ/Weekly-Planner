@@ -49,52 +49,77 @@ namespace Weekly_PlannerGUILayer
                 case "ListBoxMonday":
                     if (ListBoxMonday.SelectedItem != null)
                     {
-                        _crudManager.setSelectedActivity(ListBoxMonday.SelectedItem);
                         ListBoxTuesday.SelectedItem = null;
                         ListBoxWednesday.SelectedItem = null;
                         ListBoxThursday.SelectedItem = null;
                         ListBoxFriday.SelectedItem = null;
+                        _crudManager.setSelectedActivity(ListBoxMonday.SelectedItem);
+                        _crudManager.setSelectedDay(ListBoxMonday.SelectedItem);
+                        TTitle.Text = _crudManager.currentActivity.Name;
+                        TContent.Text = _crudManager.currentActivity.Content;
+                        TDay.Text = _crudManager.currentDay.Day;
+                        
                     }
                     break;
 
                 case "ListBoxTuesday":
                     if (ListBoxTuesday.SelectedItem != null)
                     {
-                        _crudManager.setSelectedActivity(ListBoxTuesday.SelectedItem);
                         ListBoxMonday.SelectedItem = null;
                         ListBoxWednesday.SelectedItem = null;
                         ListBoxThursday.SelectedItem = null;
                         ListBoxFriday.SelectedItem = null;
+                        _crudManager.setSelectedActivity(ListBoxTuesday.SelectedItem);
+                        _crudManager.setSelectedDay(ListBoxTuesday.SelectedItem);
+                        TTitle.Text = _crudManager.currentActivity.Name;
+                        TContent.Text = _crudManager.currentActivity.Content;
+                        TDay.Text = _crudManager.currentDay.Day;
+                        
                     }
                     break;
                 case "ListBoxWednesday":
                     if (ListBoxWednesday.SelectedItem != null)
                     {
-                        _crudManager.setSelectedActivity(ListBoxWednesday.SelectedItem);
                         ListBoxMonday.SelectedItem = null;
                         ListBoxTuesday.SelectedItem = null;
                         ListBoxThursday.SelectedItem = null;
                         ListBoxFriday.SelectedItem = null;
+                        _crudManager.setSelectedActivity(ListBoxWednesday.SelectedItem);
+                        _crudManager.setSelectedDay(ListBoxWednesday.SelectedItem);
+                        TTitle.Text = _crudManager.currentActivity.Name;
+                        TContent.Text = _crudManager.currentActivity.Content;
+                        TDay.Text = _crudManager.currentDay.Day;
+                        
                     }
                     break;
                 case "ListBoxThursday":
                     if (ListBoxThursday.SelectedItem != null)
                     {
-                        _crudManager.setSelectedActivity(ListBoxThursday.SelectedItem);
                         ListBoxMonday.SelectedItem = null;
                         ListBoxTuesday.SelectedItem = null;
                         ListBoxWednesday.SelectedItem = null;
                         ListBoxFriday.SelectedItem = null;
+                        _crudManager.setSelectedActivity(ListBoxThursday.SelectedItem);
+                        _crudManager.setSelectedDay(ListBoxThursday.SelectedItem);
+                        TTitle.Text = _crudManager.currentActivity.Name;
+                        TContent.Text = _crudManager.currentActivity.Content;
+                        TDay.Text = _crudManager.currentDay.Day;
+                        
                     }
                     break;
                 case "ListBoxFriday":
                     if (ListBoxFriday.SelectedItem != null)
                     {
-                        _crudManager.setSelectedActivity(ListBoxFriday.SelectedItem);
                         ListBoxMonday.SelectedItem = null;
                         ListBoxTuesday.SelectedItem = null;
                         ListBoxWednesday.SelectedItem = null;
                         ListBoxThursday.SelectedItem = null;
+                        _crudManager.setSelectedActivity(ListBoxFriday.SelectedItem);
+                        _crudManager.setSelectedDay(ListBoxFriday.SelectedItem);
+                        TTitle.Text = _crudManager.currentActivity.Name;
+                        TContent.Text = _crudManager.currentActivity.Content;
+                        TDay.Text = _crudManager.currentDay.Day;
+                        
                     }
                     break;
             }
@@ -106,6 +131,9 @@ namespace Weekly_PlannerGUILayer
         {
             _crudManager.DeleteActivity(_crudManager.currentActivity.ActivityId);
             fillUpLists();
+            TTitle.Text = "";
+            TContent.Text = "";
+            TDay.Text = "";
 
         }
 
@@ -116,10 +144,6 @@ namespace Weekly_PlannerGUILayer
             ca.Owner = this;
         }
 
-        private void BRefresh_Click(object sender, RoutedEventArgs e)
-        {
-            fillUpLists();
-
-        }
+        
     }
 }

@@ -44,5 +44,17 @@ namespace Weekly_Planner_BusinessLayer
             }
         }
 
+        //Deleting an Activity
+        public void DeleteActivity(int activityID)
+        {
+            using(var db = new WeeklyPlannerDBContext())
+            {
+                var currentActivity = db.Activities.Where(a => a.ActivityId == activityID).FirstOrDefault();
+                db.Activities.RemoveRange(currentActivity);
+                db.SaveChanges();
+
+            }
+        }
+
     }
 }

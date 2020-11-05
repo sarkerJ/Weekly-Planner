@@ -111,5 +111,31 @@ namespace Weekly_PlannetTests
             }
         }
 
+        [Test]
+        public void WhenDeletingAnActivity_TheActivityIsRemovedFromDB()
+        {
+            using (var db = new WeeklyPlannerDBContext())
+            {
+                var getDay = db.WeekDays.Where(w => w.Day == "Tuesday").FirstOrDefault();
+
+                Activity newActivity = new Activity()
+                {
+                    Name = "Test",
+                    Content = "Have to check if content and title are correct",
+                    WeekDays = getDay
+                };
+                db.Activities.Add(newActivity);
+                db.SaveChanges();
+
+                var getActivity = db.Activities.Where(a => a.Name == "Test").Select(s => new { s.ActivityId }).FirstOrDefault();
+                _crudManager.DeleteActivity(getActivity.ActivityId);
+
+                var deletedActivity = db.Activities.Where(a => a.ActivityId == getActivity.ActivityId).FirstOrDefault();
+
+                Assert.IsNull(deletedActivity);
+
+            }
+        }
+
     }
 }

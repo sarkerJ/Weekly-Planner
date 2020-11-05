@@ -6,4 +6,8 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Weekly_Planner_BusinessLayer\Weekly_Planner_BusinessLayer.csproj" />
+  </ItemGroup>
+
 </Project>

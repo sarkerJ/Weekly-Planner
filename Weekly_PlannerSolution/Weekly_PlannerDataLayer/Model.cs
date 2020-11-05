@@ -34,7 +34,7 @@ namespace Weekly_PlannerDataLayer
         public string Colour { get; set; }
     }
 
-    public class Activity
+    public partial class Activity
     {
         public int ActivityId { get;set; }
         public string Name { get; set; }

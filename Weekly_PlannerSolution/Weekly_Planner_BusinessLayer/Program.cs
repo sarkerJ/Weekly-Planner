@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 using System.Linq;
 using Weekly_PlannerDataLayer;
 
@@ -8,9 +10,7 @@ namespace Weekly_Planner_BusinessLayer
     {
         static void Main(string[] args)
         {
-            
-
-            using(var db = new WeeklyPlannerDBContext())
+            using (var db = new WeeklyPlannerDBContext())
             {
 
                 //NotesColourCategory newColour = new NotesColourCategory()
@@ -45,10 +45,12 @@ namespace Weekly_Planner_BusinessLayer
                 //    Day = "Friday"
                 //};
 
+                //var newDay = db.WeekDays.Where(w => w.Day == "Thursday").FirstOrDefault();
+
                 //Activity newActivity = new Activity()
                 //{
-                //    Name = "Project meeting at 6pm",
-                //    Content = "Need to call colleague Alex M , Robert, Jacob and Oliver T about the blogging project",
+                //    Name = "Room Clean up",
+                //    Content = "Need to organise my room so I can study better ",
                 //    WeekDays = newDay
                 //};
 

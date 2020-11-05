@@ -8,6 +8,23 @@ namespace Weekly_Planner_BusinessLayer
 {
     public class CRUDManagerActivity
     {
+
+        public Activity currentActivity { get; set; }
+
+        public void setSelectedActivity(object selectedItem)
+        {
+            currentActivity = (Activity)selectedItem;
+        }
+
+        public List<Activity> ListOfActivities(string day)
+        {
+            using (var db = new WeeklyPlannerDBContext())
+            {
+                return db.Activities.Where(w => w.WeekDays.Day == day.Trim()).ToList();                
+            }
+        }
+
+
         //Create an Activity
         public void CreateActivity(string title, string content, string day)
         {

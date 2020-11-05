@@ -98,4 +98,8 @@ What would I do differently next time?
 
 What would I do next?
 
+---
 
+#### Sprint-1-Board(Before)
+
+![Project-Board-Before-Sprint-1](C:\Users\saadi\OneDrive\Desktop\Sparta Global\Sprint 1 (before).JPG)

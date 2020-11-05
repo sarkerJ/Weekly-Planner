@@ -4,7 +4,7 @@ using Weekly_PlannerDataLayer;
 
 namespace Weekly_Planner_BusinessLayer
 {
-    class CRUDManager
+    class Program
     {
         static void Main(string[] args)
         {
@@ -42,7 +42,7 @@ namespace Weekly_Planner_BusinessLayer
 
                 //WeekDay newDay = new WeekDay()
                 //{
-                //    Day = "Wednesday"
+                //    Day = "Friday"
                 //};
 
                 //Activity newActivity = new Activity()

@@ -27,8 +27,8 @@ namespace Weekly_PlannerGUILayer
         {
             InitializeComponent();
             fillUpLists();
-
-           
+            
+                      
 
         }
 
@@ -113,6 +113,7 @@ namespace Weekly_PlannerGUILayer
         {
             CreateActivity ca = new CreateActivity();
             ca.Show();
+            ca.Owner = this;
         }
 
         private void BRefresh_Click(object sender, RoutedEventArgs e)

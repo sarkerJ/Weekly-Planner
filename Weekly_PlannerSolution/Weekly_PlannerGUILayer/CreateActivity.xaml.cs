@@ -45,6 +45,7 @@ namespace Weekly_PlannerGUILayer
             {
                 _crudManager.CreateActivity(TName.Text, TContent.Text, _crudManager.currentDay.Day);
                 this.Close();
+                ((MainWindow)this.Owner).fillUpLists();
             }catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "Missing input values!", MessageBoxButton.OK, MessageBoxImage.Warning);

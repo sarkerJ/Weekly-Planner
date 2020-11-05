@@ -60,3 +60,5 @@ C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Weekly_PlannerSolut
 C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannerGUILayer\bin\Debug\netcoreapp3.1\Weekly_Planner_BusinessLayer.pdb
 C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannerGUILayer\bin\Debug\netcoreapp3.1\Weekly_PlannerDataLayer.pdb
 C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannerGUILayer\obj\Debug\netcoreapp3.1\Weekly_PlannerGUILayer.csproj.CopyComplete
+C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannerGUILayer\obj\Debug\netcoreapp3.1\CreateActivity.g.cs
+C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannerGUILayer\obj\Debug\netcoreapp3.1\CreateActivity.baml

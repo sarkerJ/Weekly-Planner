@@ -11,9 +11,16 @@ namespace Weekly_Planner_BusinessLayer
 
         public Activity currentActivity { get; set; }
 
+        public WeekDay currentDay { get; set; }
+
         public void setSelectedActivity(object selectedItem)
         {
             currentActivity = (Activity)selectedItem;
+        }
+
+        public void setSelectedDay(object selectedItem)
+        {
+            currentDay = (WeekDay)selectedItem;
         }
 
         public List<Activity> ListOfActivities(string day)
@@ -21,6 +28,14 @@ namespace Weekly_Planner_BusinessLayer
             using (var db = new WeeklyPlannerDBContext())
             {
                 return db.Activities.Where(w => w.WeekDays.Day == day.Trim()).ToList();                
+            }
+        }
+
+        public List<WeekDay> ListOfDays()
+        {
+            using (var db = new WeeklyPlannerDBContext())
+            {
+                return db.WeekDays.ToList();
             }
         }
 

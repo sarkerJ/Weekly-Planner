@@ -108,5 +108,17 @@ namespace Weekly_PlannerGUILayer
             fillUpLists();
 
         }
+
+        private void BCreateActivity_Click(object sender, RoutedEventArgs e)
+        {
+            CreateActivity ca = new CreateActivity();
+            ca.Show();
+        }
+
+        private void BRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            fillUpLists();
+
+        }
     }
 }

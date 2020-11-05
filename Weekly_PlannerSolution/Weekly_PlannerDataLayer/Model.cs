@@ -16,7 +16,7 @@ namespace Weekly_PlannerDataLayer
             => options.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB; Initial Catalog=WeeklyPlannerDB;");
     }
 
-    public class WeekDay
+    public partial class WeekDay
     {
         public int WeekDayId { get; set; }
 

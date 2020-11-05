@@ -52,9 +52,11 @@
 
         </Grid>
 
-        <Button x:Name="BCreateActivity" Content="Create an Activity" Grid.Column="0"></Button>
+        <Button x:Name="BCreateActivity" Content="Create an Activity" Grid.Column="0" Click="BCreateActivity_Click"></Button>
         <Button x:Name="BDeleteActivity" Content="Delete an Activity" Grid.Column="2" Click="BDeleteActivity_Click"></Button>
         <Button x:Name="BEditActivity" Content="Edit an Activity" Grid.Column="1"></Button>
+        <Button x:Name="BRefresh" Content="Refresh an Activity" Grid.Column="3" Click="BRefresh_Click"></Button>
+
 
 
     </Grid>

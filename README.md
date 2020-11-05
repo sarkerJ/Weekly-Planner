@@ -107,7 +107,7 @@ What would I do next?
 
 ##### Class-Diagram
 
-![Project Class Diagram](C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Images\Class Diagram.JPG)
+![Project Class Diagram](https://github.com/sarkerJ/Weekly-Planner/blob/main/Images/Class%20Diagram.JPG)
 
 ---
 
@@ -115,8 +115,8 @@ What would I do next?
 
 #### Sprint-1-Board(Before)
 
-![Project-Board-Before-Sprint-1](C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Images\Sprint 1 (before).JPG)
+![Project-Board-Before-Sprint-1](https://github.com/sarkerJ/Weekly-Planner/blob/main/Images/Sprint%201%20(before).JPG)
 
 #### Sprint-2-Board(After)
 
-![Project-Board-Before-Sprint-1](C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Images\Sprint 1 (after).JPG)
+![Project-Board-Before-Sprint-1](https://github.com/sarkerJ/Weekly-Planner/blob/main/Images/Sprint%201%20(after).JPG)

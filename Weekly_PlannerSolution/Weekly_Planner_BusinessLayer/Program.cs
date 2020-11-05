@@ -64,6 +64,9 @@ namespace Weekly_Planner_BusinessLayer
                 //db.WeekDays.Add(newDay);
                 //db.Activities.Add(newActivity);
                 //db.Notes.Add(newNote);
+
+                //var removeAct = db.Activities.Where(w => w.Name == "Testing").FirstOrDefault();
+                //db.Activities.RemoveRange(removeAct);
                 //db.SaveChanges();
 
 

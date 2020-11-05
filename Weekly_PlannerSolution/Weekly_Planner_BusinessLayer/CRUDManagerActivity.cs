@@ -27,7 +27,22 @@ namespace Weekly_Planner_BusinessLayer
             }
         }
 
+        //Modifying an Activity
+        public void EditActivity(int activityID, string title, string content, string day)
+        {
+            using (var db = new WeeklyPlannerDBContext())
+            {
 
+                var currentActivity = db.Activities.Where(a => a.ActivityId == activityID).FirstOrDefault();
+
+                var getDay = db.WeekDays.Where(w => w.Day == day.Trim()).FirstOrDefault();
+                currentActivity.Name = title.Trim();
+                currentActivity.Content = content.Trim();
+                currentActivity.WeekDays = getDay;
+                
+                db.SaveChanges();
+            }
+        }
 
     }
 }

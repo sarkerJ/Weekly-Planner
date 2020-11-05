@@ -81,5 +81,35 @@ namespace Weekly_PlannetTests
             }
         }
 
+
+        [Test]
+        public void WhenEditingAnActivity_TheNewInformationOverridesTheOld()
+        {
+            using (var db = new WeeklyPlannerDBContext())
+            {
+                var getDay = db.WeekDays.Where(w => w.Day == "Wednesday").FirstOrDefault();
+                Activity newActivity = new Activity()
+                {
+                    Name = "Testing",
+                    Content = "Have to check if content and title and day can be changed",
+                    WeekDays = getDay
+                };
+                db.Activities.Add(newActivity);
+                db.SaveChanges();
+
+                var getActivity = db.Activities.Where(a => a.Name == "Testing").Select(s => new { s.ActivityId }).FirstOrDefault();
+                _crudManager.EditActivity(getActivity.ActivityId,"Test", "The content and title and day have changed","Tuesday");
+
+                var updatedActivity = db.Activities.Where(a => a.ActivityId == getActivity.ActivityId).Select(s => new { s.Name, s.Content, s.WeekDays.Day }).FirstOrDefault();
+
+
+                Assert.AreEqual("Test", updatedActivity.Name);
+                Assert.AreEqual("The content and title and day have changed", updatedActivity.Content);
+                Assert.AreEqual("Tuesday", updatedActivity.Day);
+
+
+            }
+        }
+
     }
 }

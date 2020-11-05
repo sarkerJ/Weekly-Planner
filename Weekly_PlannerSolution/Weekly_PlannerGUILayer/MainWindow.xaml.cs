@@ -144,6 +144,19 @@ namespace Weekly_PlannerGUILayer
             ca.Owner = this;
         }
 
-        
+        private void BEditActivity_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                _crudManager.EditActivity(_crudManager.currentActivity.ActivityId, TTitle.Text.Trim(), TContent.Text.Trim(), TDay.Text.Trim());
+                fillUpLists();
+                MessageBox.Show("Updated Activity");
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Missing input values!", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
     }
 }

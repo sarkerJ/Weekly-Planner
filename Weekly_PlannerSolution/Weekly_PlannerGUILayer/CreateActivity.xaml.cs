@@ -41,7 +41,14 @@ namespace Weekly_PlannerGUILayer
 
         private void BAdd_Click(object sender, RoutedEventArgs e)
         {
-            _crudManager.CreateActivity(TName.Text, TContent.Text, _crudManager.currentDay.Day);
+            try
+            {
+                _crudManager.CreateActivity(TName.Text, TContent.Text, _crudManager.currentDay.Day);
+                this.Close();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Missing input values!", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
     }
 }

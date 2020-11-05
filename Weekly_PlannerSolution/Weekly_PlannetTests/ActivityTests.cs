@@ -133,6 +133,54 @@ namespace Weekly_PlannetTests
         }
 
         [Test]
+        public void WhenEditingAnActivity_IfTitleIsEmptyAnExceptionIsThrown()
+        {
+            using (var db = new WeeklyPlannerDBContext())
+            {
+                var getDay = db.WeekDays.Where(w => w.Day == "Wednesday").FirstOrDefault();
+                Activity newActivity = new Activity()
+                {
+                    Name = "Test",
+                    Content = "Have to check if content and title and day can be changed",
+                    WeekDays = getDay
+                };
+                db.Activities.Add(newActivity);
+                db.SaveChanges();
+
+                var getActivity = db.Activities.Where(a => a.Name == "Test").Select(s => new { s.ActivityId }).FirstOrDefault();
+          
+                var ex = Assert.Throws<ArgumentException>(() => _crudManager.EditActivity(getActivity.ActivityId, "", "The content and title and day have changed", "Tuesday"));
+                Assert.AreEqual("Title cannot be empty!", ex.Message);
+
+
+            }
+        }
+
+        [Test]
+        public void WhenEditingAnActivity_IfContentIsEmptyAnExceptionIsThrown()
+        {
+            using (var db = new WeeklyPlannerDBContext())
+            {
+                var getDay = db.WeekDays.Where(w => w.Day == "Wednesday").FirstOrDefault();
+                Activity newActivity = new Activity()
+                {
+                    Name = "Test",
+                    Content = "Have to check if content and title and day can be changed",
+                    WeekDays = getDay
+                };
+                db.Activities.Add(newActivity);
+                db.SaveChanges();
+
+                var getActivity = db.Activities.Where(a => a.Name == "Test").Select(s => new { s.ActivityId }).FirstOrDefault();
+
+                var ex = Assert.Throws<ArgumentException>(() => _crudManager.EditActivity(getActivity.ActivityId, "Testing", "", "Tuesday"));
+                Assert.AreEqual("The activity's content cannot be empty!", ex.Message);
+
+
+            }
+        }
+
+        [Test]
         public void WhenDeletingAnActivity_TheActivityIsRemovedFromDB()
         {
             using (var db = new WeeklyPlannerDBContext())

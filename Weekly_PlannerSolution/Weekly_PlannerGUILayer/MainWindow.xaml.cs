@@ -27,9 +27,6 @@ namespace Weekly_PlannerGUILayer
         {
             InitializeComponent();
             fillUpLists();
-            
-                      
-
         }
 
         public void fillUpLists()

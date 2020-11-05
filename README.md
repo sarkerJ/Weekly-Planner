@@ -44,17 +44,22 @@ The application will then be extended to include a notes feature where the user 
 - [x] Create a basic README template
 - [x] To create the initial structure of the database
 - [x] Populate the database with some data
-- [ ] Create the initial methods
-- [ ] Create an MVP of the project with functional CRUD methods and passing tests
-- [ ] Make sure the all the methods are fully tested and pass
+- [x] Create the initial methods
+- [x] Create an MVP of the project with functional CRUD methods and passing tests
+- [x] Make sure the all the methods are fully tested and pass
+- [x] 5 User Stories
 
-##### Review
+##### Sprint 1 Review
 
-Sprint 1 Review
+* Sprint goal was achieved
+* All of the user stories that were selected were completed
+* All of the tests passed
 
-##### Retrospective
+##### Sprint 1 Retrospective
 
-Sprint 1 retrospective
+* Pleased with the amount of work I have achieved in one sprint but I think I spent too long trying to fix small issues which could have been easily avoided if I had named certain parts differently or put more attention to what I was doing
+* When creating methods I need to always consider whether exceptions testing are required. This is something I found out later as I marked certain User Stories as complete but then had issues with some of the other work afterwards which related back to exception handling. 
+* In the Next Sprint I need do some quick small refactoring of the code as some parts are repeated or could be put under a switch case 
 
 ---
 
@@ -100,6 +105,18 @@ What would I do next?
 
 ---
 
+##### Class-Diagram
+
+![Project Class Diagram](C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Images\Class Diagram.JPG)
+
+---
+
+
+
 #### Sprint-1-Board(Before)
 
-![Project-Board-Before-Sprint-1](C:\Users\saadi\OneDrive\Desktop\Sparta Global\Sprint 1 (before).JPG)
+![Project-Board-Before-Sprint-1](C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Images\Sprint 1 (before).JPG)
+
+#### Sprint-2-Board(After)
+
+![Project-Board-Before-Sprint-1](C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Images\Sprint 1 (after).JPG)

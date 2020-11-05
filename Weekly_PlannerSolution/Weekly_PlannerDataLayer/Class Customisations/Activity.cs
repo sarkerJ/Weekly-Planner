@@ -8,7 +8,7 @@ namespace Weekly_PlannerDataLayer
     {
         public override string ToString()
         {
-            return $"{ActivityId}: {Name}";
+            return $"{Name}";
         }
 
     }

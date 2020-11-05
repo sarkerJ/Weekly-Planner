@@ -45,11 +45,11 @@
             <Label x:Name="LThursday" Grid.Column="3" Grid.Row="0" Content="Thursday" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Background="#FFC9ECF9" BorderBrush="#FFC9DEF7" />
             <Label x:Name="LFriday" Grid.Column="4" Grid.Row="0" Content="Friday" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Background="#FFC9ECF9" BorderBrush="#FF93BFF3"/>
 
-            <ListBox x:Name="ListBoxMonday" Grid.Column="0" Grid.Row="1" Background="#FFE7F1EF" SelectionChanged="ListBoxAll_SelectionChanged"  ></ListBox>
-            <ListBox x:Name="ListBoxTuesday" Grid.Column="1" Grid.Row="1" Background="#FFE7F1EF" SelectionChanged="ListBoxAll_SelectionChanged"  ></ListBox>
-            <ListBox x:Name="ListBoxWednesday" Grid.Column="2" Grid.Row="1" Background="#FFE7F1EF" SelectionChanged="ListBoxAll_SelectionChanged"  ></ListBox>
-            <ListBox x:Name="ListBoxThursday" Grid.Column="3" Grid.Row="1" Background="#FFE7F1EF" SelectionChanged="ListBoxAll_SelectionChanged"  ></ListBox>
-            <ListBox x:Name="ListBoxFriday" Grid.Column="4" Grid.Row="1" Background="#FFE7F1EF" SelectionChanged="ListBoxAll_SelectionChanged"  ></ListBox>
+            <ListBox x:Name="ListBoxMonday" Grid.Column="0" Grid.Row="1" Background="#FFE7F1EF" SelectionChanged="ListBoxAll_SelectionChanged" HorizontalContentAlignment="Center" ></ListBox>
+            <ListBox x:Name="ListBoxTuesday" Grid.Column="1" Grid.Row="1" Background="#FFE7F1EF" SelectionChanged="ListBoxAll_SelectionChanged"  HorizontalContentAlignment="Center"  ></ListBox>
+            <ListBox x:Name="ListBoxWednesday" Grid.Column="2" Grid.Row="1" Background="#FFE7F1EF" SelectionChanged="ListBoxAll_SelectionChanged"  HorizontalContentAlignment="Center"  ></ListBox>
+            <ListBox x:Name="ListBoxThursday" Grid.Column="3" Grid.Row="1" Background="#FFE7F1EF" SelectionChanged="ListBoxAll_SelectionChanged"  HorizontalContentAlignment="Center"  ></ListBox>
+            <ListBox x:Name="ListBoxFriday" Grid.Column="4" Grid.Row="1" Background="#FFE7F1EF" SelectionChanged="ListBoxAll_SelectionChanged"  HorizontalContentAlignment="Center"  ></ListBox>
 
             <Label x:Name="LName" Content="Activity Name" Grid.Column="0" Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#FFC9ECF9" ></Label>
             <Label x:Name="LContent" Content="Activity Content" Grid.Column="2" Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#FFC9ECF9" ></Label>

@@ -60,6 +60,7 @@ The application will then be extended to include a notes feature where the user 
 * Pleased with the amount of work I have achieved in one sprint but I think I spent too long trying to fix small issues which could have been easily avoided if I had named certain parts differently or put more attention to what I was doing
 * When creating methods I need to always consider whether exceptions testing are required. This is something I found out later as I marked certain User Stories as complete but then had issues with some of the other work afterwards which related back to exception handling. 
 * In the Next Sprint I need do some quick small refactoring of the code as some parts are repeated or could be put under a switch case 
+* In the Next Sprint I have to add a User Story to deal with duplicate Activities, something which I hadn't considered earlier
 
 ---
 
@@ -67,7 +68,11 @@ The application will then be extended to include a notes feature where the user 
 
 ##### Sprint 2 Goal:
 
-
+- [ ] Update README
+- [ ] Complete all selected User Stories
+- [ ] GUI is partially/fully updated based on User Stories
+- [ ] Make sure all the unit tests pass
+- [ ] Push Solution to GitHub 
 
 ##### Review
 
@@ -117,6 +122,9 @@ What would I do next?
 
 ![Project-Board-Before-Sprint-1](https://github.com/sarkerJ/Weekly-Planner/blob/main/Images/Sprint%201%20(before).JPG)
 
-#### Sprint-2-Board(After)
+#### Sprint-1-Board(After)
 
 ![Project-Board-Before-Sprint-1](https://github.com/sarkerJ/Weekly-Planner/blob/main/Images/Sprint%201%20(after).JPG)
+
+#### Sprint-2-Board(Before)
+

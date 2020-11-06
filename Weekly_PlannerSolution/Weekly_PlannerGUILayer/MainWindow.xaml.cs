@@ -155,5 +155,12 @@ namespace Weekly_PlannerGUILayer
                 MessageBox.Show(ex.Message, "Missing input values!", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
+
+        private void BAExternalView_Click(object sender, RoutedEventArgs e)
+        {
+            ActivityExternalView nw = new ActivityExternalView();
+            nw.Show();
+            nw.Owner = this;
+        }
     }
 }

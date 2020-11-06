@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannerGUILayer\App.xaml
-2-343079895
+3-2018588837
 
-41649597594
+51477942986
 219565972425
-CreateActivity.xaml;MainWindow.xaml;
+ActivityExternalView.xaml;CreateActivity.xaml;MainWindow.xaml;
 
 False
 

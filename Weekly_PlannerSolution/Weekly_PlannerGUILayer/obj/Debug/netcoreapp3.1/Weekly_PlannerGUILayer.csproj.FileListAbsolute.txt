@@ -62,3 +62,5 @@ C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Weekly_PlannerSolut
 C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannerGUILayer\obj\Debug\netcoreapp3.1\Weekly_PlannerGUILayer.dll
 C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannerGUILayer\obj\Debug\netcoreapp3.1\Weekly_PlannerGUILayer.pdb
 C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannerGUILayer\obj\Debug\netcoreapp3.1\Weekly_PlannerGUILayer.genruntimeconfig.cache
+C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannerGUILayer\obj\Debug\netcoreapp3.1\ActivityExternalView.g.cs
+C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannerGUILayer\obj\Debug\netcoreapp3.1\ActivityExternalView.baml

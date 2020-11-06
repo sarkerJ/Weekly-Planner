@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Weekly_PlannerGUILayer"
         mc:Ignorable="d"
-        Title="ActivityExternalView" Height="450" Width="800">
+        Title="ActivityExternalView" Height="250" Width="800">
     <Grid>
 
         <Grid.ColumnDefinitions>
@@ -22,9 +22,27 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <ListBox x:Name="ListBoxActivities" Grid.Row="1"></ListBox>
-            <ComboBox Name="ComboBoxDays" Grid.Column="2" SelectionChanged="ComboBoxDays_SelectionChanged"></ComboBox>
-            
+            <ListBox x:Name="ListBoxActivities" Grid.Row="1" Background="#FFE7F1EF" HorizontalContentAlignment="Center" SelectionChanged="ListBoxActivities_SelectionChanged"></ListBox>
+            <ComboBox Name="ComboBoxDays" Grid.Column="2" HorizontalContentAlignment="Center" SelectionChanged="ComboBoxDays_SelectionChanged"></ComboBox>
+        </Grid>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition />
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition/>
+
+            </Grid.RowDefinitions>
+
+            <Label x:Name="LName" Content="Activity Name" Grid.Row="0" HorizontalContentAlignment="Center" Background="#FFC9ECF9"></Label>
+            <Label x:Name="LContent" Content="Activity Content" Grid.Row="2" HorizontalContentAlignment="Center" Background="#FFC9ECF9"></Label>
+
+            <TextBox x:Name="TName" Grid.Row="1" HorizontalContentAlignment="Center" HorizontalScrollBarVisibility="Auto"></TextBox>
+            <TextBox x:Name="TContent" VerticalContentAlignment="Top" HorizontalContentAlignment="Center"  HorizontalScrollBarVisibility="Auto" Grid.Row="3" AcceptsReturn="True" ></TextBox>
+            <Button x:Name="BEditActivity" Content="Edit an Activity" Grid.Row="4" Click="BEditActivity_Click"></Button>
+
 
         </Grid>
     </Grid>

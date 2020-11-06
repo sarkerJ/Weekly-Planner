@@ -31,15 +31,47 @@ namespace Weekly_PlannerGUILayer
             ComboBoxDays.ItemsSource = _crudManager.ListOfDays();
             ComboBoxDays.DisplayMemberPath = "Day";
         }
+        public void populateListBox()
+        {
+            ListBoxActivities.ItemsSource = _crudManager.ListOfActivities(_crudManager.currentDay.Day);
+        }
 
         private void ComboBoxDays_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (ComboBoxDays.SelectedItem != null)
             {
                 _crudManager.setSelectedDay(ComboBoxDays.SelectedItem);
-                ListBoxActivities.ItemsSource = _crudManager.ListOfActivities(_crudManager.currentDay.Day);
+                populateListBox();
             }
         }
 
+        private void BEditActivity_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                _crudManager.EditActivity(_crudManager.currentActivity.ActivityId, TName.Text.Trim(), TContent.Text.Trim(), _crudManager.currentDay.Day);
+                populateListBox();
+                                ((MainWindow)this.Owner).fillUpLists();
+                MessageBox.Show("Updated Activity");
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Exception occured!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                ((MainWindow)this.Owner).Focus();
+            }
+        }
+
+        private void ListBoxActivities_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(ListBoxActivities.SelectedItem != null)
+            {
+                _crudManager.setSelectedActivity(ListBoxActivities.SelectedItem);
+                TName.Text = _crudManager.currentActivity.Name;
+                TContent.Text = _crudManager.currentActivity.Content;
+            }
+
+            
+        }
     }
 }

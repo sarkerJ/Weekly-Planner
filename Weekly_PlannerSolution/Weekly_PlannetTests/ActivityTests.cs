@@ -81,6 +81,28 @@ namespace Weekly_PlannetTests
         }
 
         [Test]
+        public void WhenCreatingADuplicateActivity_AnExceptionIsThrown()
+        {
+            using (var db = new WeeklyPlannerDBContext())
+            {
+                var getDay = db.WeekDays.Where(w => w.Day == "Tuesday").FirstOrDefault();
+
+                Activity newActivity = new Activity()
+                {
+                    Name = "Test",
+                    Content = "Have to check if content and title are correct",
+                    WeekDays = getDay
+                };
+                db.Activities.Add(newActivity);
+                db.SaveChanges();
+
+                var ex = Assert.Throws<ArgumentException>(() => _crudManager.CreateActivity("Test", "This is a duplicate activity tutut", "Tuesday"));
+                Assert.AreEqual("An activity with the same name already exists!", ex.Message);
+
+            }
+        }
+
+        [Test]
         public void CreatingAnActivityWithAnEmptyTitle_ThrowsAnException()
         {
             using (var db = new WeeklyPlannerDBContext())

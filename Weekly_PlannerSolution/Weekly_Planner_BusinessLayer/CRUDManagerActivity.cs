@@ -63,6 +63,9 @@ namespace Weekly_Planner_BusinessLayer
 
             using(var db = new WeeklyPlannerDBContext())
             {
+                var isCreatedQ = db.Activities.Where(a => a.Name == title.Trim()).FirstOrDefault();
+                if (isCreatedQ != null) throw new ArgumentException("An activity with the same name already exists!");
+
                 var getDay = db.WeekDays.Where(w => w.Day == day.Trim()).FirstOrDefault();
 
                 Activity newActivity = new Activity()

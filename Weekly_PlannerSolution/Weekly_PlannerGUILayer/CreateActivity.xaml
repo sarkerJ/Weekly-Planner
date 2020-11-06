@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Weekly_PlannerGUILayer"
         mc:Ignorable="d"
-        Title="CreateActivity" Height="250" Width="320">
+        Title="CreateActivity" Height="250" Width="500" Background="#FFEDFDF8">
     <Grid>
         <Grid.ColumnDefinitions>
             
@@ -33,7 +33,7 @@
 
             <TextBox x:Name="TName" Grid.Row="1" Grid.Column="2" ></TextBox>
             <TextBox x:Name="TContent" Grid.Row="2" Grid.Column="2" AcceptsReturn="True"></TextBox>
-            <Label x:Name="LDay" Content="Day:" HorizontalAlignment="Center" VerticalAlignment="Center" ></Label>
+            <Label x:Name="LDay" Content="Day Of The Week:" HorizontalAlignment="Center" VerticalAlignment="Center" ></Label>
             <Label x:Name="LName" Content="Activity Name:" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"></Label>
             <Label x:Name="LContent" Content="Activity Content:" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" ></Label>
 
@@ -53,7 +53,7 @@
 
             </Grid.RowDefinitions>
 
-            <Button x:Name="BAdd" Content="Add" Grid.Column="1" Grid.Row="1" Click="BAdd_Click" ></Button>
+            <Button x:Name="BAdd" Content="Add" Grid.Column="1" Grid.Row="1" Click="BAdd_Click" Background="#FFBDD7DE" ></Button>
             
         </Grid>
     </Grid>

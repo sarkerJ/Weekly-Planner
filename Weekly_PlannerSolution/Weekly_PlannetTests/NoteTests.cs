@@ -185,5 +185,36 @@ namespace Weekly_PlannetTests
                 Assert.AreEqual("The Note's content cannot be empty!", ex.Message);
             }
         }
+
+        [Test]
+        public void WhenNoteIsDeletedCountIsDecreasedByOne()
+        {
+            using (var db = new WeeklyPlannerDBContext())
+            {
+                var count = db.Notes.Count();
+
+                var getDay = db.WeekDays.Where(w => w.Day == "Monday").FirstOrDefault();
+                var getColour = db.NotesColourCategories.Where(p => p.Colour == "Red").FirstOrDefault();
+
+                Note newNote = new Note()
+                {
+                    Title = "Test",
+                    Content = "This is my second note for the day",
+                    NotesColourCategorys = getColour,
+                    WeekDays = getDay
+                };
+
+                db.Notes.Add(newNote);
+                db.SaveChanges();
+
+                var getNote = db.Notes.Where(w => w.Title == "Test").FirstOrDefault();
+
+                _crudManager.DeleteNote(getNote.NoteId);
+
+                var newCount = db.Notes.Count();
+
+                Assert.AreEqual(count, newCount);
+            }
+        }
     }
 }

@@ -43,5 +43,20 @@ namespace Weekly_PlannetTests
             }
 
         }
+
+
+        [Test]
+        public void WhenANoteIsCreated_TheCountIncreases()
+        {
+            using (var db = new WeeklyPlannerDBContext())
+            {
+                var count = db.Notes.Count();
+                _crudManager.CreateNote("Red", "Monday", "Test", "This is my first note for the day");
+                var newCount = db.Notes.Count();
+
+                Assert.AreEqual(count + 1, newCount);
+
+            }
+        }
     }
 }

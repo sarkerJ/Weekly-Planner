@@ -32,6 +32,35 @@ namespace Weekly_Planner_BusinessLayer
             }
         }
 
-        
+        public void EditNote(int id, string title, string content, string day, string colour)
+        {
+            using (var db = new WeeklyPlannerDBContext())
+            {
+                if (title.Count() == 0) throw new ArgumentException("Title cannot be empty!");
+
+                if (content.Count() == 0) throw new ArgumentException("The Note's content cannot be empty!");
+
+                var getDay = db.WeekDays.Where(w => w.Day == day.Trim()).FirstOrDefault();
+                var getColour = db.NotesColourCategories.Where(p => p.Colour == colour.Trim()).FirstOrDefault();
+
+                var getNote = db.Notes.Where(w => w.NoteId == id).FirstOrDefault();
+                getNote.Title = title.Trim();
+                getNote.Content = content.Trim();
+                getNote.WeekDays = getDay;
+                getNote.NotesColourCategorys = getColour;
+                db.SaveChanges();
+
+            }
+        }
+
+        public void DeleteNote(int id)
+        {
+            using (var db = new WeeklyPlannerDBContext())
+            {
+                var getNote = db.Notes.Where(w => w.NoteId == id).FirstOrDefault();
+                db.Notes.RemoveRange(getNote);
+                db.SaveChanges();
+            }
+        }
     }
 }

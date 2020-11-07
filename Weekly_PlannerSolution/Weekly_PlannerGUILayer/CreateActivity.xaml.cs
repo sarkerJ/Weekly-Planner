@@ -50,7 +50,8 @@ namespace Weekly_PlannerGUILayer
                 _crudManager.CreateActivity(TName.Text, TContent.Text, _crudManager.currentDay.Day);
                 this.Close();
                 ((MainWindow)this.Owner).fillUpLists();
-            }catch(Exception ex)
+            }
+            catch(Exception ex)
             {
                 MessageBox.Show(ex.Message, "Duplicate Title or Missing input values!", MessageBoxButton.OK, MessageBoxImage.Warning);
                 ((MainWindow)this.Owner).Focus(); //to ensure when you close the 2nd window using "x" the mainwindow does not go behind other applications

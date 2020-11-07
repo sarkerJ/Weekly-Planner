@@ -40,6 +40,8 @@ namespace Weekly_PlannerGUILayer
             ComboBoxDays.DisplayMemberPath = "Day";
             ComboBoxDays.SelectedItem = ComboBoxDays.Items.CurrentItem;
             _crudManager.setSelectedDay(ComboBoxDays.SelectedItem);
+            ListBoxActivities.SelectedItem = ListBoxActivities.Items.CurrentItem;
+            _crudManager.setSelectedActivity(ListBoxActivities.SelectedItem);
 
         }
         public void populateListBox()
@@ -57,6 +59,7 @@ namespace Weekly_PlannerGUILayer
                 populateListBox();
                 ((MainWindow)this.Owner).fillUpLists();
                 MessageBox.Show("Updated Activity");
+                ((MainWindow)this.Owner).Focus();
 
             }
             catch (Exception ex)

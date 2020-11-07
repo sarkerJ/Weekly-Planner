@@ -9,6 +9,24 @@ namespace Weekly_Planner_BusinessLayer
 {
     public class CRUDManagerNotes
     {
+        public WeekDay currentDay { get; set; }
+
+        public Note currentNote { get; set; }
+
+        public void setSelectedNote(object selectedItem)
+        {
+            currentNote = (Note)selectedItem;
+        }
+        public void setSelectedDay(object selectedItem)
+        {
+            using(var db = new WeeklyPlannerDBContext())
+            {
+                var getDay = db.Notes.Where(a => a.NoteId == currentNote.NoteId).Include(o => o.WeekDays).FirstOrDefault();
+                currentDay = getDay.WeekDays;
+            }
+            
+        }
+
         public void CreateNote(string colour, string day, string title, string content)
         {
             using(var db = new WeeklyPlannerDBContext())

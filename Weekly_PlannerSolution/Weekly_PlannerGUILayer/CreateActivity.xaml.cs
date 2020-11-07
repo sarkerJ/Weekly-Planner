@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Weekly_Planner_BusinessLayer;
+using Weekly_PlannerDataLayer;
 
 namespace Weekly_PlannerGUILayer
 {
@@ -27,8 +28,11 @@ namespace Weekly_PlannerGUILayer
 
         public void fillUpComboBox()
         {
+            
             ComboBoxDays.ItemsSource = _crudManager.ListOfDays();
             ComboBoxDays.DisplayMemberPath = "Day";
+            ComboBoxDays.SelectedItem = ComboBoxDays.Items.CurrentItem;
+            _crudManager.setSelectedDay(ComboBoxDays.SelectedItem);
         }
 
         private void ComboBoxDays_SelectionChanged(object sender, SelectionChangedEventArgs e)

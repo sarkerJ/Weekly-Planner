@@ -23,7 +23,7 @@
             </Grid.RowDefinitions>
 
             <ListBox x:Name="ListBoxActivities" Grid.Row="1" Background="#FFE7F1EF" HorizontalContentAlignment="Center" SelectionChanged="ListBoxActivities_SelectionChanged"></ListBox>
-            <ComboBox Name="ComboBoxDays" Grid.Column="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" SelectionChanged="ComboBoxDays_SelectionChanged" Text="-- Select A Day --" IsEditable="True" IsReadOnly="True"></ComboBox>
+            <ComboBox Name="ComboBoxDays" Grid.Column="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" SelectionChanged="ComboBoxDays_SelectionChanged" ></ComboBox>
         </Grid>
 
         <Grid Grid.Column="1">

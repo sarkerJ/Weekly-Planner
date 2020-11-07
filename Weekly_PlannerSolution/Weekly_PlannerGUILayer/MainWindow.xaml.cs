@@ -159,14 +159,14 @@ namespace Weekly_PlannerGUILayer
         private void BAExternalView_Click(object sender, RoutedEventArgs e)
         {
             ActivityExternalView nw = new ActivityExternalView();
-            nw.ShowDialog();
+            nw.Show();
             nw.Owner = this;
         }
 
         private void BNotes_Click(object sender, RoutedEventArgs e)
         {
             NotesWindow nw = new NotesWindow();
-            nw.ShowDialog();
+            nw.Show();
             nw.Owner = this;
         }
     }

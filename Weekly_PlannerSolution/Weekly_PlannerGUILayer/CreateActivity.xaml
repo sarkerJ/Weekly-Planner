@@ -37,7 +37,7 @@
             <Label x:Name="LName" Content="Activity Name:" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"></Label>
             <Label x:Name="LContent" Content="Activity Content:" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" ></Label>
 
-            <ComboBox Name="ComboBoxDays" Grid.Column="2" SelectionChanged="ComboBoxDays_SelectionChanged" Text="-- Select A Day --" IsEditable="True" IsReadOnly="True" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></ComboBox>
+            <ComboBox Name="ComboBoxDays" Grid.Column="2" SelectionChanged="ComboBoxDays_SelectionChanged"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></ComboBox>
 
         </Grid>
 

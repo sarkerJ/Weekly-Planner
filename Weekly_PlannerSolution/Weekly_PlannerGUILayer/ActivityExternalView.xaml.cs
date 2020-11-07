@@ -26,16 +26,6 @@ namespace Weekly_PlannerGUILayer
             fillUpComboBox();
         }
 
-        public void fillUpComboBox()
-        {
-            ComboBoxDays.ItemsSource = _crudManager.ListOfDays();
-            ComboBoxDays.DisplayMemberPath = "Day";
-        }
-        public void populateListBox()
-        {
-            ListBoxActivities.ItemsSource = _crudManager.ListOfActivities(_crudManager.currentDay.Day);
-        }
-
         private void ComboBoxDays_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (ComboBoxDays.SelectedItem != null)
@@ -44,6 +34,20 @@ namespace Weekly_PlannerGUILayer
                 populateListBox();
             }
         }
+        public void fillUpComboBox()
+        {
+            ComboBoxDays.ItemsSource = _crudManager.ListOfDays();
+            ComboBoxDays.DisplayMemberPath = "Day";
+            ComboBoxDays.SelectedItem = ComboBoxDays.Items.CurrentItem;
+            _crudManager.setSelectedDay(ComboBoxDays.SelectedItem);
+
+        }
+        public void populateListBox()
+        {
+            ListBoxActivities.ItemsSource = _crudManager.ListOfActivities(_crudManager.currentDay.Day);
+        }
+
+      
 
         private void BEditActivity_Click(object sender, RoutedEventArgs e)
         {

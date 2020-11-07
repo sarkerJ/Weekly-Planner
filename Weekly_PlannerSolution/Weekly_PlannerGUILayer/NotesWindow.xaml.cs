@@ -18,7 +18,7 @@ namespace Weekly_PlannerGUILayer
     /// </summary>
     public partial class NotesWindow : Window
     {
-        CRUDManagerActivity _crudManager = new CRUDManagerActivity();
+        CRUDManagerNotes _crudManager = new CRUDManagerNotes();
 
         public NotesWindow()
         {
@@ -29,9 +29,20 @@ namespace Weekly_PlannerGUILayer
         {
             ComboBoxDays.ItemsSource = _crudManager.ListOfDays();
             ComboBoxDays.DisplayMemberPath = "Day";
-            ComboBoxDays.SelectedItem = ComboBoxDays.Items.CurrentItem;
-            _crudManager.setSelectedDay(ComboBoxDays.SelectedItem);
+            //ComboBoxDays.SelectedItem = ComboBoxDays.Items.CurrentItem; //may not need them since it would force a filter
+            //_crudManager.setSelectedDay(ComboBoxDays.SelectedItem);
 
+            ComboBoxColours.ItemsSource = _crudManager.ListOfColours();
+            ComboBoxColours.DisplayMemberPath = "Colour";
+            //ComboBoxColours.SelectedItem = ComboBoxColours.Items.CurrentItem;
+            //_crudManager.setSelectedColour(ComboBoxColours.SelectedItem);
+
+            fillListBoxNotes1();
+        }
+
+        public void fillListBoxNotes1()
+        {
+            ListBoxNotes.ItemsSource = _crudManager.ListOfNotes();
         }
         private void ComboBoxDays_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

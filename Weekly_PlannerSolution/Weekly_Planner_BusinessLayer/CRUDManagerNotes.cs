@@ -20,23 +20,39 @@ namespace Weekly_Planner_BusinessLayer
         }
         public void setSelectedDay(object selectedItem)
         {
-            var getActvivity = (Activity)selectedItem;
-            currentDay = getActvivity.WeekDays;
-
-            //using(var db = new WeeklyPlannerDBContext())
-            //{
-            //    var getDay = db.Notes.Where(a => a.NoteId == currentNote.NoteId).Include(o => o.WeekDays).FirstOrDefault();
-            //    currentDay = getDay.WeekDays;
-            //}
-            
+            try
+            {
+                currentDay = (WeekDay)selectedItem;
+            }
+            catch
+            {
+                using (var db = new WeeklyPlannerDBContext())
+                {
+                    currentDay=  db.Notes.Where(a => a.NoteId == currentNote.NoteId)
+                        .Include(o => o.WeekDays)
+                        .Select(s=> s.WeekDays)
+                        .FirstOrDefault(); //make a method for it
+                }
+            }
         }
 
         public void setSelectedColour(object selectedItem)
         {
-            //using(var db = new WeeklyPlannerDBContext())
-            //{
-            //    var getColour = db.NotesColourCategories;
-            //}
+            try
+            {
+                currentColour = (NotesColourCategory)selectedItem;
+            }
+            catch
+            {
+                using (var db = new WeeklyPlannerDBContext())
+                {
+                    currentColour = db.Notes.Where(a=> a.NoteId == currentNote.NoteId)
+                        .Include(o=> o.NotesColourCategorys)
+                        .Select(o=> o.NotesColourCategorys)
+                        .FirstOrDefault() ; //make a method for it
+                }
+            }
+
         }
 
         public List<WeekDay> ListOfDays()
@@ -52,6 +68,14 @@ namespace Weekly_Planner_BusinessLayer
             using (var db = new WeeklyPlannerDBContext())
             {
                 return db.NotesColourCategories.ToList();
+            }
+        }
+
+        public List<Note> ListOfNotes()
+        {
+            using (var db = new WeeklyPlannerDBContext())
+            {
+                return db.Notes.ToList();
             }
         }
 

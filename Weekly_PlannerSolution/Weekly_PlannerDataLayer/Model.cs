@@ -44,7 +44,7 @@ namespace Weekly_PlannerDataLayer
 
     }
 
-    public class Note
+    public partial class Note
     {
         public int NoteId { get; set; }
         public string Title { get; set; }

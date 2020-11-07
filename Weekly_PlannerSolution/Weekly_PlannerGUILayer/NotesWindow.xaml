@@ -22,7 +22,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <ListBox x:Name="ListBoxActivities" Grid.Row="1" Background="#FFE7F1EF" HorizontalContentAlignment="Center" ></ListBox>
+            <ListBox x:Name="ListBoxNotes" Grid.Row="1" Background="#FFE7F1EF" HorizontalContentAlignment="Center" ></ListBox>
 
             <Grid Grid.Row="0">
                 <Grid.RowDefinitions>
@@ -35,9 +35,11 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <ComboBox Name="ComboBoxDays"  Grid.Column="1" HorizontalContentAlignment="Center"  SelectionChanged="ComboBoxDays_SelectionChanged"></ComboBox>
-                <ComboBox Name="ComboBoxColours"  Grid.Column="1" Grid.Row="1" HorizontalContentAlignment="Center"  SelectionChanged="ComboBoxColours_SelectionChanged" ></ComboBox>
+                <ComboBox Name="ComboBoxDays"  Grid.Column="1" HorizontalContentAlignment="Center" Text="--Select Day Filter --" IsReadOnly="True" IsEditable="True" SelectionChanged="ComboBoxDays_SelectionChanged"></ComboBox>
+                <ComboBox Name="ComboBoxColours"  Grid.Column="1" Grid.Row="1" HorizontalContentAlignment="Center" Text="--Select Colour Filter --" IsReadOnly="True" IsEditable="True" SelectionChanged="ComboBoxColours_SelectionChanged" ></ComboBox>
+                <Button x:Name="BClear" Grid.Column="1" Grid.Row="2" Content="Clear"></Button>
 
+                <Label Name="LNote" Content="Notes" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30" FontStyle="Italic" Grid.Row="0" Grid.RowSpan="3"></Label>
             </Grid>
         </Grid>
 

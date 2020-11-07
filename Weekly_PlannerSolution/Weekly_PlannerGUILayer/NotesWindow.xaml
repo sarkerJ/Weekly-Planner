@@ -1,11 +1,11 @@
-﻿<Window x:Class="Weekly_PlannerGUILayer.ActivityExternalView"
+﻿<Window x:Class="Weekly_PlannerGUILayer.NotesWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Weekly_PlannerGUILayer"
         mc:Ignorable="d"
-        Title="ActivityExternalView" Height="250" Width="800">
+        Title="NotesWindow" Height="450" Width="800">
     <Grid>
 
         <Grid.ColumnDefinitions>
@@ -18,12 +18,26 @@
 
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="40"/>
+                <RowDefinition Height="60"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <ListBox x:Name="ListBoxActivities" Grid.Row="1" Background="#FFE7F1EF" HorizontalContentAlignment="Center" SelectionChanged="ListBoxActivities_SelectionChanged"></ListBox>
-            <ComboBox Name="ComboBoxDays" Grid.Column="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" SelectionChanged="ComboBoxDays_SelectionChanged" Text="-- Select A Day --" IsEditable="True" IsReadOnly="True"></ComboBox>
+            <ListBox x:Name="ListBoxActivities" Grid.Row="1" Background="#FFE7F1EF" HorizontalContentAlignment="Center" ></ListBox>
+
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <ComboBox Name="ComboBoxDays"  Grid.Column="1" HorizontalContentAlignment="Center" Text="--Select Team --" IsReadOnly="True" IsEditable="True"></ComboBox>
+
+            </Grid>
         </Grid>
 
         <Grid Grid.Column="1">
@@ -41,7 +55,7 @@
 
             <TextBox x:Name="TName" Grid.Row="1" HorizontalContentAlignment="Center" HorizontalScrollBarVisibility="Auto"></TextBox>
             <TextBox x:Name="TContent" VerticalContentAlignment="Top" HorizontalContentAlignment="Center"  HorizontalScrollBarVisibility="Auto" Grid.Row="3" AcceptsReturn="True" ></TextBox>
-            <Button x:Name="BEditActivity" Content="Edit an Activity" Grid.Row="4" Click="BEditActivity_Click"></Button>
+            <Button x:Name="BEditActivity" Content="Edit an Activity" Grid.Row="4" ></Button>
 
 
         </Grid>

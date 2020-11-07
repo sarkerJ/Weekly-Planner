@@ -72,8 +72,10 @@
 
         <Button x:Name="BCreateActivity" Content="Create an Activity" Grid.Column="0" Click="BCreateActivity_Click"></Button>
         <Button x:Name="BDeleteActivity" Content="Delete an Activity" Grid.Column="2" Click="BDeleteActivity_Click"></Button>
-        <Button x:Name="BEditActivity" Content="Edit an Activity" Grid.Column="1" Click="BEditActivity_Click"></Button>
+        <Button x:Name="BEditActivity" Content="Update Activity" Grid.Column="1" Click="BEditActivity_Click"></Button>
         <Button x:Name="BAExternalView" Content="Activity External View" Grid.Column="3" Click="BAExternalView_Click" ></Button>
+        <Button x:Name="BNotes" Content="Notes" Grid.Column="4" Click="BNotes_Click"  ></Button>
+
 
 
     </Grid>

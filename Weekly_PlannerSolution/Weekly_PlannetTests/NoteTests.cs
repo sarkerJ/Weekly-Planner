@@ -58,5 +58,47 @@ namespace Weekly_PlannetTests
 
             }
         }
+
+        [Test]
+        public void WhenANoteIsCreated_TheContentIsCorrect()
+        {
+            using (var db = new WeeklyPlannerDBContext())
+            {
+                var getDay = db.WeekDays.Where(w => w.Day == "Monday").FirstOrDefault();
+                var getColour = db.NotesColourCategories.Where(p => p.Colour == "Red").FirstOrDefault();
+
+                Note newNote = new Note()
+                {
+                    Title = "Test",
+                    Content = "This is my second note for the day",
+                    NotesColourCategorys = getColour,
+                    WeekDays = getDay
+                };
+
+                db.Notes.Add(newNote);
+                db.SaveChanges();
+
+                var getNote = db.Notes.Where(w => w.Title == "Test").FirstOrDefault();
+
+                Assert.AreEqual("Test", getNote.Title);
+                Assert.AreEqual("This is my second note for the day", getNote.Content);
+                Assert.AreEqual("Monday", getNote.WeekDays.Day);
+                Assert.AreEqual("Red", getNote.NotesColourCategorys.Colour);
+            }
+        }
+
+        [Test]
+        public void WhenANoteWithoutATitleIsCreated_AnExceptionIsThrown()
+        {
+            var ex = Assert.Throws<ArgumentException>(() => _crudManager.CreateNote("Red", "Monday", "", "This is my first note for the day"));
+            Assert.AreEqual("Title cannot be empty!", ex.Message);
+        }
+
+        [Test]
+        public void WhenANoteWithoutAContentIsCreated_AnExceptionIsThrown()
+        {
+            var ex = Assert.Throws<ArgumentException>(() => _crudManager.CreateNote("Red", "Monday", "Test", ""));
+            Assert.AreEqual("The Note's content cannot be empty!", ex.Message);
+        }
     }
 }

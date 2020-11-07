@@ -51,7 +51,7 @@ namespace Weekly_PlannerGUILayer
             {
                 _crudManager.EditActivity(_crudManager.currentActivity.ActivityId, TName.Text.Trim(), TContent.Text.Trim(), _crudManager.currentDay.Day);
                 populateListBox();
-                                ((MainWindow)this.Owner).fillUpLists();
+                ((MainWindow)this.Owner).fillUpLists();
                 MessageBox.Show("Updated Activity");
 
             }

@@ -13,18 +13,46 @@ namespace Weekly_Planner_BusinessLayer
 
         public Note currentNote { get; set; }
 
+        public NotesColourCategory currentColour { get; set; }
         public void setSelectedNote(object selectedItem)
         {
             currentNote = (Note)selectedItem;
         }
         public void setSelectedDay(object selectedItem)
         {
-            using(var db = new WeeklyPlannerDBContext())
-            {
-                var getDay = db.Notes.Where(a => a.NoteId == currentNote.NoteId).Include(o => o.WeekDays).FirstOrDefault();
-                currentDay = getDay.WeekDays;
-            }
+            var getActvivity = (Activity)selectedItem;
+            currentDay = getActvivity.WeekDays;
+
+            //using(var db = new WeeklyPlannerDBContext())
+            //{
+            //    var getDay = db.Notes.Where(a => a.NoteId == currentNote.NoteId).Include(o => o.WeekDays).FirstOrDefault();
+            //    currentDay = getDay.WeekDays;
+            //}
             
+        }
+
+        public void setSelectedColour(object selectedItem)
+        {
+            //using(var db = new WeeklyPlannerDBContext())
+            //{
+            //    var getColour = db.NotesColourCategories;
+            //}
+        }
+
+        public List<WeekDay> ListOfDays()
+        {
+            using (var db = new WeeklyPlannerDBContext())
+            {
+                return db.WeekDays.ToList();
+            }
+        }
+
+        public List<NotesColourCategory> ListOfColours()
+        {
+            using (var db = new WeeklyPlannerDBContext())
+            {
+                return db.NotesColourCategories.ToList();
+            }
         }
 
         public void CreateNote(string colour, string day, string title, string content)

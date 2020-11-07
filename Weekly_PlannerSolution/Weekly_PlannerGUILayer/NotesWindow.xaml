@@ -35,7 +35,8 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <ComboBox Name="ComboBoxDays"  Grid.Column="1" HorizontalContentAlignment="Center" Text="--Select Team --" IsReadOnly="True" IsEditable="True"></ComboBox>
+                <ComboBox Name="ComboBoxDays"  Grid.Column="1" HorizontalContentAlignment="Center" Text="--Select Team --" IsReadOnly="True" IsEditable="True" SelectionChanged="ComboBoxDays_SelectionChanged"></ComboBox>
+                <ComboBox Name="ComboBoxColours"  Grid.Column="1" Grid.Row="1" HorizontalContentAlignment="Center" Text="--Select Colour --" IsReadOnly="True" IsEditable="True" SelectionChanged="ComboBoxColours_SelectionChanged" ></ComboBox>
 
             </Grid>
         </Grid>

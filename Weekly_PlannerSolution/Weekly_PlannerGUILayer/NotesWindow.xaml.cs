@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Weekly_Planner_BusinessLayer;
 
 namespace Weekly_PlannerGUILayer
 {
@@ -17,9 +18,29 @@ namespace Weekly_PlannerGUILayer
     /// </summary>
     public partial class NotesWindow : Window
     {
+        CRUDManagerActivity _crudManager = new CRUDManagerActivity();
+
         public NotesWindow()
         {
-            InitializeComponent();
+            InitializeComponent(); 
+            fillUpComboBox();
+        }
+        public void fillUpComboBox()
+        {
+            ComboBoxDays.ItemsSource = _crudManager.ListOfDays();
+            ComboBoxDays.DisplayMemberPath = "Day";
+            ComboBoxDays.SelectedItem = ComboBoxDays.Items.CurrentItem;
+            _crudManager.setSelectedDay(ComboBoxDays.SelectedItem);
+
+        }
+        private void ComboBoxDays_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ComboBoxColours_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

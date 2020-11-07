@@ -10,7 +10,7 @@ namespace Weekly_Planner_BusinessLayer
     public class CRUDManagerActivity
     {
 
-        public Activity currentActivity { get; set; }
+        public Activity currentActivity { get; set; } 
 
         public WeekDay currentDay { get; set; }
 
@@ -93,7 +93,7 @@ namespace Weekly_Planner_BusinessLayer
             if (title.Count() == 0) throw new ArgumentException("Title cannot be empty!");
 
             if (content.Count() == 0) throw new ArgumentException("The activity's content cannot be empty!");
-
+            
             using (var db = new WeeklyPlannerDBContext())
             {
                 var currentActivity = db.Activities.Where(a => a.ActivityId == activityID).FirstOrDefault();

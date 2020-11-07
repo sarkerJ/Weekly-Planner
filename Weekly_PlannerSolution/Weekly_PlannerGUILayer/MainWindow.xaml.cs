@@ -126,12 +126,19 @@ namespace Weekly_PlannerGUILayer
 
         private void BDeleteActivity_Click(object sender, RoutedEventArgs e)
         {
-            _crudManager.DeleteActivity(_crudManager.currentActivity.ActivityId);
-            fillUpLists();
-            TTitle.Text = "";
-            TContent.Text = "";
-            TDay.Text = "";
-
+            try 
+            {
+                if (_crudManager.currentActivity == null) throw new Exception("You have not selected anything!");
+                _crudManager.DeleteActivity(_crudManager.currentActivity.ActivityId);
+                fillUpLists();
+                TTitle.Text = "";
+                TContent.Text = "";
+                TDay.Text = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "No Activity Selected!", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
 
         private void BCreateActivity_Click(object sender, RoutedEventArgs e)
@@ -145,6 +152,7 @@ namespace Weekly_PlannerGUILayer
         {
             try
             {
+                if (_crudManager.currentActivity == null) throw new Exception("You have not selected anything!");
                 _crudManager.EditActivity(_crudManager.currentActivity.ActivityId, TTitle.Text.Trim(), TContent.Text.Trim(), TDay.Text.Trim());
                 fillUpLists();
                 MessageBox.Show("Updated Activity");

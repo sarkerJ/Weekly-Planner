@@ -42,7 +42,18 @@ namespace Weekly_PlannerGUILayer
 
         public void fillListBoxNotes1()
         {
-            ListBoxNotes.ItemsSource = _crudManager.ListOfNotes();
+            if (ComboBoxDays.SelectedItem != null)
+            {
+                ListBoxNotes.ItemsSource = _crudManager.ListOfNotes(ComboBoxDays.SelectedItem);
+            }
+            else if (ComboBoxColours.SelectedItem != null)
+            {
+                ListBoxNotes.ItemsSource = _crudManager.ListOfNotes(ComboBoxColours.SelectedItem);
+            }
+            else
+            {
+                ListBoxNotes.ItemsSource = _crudManager.ListOfNotes();
+            }
         }
         private void ComboBoxDays_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -67,6 +78,7 @@ namespace Weekly_PlannerGUILayer
             ComboBoxColours.SelectedItem = null;
             ComboBoxColours.Text = "--Select Colour Filter --";
             fillListBoxNotes1();
+            resetText();
         }
 
         private void ListBoxNotes_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -81,10 +93,69 @@ namespace Weekly_PlannerGUILayer
             }
             else
             {
-                TNContent.Text = "";
-                TNName.Text = "";
-                TNDay.Text = "";
+                resetText();
             }
+        }
+
+        public void resetText()
+        {
+            TNContent.Text = "";
+            TNName.Text = "";
+            TNDay.Text = "";
+            TNPriority.Text = "";
+        }
+        public void allowEdit()
+        {
+            TNContent.IsReadOnly = false;
+            TNName.IsReadOnly = false;
+            TNDay.IsReadOnly = false;
+            TNPriority.IsReadOnly = false;
+        }
+
+        public void disableEdit()
+        {
+            TNContent.IsReadOnly = true;
+            TNName.IsReadOnly = true;
+            TNDay.IsReadOnly = true;
+            TNPriority.IsReadOnly = true;
+        }
+        private void BFunctions_Click(object sender, RoutedEventArgs e)
+        {
+            Button bt = (Button)sender;
+            switch (bt.Content)
+            {
+                case "Create New Note":
+                    resetText();
+                    allowEdit();
+                    bt.Content = "Add Note";
+                    break;
+
+                case "Add Note":
+                    try
+                    {
+                        _crudManager.CreateNote(TNPriority.Text, TNDay.Text, TNName.Text, TNContent.Text);
+                        disableEdit();
+                        bt.Content = "Create New Note";
+                        MessageBox.Show("Created New Note");
+                        fillListBoxNotes1();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Missing input values!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+                    break;
+
+                case "Delete Note":
+                    if(ListBoxNotes.SelectedItem != null)
+                    {
+                        _crudManager.DeleteNote(_crudManager.currentNote.NoteId);
+                        fillListBoxNotes1();
+                        resetText();
+                    }
+                    break;
+            }
+
+            
         }
     }
 }

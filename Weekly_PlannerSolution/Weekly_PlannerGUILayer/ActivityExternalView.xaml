@@ -29,10 +29,10 @@
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
                 <RowDefinition />
                 <RowDefinition Height="30"/>
-                <RowDefinition Height="80"/>
-                <RowDefinition/>
 
             </Grid.RowDefinitions>
 
@@ -40,7 +40,7 @@
             <Label x:Name="LContent" Content="Activity Content" Grid.Row="2" HorizontalContentAlignment="Center" Background="#FFC9ECF9"></Label>
 
             <TextBox x:Name="TName" Grid.Row="1" HorizontalContentAlignment="Center" HorizontalScrollBarVisibility="Auto"></TextBox>
-            <TextBox x:Name="TContent" VerticalContentAlignment="Top" HorizontalContentAlignment="Center"  HorizontalScrollBarVisibility="Auto" Grid.Row="3" AcceptsReturn="True" ></TextBox>
+            <TextBox x:Name="TContent" VerticalContentAlignment="Top" HorizontalContentAlignment="Center" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Row="3" AcceptsReturn="True" ></TextBox>
             <Button x:Name="BEditActivity" Content="Edit an Activity" Grid.Row="4" Click="BEditActivity_Click"></Button>
 
 

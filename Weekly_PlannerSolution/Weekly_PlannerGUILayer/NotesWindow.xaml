@@ -62,10 +62,10 @@
             <Label x:Name="LNContent" Content="Note Content" Grid.Row="6" HorizontalContentAlignment="Center" Background="#FFC9ECF9"></Label>
             <Label x:Name="LNDay" Content="Day" Grid.Row="4" HorizontalContentAlignment="Center" Background="#FFC9ECF9"></Label>
 
-            <TextBox x:Name="TNName" Grid.Row="1" HorizontalContentAlignment="Center" HorizontalScrollBarVisibility="Auto"></TextBox>
-            <TextBox x:Name="TNPriority" VerticalContentAlignment="Top" HorizontalContentAlignment="Center"  HorizontalScrollBarVisibility="Auto" Grid.Row="3" AcceptsReturn="True" ></TextBox>
-            <TextBox x:Name="TNContent" VerticalContentAlignment="Top" HorizontalContentAlignment="Center"  HorizontalScrollBarVisibility="Auto" Grid.Row="7" AcceptsReturn="True" ></TextBox>
-            <TextBox x:Name="TNDay" VerticalContentAlignment="Top" HorizontalContentAlignment="Center"  HorizontalScrollBarVisibility="Auto" Grid.Row="5" AcceptsReturn="True" ></TextBox>
+            <TextBox x:Name="TNName" Grid.Row="1" HorizontalContentAlignment="Center" HorizontalScrollBarVisibility="Auto" IsReadOnly="True"></TextBox>
+            <TextBox x:Name="TNPriority" VerticalContentAlignment="Top" HorizontalContentAlignment="Center"  HorizontalScrollBarVisibility="Auto" Grid.Row="3" IsReadOnly="True" ></TextBox>
+            <TextBox x:Name="TNContent" VerticalContentAlignment="Top" HorizontalContentAlignment="Center"  HorizontalScrollBarVisibility="Auto" Grid.Row="7" AcceptsReturn="True"  IsReadOnly="True"></TextBox>
+            <TextBox x:Name="TNDay" VerticalContentAlignment="Top" HorizontalContentAlignment="Center"  HorizontalScrollBarVisibility="Auto" Grid.Row="5" IsReadOnly="True" ></TextBox>
 
             <Grid Grid.Row="8">
                 <Grid.RowDefinitions>
@@ -73,10 +73,10 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                
-                <Button x:Name="BCreateNote" Content="Create Note" Grid.Row="0" ></Button>
-                <Button x:Name="BEditNote" Content="Update Note" Grid.Row="1" ></Button>
-                <Button x:Name="BDeleteNote" Content="Delete Note" Grid.Row="2" ></Button>
+
+                <Button x:Name="BCreateNote" Content="Create New Note" Grid.Row="0" Click="BFunctions_Click" ></Button>
+                <Button x:Name="BEditNote" Content="Update Note" Grid.Row="1" Click="BFunctions_Click" ></Button>
+                <Button x:Name="BDeleteNote" Content="Delete Note" Grid.Row="2" Click="BFunctions_Click"></Button>
 
 
             </Grid>

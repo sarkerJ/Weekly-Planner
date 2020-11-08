@@ -61,7 +61,11 @@ namespace Weekly_PlannerGUILayer
             if(ComboBoxDays.SelectedItem != null)
             {
                 ListBoxNotes.ItemsSource = _crudManager.ListOfNotes(ComboBoxDays.SelectedItem);
+                ComboBoxColours.SelectedItem = null;
+                ComboBoxColours.Text = "--Select Colour Filter --";
             }
+            
+            
         }
 
         private void ComboBoxColours_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -69,6 +73,8 @@ namespace Weekly_PlannerGUILayer
             if (ComboBoxColours.SelectedItem != null)
             {
                 ListBoxNotes.ItemsSource = _crudManager.ListOfNotes(ComboBoxColours.SelectedItem);
+                ComboBoxDays.SelectedItem = null;
+                ComboBoxDays.Text = "--Select Day Filter --";
             }
         }
 
@@ -139,10 +145,14 @@ namespace Weekly_PlannerGUILayer
                         bt.Content = "Create New Note";
                         MessageBox.Show("Created New Note");
                         fillListBoxNotes1();
+                        ((MainWindow)this.Owner).Focus();
+
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message, "Missing input values!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        ((MainWindow)this.Owner).Focus();
+
                     }
                     break;
 
@@ -154,11 +164,14 @@ namespace Weekly_PlannerGUILayer
                         _crudManager.DeleteNote(_crudManager.currentNote.NoteId);
                         fillListBoxNotes1();
                         resetText();
-                        
+                        ((MainWindow)this.Owner).Focus();
+
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message, "Missing input values!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        ((MainWindow)this.Owner).Focus();
+
                     }
                     break;
 
@@ -168,10 +181,14 @@ namespace Weekly_PlannerGUILayer
                         if (ListBoxNotes.SelectedItem == null) throw new ArgumentException("Nothing is Selected");
                         allowEdit();
                         bt.Content = "Update Note";
+                        ((MainWindow)this.Owner).Focus();
+
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message, "Missing input values!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        ((MainWindow)this.Owner).Focus();
+
                     }
 
 
@@ -187,12 +204,15 @@ namespace Weekly_PlannerGUILayer
                             bt.Content = "Edit Note";
                             MessageBox.Show("Updated Note");
                             fillListBoxNotes1();
-                        
-                        
+                        ((MainWindow)this.Owner).Focus();
+
+
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message, "Missing input values!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        ((MainWindow)this.Owner).Focus();
+
                     }
                     break;
             }

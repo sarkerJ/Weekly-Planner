@@ -116,7 +116,9 @@ namespace Weekly_Planner_BusinessLayer
                 db.Activities.RemoveRange(currentActivity);
                 db.SaveChanges();
 
+
             }
+            currentActivity = null; //test for this 
         }
 
     }

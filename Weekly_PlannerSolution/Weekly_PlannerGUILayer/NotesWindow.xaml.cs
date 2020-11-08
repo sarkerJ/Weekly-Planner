@@ -24,6 +24,7 @@ namespace Weekly_PlannerGUILayer
         {
             InitializeComponent(); 
             fillUpComboBox();
+
         }
         public void fillUpComboBox()
         {
@@ -146,11 +147,52 @@ namespace Weekly_PlannerGUILayer
                     break;
 
                 case "Delete Note":
-                    if(ListBoxNotes.SelectedItem != null)
+                    try
                     {
+                        if (ListBoxNotes.SelectedItem == null) throw new ArgumentException("Nothing is Selected");
+
                         _crudManager.DeleteNote(_crudManager.currentNote.NoteId);
                         fillListBoxNotes1();
                         resetText();
+                        
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Missing input values!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+                    break;
+
+                case "Edit Note":
+                    try
+                    {
+                        if (ListBoxNotes.SelectedItem == null) throw new ArgumentException("Nothing is Selected");
+                        allowEdit();
+                        bt.Content = "Update Note";
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Missing input values!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+
+
+                    break;
+
+                case "Update Note":
+                    try
+                    {
+                        if (ListBoxNotes.SelectedItem == null) throw new ArgumentException("Nothing is Selected");
+                        
+                            _crudManager.EditNote(_crudManager.currentNote.NoteId, TNName.Text, TNContent.Text, TNDay.Text, TNPriority.Text);
+                            disableEdit();
+                            bt.Content = "Edit Note";
+                            MessageBox.Show("Updated Note");
+                            fillListBoxNotes1();
+                        
+                        
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Missing input values!", MessageBoxButton.OK, MessageBoxImage.Warning);
                     }
                     break;
             }

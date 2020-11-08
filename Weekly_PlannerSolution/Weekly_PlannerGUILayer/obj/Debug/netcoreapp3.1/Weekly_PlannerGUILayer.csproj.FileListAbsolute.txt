@@ -47,13 +47,17 @@ C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Weekly_PlannerSolut
 C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannerGUILayer\bin\Debug\netcoreapp3.1\Weekly_Planner_BusinessLayer.pdb
 C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannerGUILayer\bin\Debug\netcoreapp3.1\Weekly_PlannerDataLayer.pdb
 C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannerGUILayer\obj\Debug\netcoreapp3.1\Weekly_PlannerGUILayer.csprojAssemblyReference.cache
+C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannerGUILayer\obj\Debug\netcoreapp3.1\ActivityExternalView.g.cs
 C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannerGUILayer\obj\Debug\netcoreapp3.1\CreateActivity.g.cs
 C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannerGUILayer\obj\Debug\netcoreapp3.1\MainWindow.g.cs
+C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannerGUILayer\obj\Debug\netcoreapp3.1\NotesWindow.g.cs
 C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannerGUILayer\obj\Debug\netcoreapp3.1\App.g.cs
 C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannerGUILayer\obj\Debug\netcoreapp3.1\Weekly_PlannerGUILayer_MarkupCompile.cache
 C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannerGUILayer\obj\Debug\netcoreapp3.1\Weekly_PlannerGUILayer_MarkupCompile.lref
+C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannerGUILayer\obj\Debug\netcoreapp3.1\ActivityExternalView.baml
 C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannerGUILayer\obj\Debug\netcoreapp3.1\CreateActivity.baml
 C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannerGUILayer\obj\Debug\netcoreapp3.1\MainWindow.baml
+C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannerGUILayer\obj\Debug\netcoreapp3.1\NotesWindow.baml
 C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannerGUILayer\obj\Debug\netcoreapp3.1\Weekly_PlannerGUILayer.g.resources
 C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannerGUILayer\obj\Debug\netcoreapp3.1\Weekly_PlannerGUILayer.AssemblyInfoInputs.cache
 C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannerGUILayer\obj\Debug\netcoreapp3.1\Weekly_PlannerGUILayer.AssemblyInfo.cs
@@ -62,7 +66,3 @@ C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Weekly_PlannerSolut
 C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannerGUILayer\obj\Debug\netcoreapp3.1\Weekly_PlannerGUILayer.dll
 C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannerGUILayer\obj\Debug\netcoreapp3.1\Weekly_PlannerGUILayer.pdb
 C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannerGUILayer\obj\Debug\netcoreapp3.1\Weekly_PlannerGUILayer.genruntimeconfig.cache
-C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannerGUILayer\obj\Debug\netcoreapp3.1\ActivityExternalView.g.cs
-C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannerGUILayer\obj\Debug\netcoreapp3.1\ActivityExternalView.baml
-C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannerGUILayer\obj\Debug\netcoreapp3.1\NotesWindow.g.cs
-C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannerGUILayer\obj\Debug\netcoreapp3.1\NotesWindow.baml

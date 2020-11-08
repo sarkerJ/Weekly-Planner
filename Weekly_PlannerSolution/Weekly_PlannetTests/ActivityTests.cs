@@ -228,5 +228,79 @@ namespace Weekly_PlannetTests
             }
         }
 
+        [Test]
+        public void WhenSetSelectDayIsUsed_CurrentDayPropertyHoldsCorrectObject()
+        {
+            using (var db = new WeeklyPlannerDBContext())
+            {
+                var getDay = db.WeekDays.Where(w => w.Day == "Monday").FirstOrDefault();
+
+                _crudManager.setSelectedDay(getDay);
+
+                Assert.AreEqual(getDay.WeekDayId, _crudManager.currentDay.WeekDayId);
+                Assert.AreEqual(getDay.Day, _crudManager.currentDay.Day);
+            }
+        }
+
+        [Test]
+        public void WhenListOfDayIsExecuted_ItReturnsAListOfDayObjects()
+        {
+            using (var db = new WeeklyPlannerDBContext())
+            {
+                var getDay = db.WeekDays.Where(w => w.Day == "Monday").FirstOrDefault();
+
+                var listOfDays = _crudManager.ListOfDays();
+
+                foreach (var item in listOfDays)
+                {
+                    Assert.AreEqual(getDay.GetType(), item.GetType());
+                }
+            }
+        }
+
+        [Test]
+        public void WhenSetSelectedActivityIsUsed_CurrentActivityPropertyANDDayPropertyHoldCorrectInformation()
+        {
+            using (var db = new WeeklyPlannerDBContext())
+            {
+                var getDay = db.WeekDays.Where(w => w.Day == "Wednesday").FirstOrDefault();
+                Activity newActivity = new Activity()
+                {
+                    Name = "Test",
+                    Content = "Have to check if content and title and day can be changed",
+                    WeekDays = getDay
+                };
+                db.Activities.Add(newActivity);
+                db.SaveChanges();
+
+                var getActivity = db.Activities.Where(a => a.Name == "Test").FirstOrDefault();
+
+                _crudManager.setSelectedActivity(getActivity);
+
+                Assert.AreEqual(getActivity.ActivityId, _crudManager.currentActivity.ActivityId);
+                Assert.AreEqual(getActivity.Name, _crudManager.currentActivity.Name);
+                Assert.AreEqual(getActivity.Content, _crudManager.currentActivity.Content);
+                Assert.AreEqual(getActivity.WeekDayId, _crudManager.currentDay.WeekDayId);
+
+            }
+        }
+
+
+        [Test]
+        public void WhenListOfActivitiesIsUsed_AListOfActivitiesBasedOnTheCorrectDayAreReturned()
+        {
+            using (var db = new WeeklyPlannerDBContext())
+            {
+                var getDay = db.WeekDays.Where(w => w.Day == "Wednesday").FirstOrDefault();
+
+                var listOfActivities = _crudManager.ListOfActivities(getDay.Day);
+
+                foreach(var item in listOfActivities)
+                {
+                    Assert.AreEqual(getDay.WeekDayId, item.WeekDayId);
+                }
+            }
+
+        }
     }
 }

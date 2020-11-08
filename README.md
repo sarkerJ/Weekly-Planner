@@ -69,10 +69,10 @@ The application will then be extended to include a notes feature where the user 
 ##### Sprint 2 Goal:
 
 - [ ] Update README
-- [ ] Complete all selected User Stories
-- [ ] GUI is partially/fully updated based on User Stories
-- [ ] Make sure all the unit tests pass
-- [ ] Push Solution to GitHub 
+- [x] Complete all selected User Stories
+- [x] GUI is partially/fully updated based on User Stories
+- [x] Make sure all the unit tests pass
+- [x] Push Solution to GitHub 
 
 ##### Review
 

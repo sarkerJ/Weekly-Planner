@@ -17,31 +17,22 @@ namespace Weekly_Planner_BusinessLayer
         public void setSelectedActivity(object selectedItem)
         {
             currentActivity = (Activity)selectedItem;
+            setSelectedDay();
+        }
+
+        public void setSelectedDay(object selectedItem)
+        {
+                currentDay = (WeekDay)selectedItem;   
+        }
+
+        public void setSelectedDay()
+        {
             using (var db = new WeeklyPlannerDBContext())
             {
                 var getDay = db.Activities.Where(a => a.ActivityId == currentActivity.ActivityId).Include(o => o.WeekDays).FirstOrDefault();
                 currentDay = getDay.WeekDays;
             }
         }
-
-        public void setSelectedDay(object selectedItem)
-        {
-            //try
-            //{
-                currentDay = (WeekDay)selectedItem;
-            //}
-            //catch (Exception)
-            //{
-            //    //var currentActivity = (Activity)selectedItem;
-            //    //currentDay = currentActivity.WeekDays; //does not work since WeekDays.Day is null so when accessing currentDay you get nullpoint Exception
-            //    using (var db = new WeeklyPlannerDBContext())
-            //    {
-            //        var getDay = db.Activities.Where(a => a.ActivityId == currentActivity.ActivityId).Include(o => o.WeekDays).FirstOrDefault();
-            //        currentDay = getDay.WeekDays;
-            //    }
-            //}
-        }
-
         
 
         public List<Activity> ListOfActivities(string day)
@@ -118,7 +109,7 @@ namespace Weekly_Planner_BusinessLayer
 
 
             }
-            currentActivity = null; //test for this 
+            currentActivity = null; 
         }
 
     }

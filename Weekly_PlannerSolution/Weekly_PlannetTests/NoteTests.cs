@@ -4,6 +4,7 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Weekly_PlannerDataLayer;
 using System;
+using NUnit.Framework.Constraints;
 
 namespace Weekly_PlannetTests
 {
@@ -203,7 +204,6 @@ namespace Weekly_PlannetTests
                     NotesColourCategorys = getColour,
                     WeekDays = getDay
                 };
-
                 db.Notes.Add(newNote);
                 db.SaveChanges();
 
@@ -214,6 +214,160 @@ namespace Weekly_PlannetTests
                 var newCount = db.Notes.Count();
 
                 Assert.AreEqual(count, newCount);
+            }
+        }
+
+        [Test]
+        public void WhenDayObjectIsGiven_ItReturnsListOfNotesBasedOnthatDay()
+        {
+
+            using (var db = new WeeklyPlannerDBContext())
+            {
+                var getDay = db.WeekDays.Where(w => w.Day == "Monday").FirstOrDefault();
+
+                var listOfNotes = _crudManager.ListOfNotes(getDay);
+
+                foreach(var item in listOfNotes)
+                {
+                    Assert.AreEqual(getDay.WeekDayId, item.WeekDayId);
+                }
+
+            }
+
+        }
+
+        [Test]
+        public void WhenColourCategoryObjectIsGiven_ItReturnsListOfNotesBasedOnthatColour()
+        {
+
+            using (var db = new WeeklyPlannerDBContext())
+            {
+                var getColour = db.NotesColourCategories.Where(p => p.Colour == "Red").FirstOrDefault();
+
+                var listOfNotes = _crudManager.ListOfNotes(getColour);
+
+                foreach (var item in listOfNotes)
+                {
+                    Assert.AreEqual(getColour.NotesColourCategoryId, item.NotesColourCategoryId);
+                }
+
+            }
+
+        }
+
+
+        [Test]
+        public void WhenListOfNotesParametelessIsExecuted_ItReturnsAListOfNoteObjects()
+        {
+            using (var db = new WeeklyPlannerDBContext())
+            {
+                var getDay = db.WeekDays.Where(w => w.Day == "Monday").FirstOrDefault();
+                var getColour = db.NotesColourCategories.Where(p => p.Colour == "Red").FirstOrDefault();
+                Note newNote = new Note()
+                {
+                    Title = "Test",
+                    Content = "This is my second note for the day",
+                    NotesColourCategorys = getColour,
+                    WeekDays = getDay
+                };
+                db.Notes.Add(newNote);
+                db.SaveChanges();
+
+                var getNote = db.Notes.Where(w => w.Title == "Test").FirstOrDefault();
+                var listOfNotes = _crudManager.ListOfNotes();
+
+                foreach(var item in listOfNotes)
+                {
+                    Assert.AreEqual(getNote.GetType(),item.GetType());
+                }
+            }
+        }
+
+        [Test]
+        public void WhenListOfColoursIsExecuted_ItReturnsAListOfColourObjects()
+        {
+            using (var db = new WeeklyPlannerDBContext())
+            {
+                var getColour = db.NotesColourCategories.Where(p => p.Colour == "Red").FirstOrDefault();
+                var listOfColours = _crudManager.ListOfColours();
+
+                foreach(var item in listOfColours)
+                {
+                    Assert.AreEqual(getColour.GetType(), item.GetType());
+                }
+            }
+        }
+
+        [Test]
+        public void WhenListOfDayIsExecuted_ItReturnsAListOfDayObjects() 
+        {
+            using (var db = new WeeklyPlannerDBContext())
+            {
+                var getDay = db.WeekDays.Where(w => w.Day == "Monday").FirstOrDefault();
+                
+                var listOfDays = _crudManager.ListOfDays();
+
+                foreach (var item in listOfDays)
+                {
+                    Assert.AreEqual(getDay.GetType(), item.GetType());
+                }
+            }
+        }
+
+        [Test]
+        public void WhenSetSelectedNoteIsUsed_CurrentNotePropertyANDDayPropertyANDColourPropertyContainCorrectObject()
+        {
+            using (var db = new WeeklyPlannerDBContext())
+            {
+                var getDay = db.WeekDays.Where(w => w.Day == "Monday").FirstOrDefault();
+                var getColour = db.NotesColourCategories.Where(p => p.Colour == "Red").FirstOrDefault();
+                Note newNote = new Note()
+                {
+                    Title = "Test",
+                    Content = "This is my second note for the day",
+                    NotesColourCategorys = getColour,
+                    WeekDays = getDay
+                };
+                db.Notes.Add(newNote);
+                db.SaveChanges();
+
+                var getNote = db.Notes.Where(w => w.Title == "Test").FirstOrDefault();
+
+                _crudManager.setSelectedNote(getNote);
+
+                Assert.AreEqual(getNote.NoteId, _crudManager.currentNote.NoteId);
+                Assert.AreEqual(getNote.Title, _crudManager.currentNote.Title);
+                Assert.AreEqual(getNote.Content, _crudManager.currentNote.Content);
+                Assert.AreEqual(getNote.NotesColourCategoryId, _crudManager.currentColour.NotesColourCategoryId);
+                Assert.AreEqual(getNote.WeekDayId, _crudManager.currentDay.WeekDayId);
+            }
+        }
+
+        [Test]
+        public void WhenSetSelectDayIsUsed_CurrentDayPropertyHoldsCorrectObject()
+        {
+            using (var db = new WeeklyPlannerDBContext())
+            {
+                var getDay = db.WeekDays.Where(w => w.Day == "Monday").FirstOrDefault();
+
+                _crudManager.setSelectedDay(getDay);
+
+                Assert.AreEqual(getDay.WeekDayId, _crudManager.currentDay.WeekDayId);
+                Assert.AreEqual(getDay.Day, _crudManager.currentDay.Day);
+            }
+        }
+
+        [Test]
+        public void WhenSetSelectColourIsUsed_CurrentColourHoldsCorrectObject()
+        {
+            using (var db = new WeeklyPlannerDBContext())
+            {
+                var getColour = db.NotesColourCategories.Where(p => p.Colour == "Red").FirstOrDefault();
+
+                _crudManager.setSelectedColour(getColour);
+
+                Assert.AreEqual(getColour.NotesColourCategoryId, _crudManager.currentColour.NotesColourCategoryId);
+                Assert.AreEqual(getColour.Colour, _crudManager.currentColour.Colour);
             }
         }
     }

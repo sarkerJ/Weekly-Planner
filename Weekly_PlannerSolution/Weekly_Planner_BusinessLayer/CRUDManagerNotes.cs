@@ -17,54 +17,46 @@ namespace Weekly_Planner_BusinessLayer
         public void setSelectedNote(object selectedItem)
         {
             currentNote = (Note)selectedItem;
-            using (var db = new WeeklyPlannerDBContext())
-            {
-                currentColour = db.Notes.Where(a => a.NoteId == currentNote.NoteId)
-                    .Include(o => o.NotesColourCategorys)
-                    .Select(o => o.NotesColourCategorys)
-                    .FirstOrDefault(); //make a method for it
-
-                currentDay = db.Notes.Where(a => a.NoteId == currentNote.NoteId)
-                        .Include(o => o.WeekDays)
-                        .Select(s => s.WeekDays)
-                        .FirstOrDefault(); //make a method for it
-            }
+            setSelectedColour(); 
+            setSelectedDay();
+            
         }
         public void setSelectedDay(object selectedItem)
         {
             try
-            {
-                currentDay = (WeekDay)selectedItem;
-            }
+            {currentDay = (WeekDay)selectedItem;}
             catch
+            { setSelectedDay();}
+        }
+
+        public void setSelectedDay() 
+        {
+            using (var db = new WeeklyPlannerDBContext())
             {
-                using (var db = new WeeklyPlannerDBContext())
-                {
-                    currentDay=  db.Notes.Where(a => a.NoteId == currentNote.NoteId)
-                        .Include(o => o.WeekDays)
-                        .Select(s=> s.WeekDays)
-                        .FirstOrDefault(); //make a method for it
-                }
+                currentDay = db.Notes.Where(a => a.NoteId == currentNote.NoteId)
+                    .Include(o => o.WeekDays)
+                    .Select(s => s.WeekDays)
+                    .FirstOrDefault(); 
             }
         }
 
         public void setSelectedColour(object selectedItem)
         {
             try
-            {
-                currentColour = (NotesColourCategory)selectedItem;
-            }
+            {currentColour = (NotesColourCategory)selectedItem;}
             catch
-            {
-                using (var db = new WeeklyPlannerDBContext())
-                {
-                    currentColour = db.Notes.Where(a=> a.NoteId == currentNote.NoteId)
-                        .Include(o=> o.NotesColourCategorys)
-                        .Select(o=> o.NotesColourCategorys)
-                        .FirstOrDefault() ; //make a method for it
-                }
-            }
+            {setSelectedColour();}
+        }
 
+        public void setSelectedColour()  
+        {
+            using (var db = new WeeklyPlannerDBContext())
+            {
+                currentColour = db.Notes.Where(a => a.NoteId == currentNote.NoteId)
+                    .Include(o => o.NotesColourCategorys)
+                    .Select(o => o.NotesColourCategorys)
+                    .FirstOrDefault(); 
+            }
         }
 
         public List<WeekDay> ListOfDays()
@@ -90,16 +82,13 @@ namespace Weekly_Planner_BusinessLayer
                 try
                 {
                     var item = (WeekDay)selectedItem;
-
                     return db.Notes.Where(o => o.WeekDayId == item.WeekDayId).Include(s => s.WeekDays).ToList();
                 }
                 catch //if its not a weekday object it will do try convert it to a coloured one
                 {
                     var item = (NotesColourCategory)selectedItem;
                     return db.Notes.Where(o => o.NotesColourCategoryId == item.NotesColourCategoryId).Include(s => s.NotesColourCategorys).ToList();
-
                 }
-
             }
         }
 

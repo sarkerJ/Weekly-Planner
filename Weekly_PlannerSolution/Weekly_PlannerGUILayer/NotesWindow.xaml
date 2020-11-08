@@ -22,7 +22,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <ListBox x:Name="ListBoxNotes" Grid.Row="1" Background="#FFE7F1EF" HorizontalContentAlignment="Center" ></ListBox>
+            <ListBox x:Name="ListBoxNotes" Grid.Row="1" Background="#FFE7F1EF" HorizontalContentAlignment="Center" SelectionChanged="ListBoxNotes_SelectionChanged" ></ListBox>
 
             <Grid Grid.Row="0">
                 <Grid.RowDefinitions>
@@ -37,7 +37,7 @@
                 </Grid.ColumnDefinitions>
                 <ComboBox Name="ComboBoxDays"  Grid.Column="1" HorizontalContentAlignment="Center" Text="--Select Day Filter --" IsReadOnly="True" IsEditable="True" SelectionChanged="ComboBoxDays_SelectionChanged"></ComboBox>
                 <ComboBox Name="ComboBoxColours"  Grid.Column="1" Grid.Row="1" HorizontalContentAlignment="Center" Text="--Select Colour Filter --" IsReadOnly="True" IsEditable="True" SelectionChanged="ComboBoxColours_SelectionChanged" ></ComboBox>
-                <Button x:Name="BClear" Grid.Column="1" Grid.Row="2" Content="Clear"></Button>
+                <Button x:Name="BClear" Grid.Column="1" Grid.Row="2" Content="Clear" Click="BClear_Click"></Button>
 
                 <Label Name="LNote" Content="Notes" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30" FontStyle="Italic" Grid.Row="0" Grid.RowSpan="3"></Label>
             </Grid>
@@ -45,21 +45,41 @@
 
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
                 <RowDefinition Height="30"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="25" />
                 <RowDefinition />
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="80"/>
                 <RowDefinition/>
 
             </Grid.RowDefinitions>
 
-            <Label x:Name="LName" Content="Activity Name" Grid.Row="0" HorizontalContentAlignment="Center" Background="#FFC9ECF9"></Label>
-            <Label x:Name="LContent" Content="Activity Content" Grid.Row="2" HorizontalContentAlignment="Center" Background="#FFC9ECF9"></Label>
+            <Label x:Name="LNName" Content="Note Name" Grid.Row="0" HorizontalContentAlignment="Center" Background="#FFC9ECF9"></Label>
+            <Label x:Name="LNColour" Content="Note Priority Colour" Grid.Row="2" HorizontalContentAlignment="Center" Background="#FFC9ECF9"></Label>
+            <Label x:Name="LNContent" Content="Note Content" Grid.Row="6" HorizontalContentAlignment="Center" Background="#FFC9ECF9"></Label>
+            <Label x:Name="LNDay" Content="Day" Grid.Row="4" HorizontalContentAlignment="Center" Background="#FFC9ECF9"></Label>
 
-            <TextBox x:Name="TName" Grid.Row="1" HorizontalContentAlignment="Center" HorizontalScrollBarVisibility="Auto"></TextBox>
-            <TextBox x:Name="TContent" VerticalContentAlignment="Top" HorizontalContentAlignment="Center"  HorizontalScrollBarVisibility="Auto" Grid.Row="3" AcceptsReturn="True" ></TextBox>
-            <Button x:Name="BEditActivity" Content="Edit an Activity" Grid.Row="4" ></Button>
+            <TextBox x:Name="TNName" Grid.Row="1" HorizontalContentAlignment="Center" HorizontalScrollBarVisibility="Auto"></TextBox>
+            <TextBox x:Name="TNPriority" VerticalContentAlignment="Top" HorizontalContentAlignment="Center"  HorizontalScrollBarVisibility="Auto" Grid.Row="3" AcceptsReturn="True" ></TextBox>
+            <TextBox x:Name="TNContent" VerticalContentAlignment="Top" HorizontalContentAlignment="Center"  HorizontalScrollBarVisibility="Auto" Grid.Row="7" AcceptsReturn="True" ></TextBox>
+            <TextBox x:Name="TNDay" VerticalContentAlignment="Top" HorizontalContentAlignment="Center"  HorizontalScrollBarVisibility="Auto" Grid.Row="5" AcceptsReturn="True" ></TextBox>
 
+            <Grid Grid.Row="8">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                
+                <Button x:Name="BCreateNote" Content="Create Note" Grid.Row="0" ></Button>
+                <Button x:Name="BEditNote" Content="Update Note" Grid.Row="1" ></Button>
+                <Button x:Name="BDeleteNote" Content="Delete Note" Grid.Row="2" ></Button>
+
+
+            </Grid>
 
         </Grid>
     </Grid>

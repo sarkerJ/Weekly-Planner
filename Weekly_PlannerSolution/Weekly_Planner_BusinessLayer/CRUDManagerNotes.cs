@@ -17,6 +17,18 @@ namespace Weekly_Planner_BusinessLayer
         public void setSelectedNote(object selectedItem)
         {
             currentNote = (Note)selectedItem;
+            using (var db = new WeeklyPlannerDBContext())
+            {
+                currentColour = db.Notes.Where(a => a.NoteId == currentNote.NoteId)
+                    .Include(o => o.NotesColourCategorys)
+                    .Select(o => o.NotesColourCategorys)
+                    .FirstOrDefault(); //make a method for it
+
+                currentDay = db.Notes.Where(a => a.NoteId == currentNote.NoteId)
+                        .Include(o => o.WeekDays)
+                        .Select(s => s.WeekDays)
+                        .FirstOrDefault(); //make a method for it
+            }
         }
         public void setSelectedDay(object selectedItem)
         {
@@ -68,6 +80,26 @@ namespace Weekly_Planner_BusinessLayer
             using (var db = new WeeklyPlannerDBContext())
             {
                 return db.NotesColourCategories.ToList();
+            }
+        }
+
+        public List<Note> ListOfNotes(object selectedItem)
+        {
+            using (var db = new WeeklyPlannerDBContext())
+            {
+                try
+                {
+                    var item = (WeekDay)selectedItem;
+
+                    return db.Notes.Where(o => o.WeekDayId == item.WeekDayId).Include(s => s.WeekDays).ToList();
+                }
+                catch //if its not a weekday object it will do try convert it to a coloured one
+                {
+                    var item = (NotesColourCategory)selectedItem;
+                    return db.Notes.Where(o => o.NotesColourCategoryId == item.NotesColourCategoryId).Include(s => s.NotesColourCategorys).ToList();
+
+                }
+
             }
         }
 

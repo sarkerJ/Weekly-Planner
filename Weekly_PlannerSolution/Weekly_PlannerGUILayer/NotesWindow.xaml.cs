@@ -46,12 +46,45 @@ namespace Weekly_PlannerGUILayer
         }
         private void ComboBoxDays_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            if(ComboBoxDays.SelectedItem != null)
+            {
+                ListBoxNotes.ItemsSource = _crudManager.ListOfNotes(ComboBoxDays.SelectedItem);
+            }
         }
 
         private void ComboBoxColours_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (ComboBoxColours.SelectedItem != null)
+            {
+                ListBoxNotes.ItemsSource = _crudManager.ListOfNotes(ComboBoxColours.SelectedItem);
+            }
+        }
 
+        private void BClear_Click(object sender, RoutedEventArgs e)
+        {
+            ComboBoxDays.SelectedItem = null;
+            ComboBoxDays.Text = "--Select Day Filter --";
+            ComboBoxColours.SelectedItem = null;
+            ComboBoxColours.Text = "--Select Colour Filter --";
+            fillListBoxNotes1();
+        }
+
+        private void ListBoxNotes_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(ListBoxNotes.SelectedItem != null)
+            {
+                _crudManager.setSelectedNote(ListBoxNotes.SelectedItem);
+                TNName.Text = _crudManager.currentNote.Title;
+                TNPriority.Text = _crudManager.currentColour.Colour;
+                TNContent.Text = _crudManager.currentNote.Content;
+                TNDay.Text = _crudManager.currentDay.Day;
+            }
+            else
+            {
+                TNContent.Text = "";
+                TNName.Text = "";
+                TNDay.Text = "";
+            }
         }
     }
 }

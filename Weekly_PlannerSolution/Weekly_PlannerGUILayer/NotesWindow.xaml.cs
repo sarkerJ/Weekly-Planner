@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Weekly_Planner_BusinessLayer;
+using Weekly_PlannerDataLayer;
 
 namespace Weekly_PlannerGUILayer
 {
@@ -24,6 +25,8 @@ namespace Weekly_PlannerGUILayer
         {
             InitializeComponent(); 
             fillUpComboBox();
+
+            
 
         }
         public void fillUpComboBox()
@@ -46,6 +49,7 @@ namespace Weekly_PlannerGUILayer
             if (ComboBoxDays.SelectedItem != null)
             {
                 ListBoxNotes.ItemsSource = _crudManager.ListOfNotes(ComboBoxDays.SelectedItem);
+
             }
             else if (ComboBoxColours.SelectedItem != null)
             {
@@ -54,6 +58,25 @@ namespace Weekly_PlannerGUILayer
             else
             {
                 ListBoxNotes.ItemsSource = _crudManager.ListOfNotes();
+
+                //var style = (Style)Application.Current.FindResource("myStyleRed");
+                //var style1 = (Style)Application.Current.FindResource("myStyleOrange");
+                //var style2 = (Style)Application.Current.FindResource("myStyleYellow");
+                //var style3 = (Style)Application.Current.FindResource("myStyleGreen");
+
+                //ListBoxNotes.Style = style;
+
+                
+
+                //foreach (var item in ListBoxNotes.Items)
+                //{
+                //    item.fore
+
+                //    var itemSelected = (Note)item;
+                //    if (itemSelected.NotesColourCategoryId == 1)
+                //    {
+                //    }
+                //}
             }
         }
         private void ComboBoxDays_SelectionChanged(object sender, SelectionChangedEventArgs e)

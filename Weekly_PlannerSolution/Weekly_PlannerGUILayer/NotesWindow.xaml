@@ -22,7 +22,18 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <ListBox x:Name="ListBoxNotes" Grid.Row="1" Background="#FFE7F1EF" HorizontalContentAlignment="Center" SelectionChanged="ListBoxNotes_SelectionChanged" ></ListBox>
+            <ListBox x:Name="ListBoxNotes" Grid.Row="1" Background="#FFAAE9F1" HorizontalContentAlignment="Center" SelectionChanged="ListBoxNotes_SelectionChanged"  >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border>
+                            <Border.Background>
+                                <SolidColorBrush/>
+                            </Border.Background>
+                            <TextBlock x:Name="TestingName" Text="{Binding Title}" Foreground="{Binding NotesColourCategorys.Colour}" />
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
 
             <Grid Grid.Row="0">
                 <Grid.RowDefinitions>

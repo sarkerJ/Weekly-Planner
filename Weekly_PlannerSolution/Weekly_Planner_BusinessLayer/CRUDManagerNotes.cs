@@ -82,7 +82,7 @@ namespace Weekly_Planner_BusinessLayer
                 try
                 {
                     var item = (WeekDay)selectedItem;
-                    return db.Notes.Where(o => o.WeekDayId == item.WeekDayId).Include(s => s.WeekDays).ToList();
+                    return db.Notes.Where(o => o.WeekDayId == item.WeekDayId).Include(s => s.WeekDays).Include(o=> o.NotesColourCategorys).ToList();
                 }
                 catch //if its not a weekday object it will do try convert it to a coloured one
                 {
@@ -96,7 +96,7 @@ namespace Weekly_Planner_BusinessLayer
         {
             using (var db = new WeeklyPlannerDBContext())
             {
-                return db.Notes.ToList();
+                return db.Notes.Include(o=> o.NotesColourCategorys).ToList();
             }
         }
 

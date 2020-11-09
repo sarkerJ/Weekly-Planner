@@ -25,7 +25,7 @@ namespace Weekly_PlannerGUILayer
         {
             InitializeComponent(); 
             fillUpComboBox();
-
+            ListBoxNotes.SelectedItem = ListBoxNotes.Items.CurrentItem;
             
 
         }
@@ -33,13 +33,11 @@ namespace Weekly_PlannerGUILayer
         {
             ComboBoxDays.ItemsSource = _crudManager.ListOfDays();
             ComboBoxDays.DisplayMemberPath = "Day";
-            //ComboBoxDays.SelectedItem = ComboBoxDays.Items.CurrentItem; //may not need them since it would force a filter
-            //_crudManager.setSelectedDay(ComboBoxDays.SelectedItem);
+           
 
             ComboBoxColours.ItemsSource = _crudManager.ListOfColours();
             ComboBoxColours.DisplayMemberPath = "Colour";
-            //ComboBoxColours.SelectedItem = ComboBoxColours.Items.CurrentItem;
-            //_crudManager.setSelectedColour(ComboBoxColours.SelectedItem);
+            
 
             fillListBoxNotes1();
         }
@@ -58,25 +56,6 @@ namespace Weekly_PlannerGUILayer
             else
             {
                 ListBoxNotes.ItemsSource = _crudManager.ListOfNotes();
-
-                //var style = (Style)Application.Current.FindResource("myStyleRed");
-                //var style1 = (Style)Application.Current.FindResource("myStyleOrange");
-                //var style2 = (Style)Application.Current.FindResource("myStyleYellow");
-                //var style3 = (Style)Application.Current.FindResource("myStyleGreen");
-
-                //ListBoxNotes.Style = style;
-
-                
-
-                //foreach (var item in ListBoxNotes.Items)
-                //{
-                //    item.fore
-
-                //    var itemSelected = (Note)item;
-                //    if (itemSelected.NotesColourCategoryId == 1)
-                //    {
-                //    }
-                //}
             }
         }
         private void ComboBoxDays_SelectionChanged(object sender, SelectionChangedEventArgs e)

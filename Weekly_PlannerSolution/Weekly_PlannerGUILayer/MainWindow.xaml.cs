@@ -28,6 +28,7 @@ namespace Weekly_PlannerGUILayer
             InitializeComponent();
             fillUpLists();
             fillUpComboBox();
+            ListBoxMonday.SelectedItem = ListBoxMonday.Items.CurrentItem;
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
             
         }
@@ -169,9 +170,9 @@ namespace Weekly_PlannerGUILayer
         {
             TDay.IsReadOnly = true;
             TTitle.IsReadOnly = true;
-            TTitle.Background = Brushes.LightGray;
+            TTitle.Background = Brushes.LightBlue;
             TContent.IsReadOnly = true;
-            TContent.Background = Brushes.LightGray;
+            TContent.Background = Brushes.LightBlue;
         }
 
         private void BEditActivity_Click(object sender, RoutedEventArgs e)

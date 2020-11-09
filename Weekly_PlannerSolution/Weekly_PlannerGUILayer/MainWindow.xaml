@@ -62,14 +62,14 @@
                 </Grid.RowDefinitions>
                 
                 <Label x:Name="LDay" Content="Day:" Grid.Row="0" Grid.Column="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#FFC9ECF9" ></Label>
-                <TextBox x:Name="TDay" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="1" IsReadOnly="True" Background="lightGray"></TextBox>
+                <TextBox x:Name="TDay" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="1" IsReadOnly="True" Background="LightBlue"></TextBox>
 
                 <ComboBox Name="ComboBoxDays" Grid.Row="1"  SelectionChanged="ComboBoxDays_SelectionChanged"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Visibility="Hidden" Background="White"></ComboBox>
 
             </Grid>
 
-            <TextBox x:Name="TContent" VerticalContentAlignment="Top"   HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Row="2" Background="LightGray" Grid.Column="4" AcceptsReturn="True"  IsReadOnly="True" ></TextBox>
-            <TextBox x:Name="TTitle" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalScrollBarVisibility="Auto"  Grid.Row="2" Grid.Column="1" AcceptsReturn="True" Grid.ColumnSpan="2" IsReadOnly="True" Background="LightGray"></TextBox>
+            <TextBox x:Name="TContent" VerticalContentAlignment="Top"   HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Row="2" Background="LightBlue" Grid.Column="4" AcceptsReturn="True"  IsReadOnly="True" ></TextBox>
+            <TextBox x:Name="TTitle" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalScrollBarVisibility="Auto"  Grid.Row="2" Grid.Column="1" AcceptsReturn="True" Grid.ColumnSpan="2" IsReadOnly="True" Background="LightBlue"></TextBox>
 
 
         </Grid>

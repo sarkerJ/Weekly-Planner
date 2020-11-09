@@ -52,33 +52,33 @@
             <ListBox x:Name="ListBoxThursday" Grid.Column="4" Grid.Row="1" Background="#FFE7F1EF" SelectionChanged="ListBoxAll_SelectionChanged"  HorizontalContentAlignment="Center"  ></ListBox>
             <ListBox x:Name="ListBoxFriday" Grid.Column="5" Grid.Row="1" Background="#FFE7F1EF" SelectionChanged="ListBoxAll_SelectionChanged"  HorizontalContentAlignment="Center"  ></ListBox>
 
-            <Label x:Name="LName" Content="Activity Name" Grid.Column="0" Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#FFC9ECF9"></Label>
-            <Label x:Name="LContent" Content="Activity Content" Grid.Column="3" Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#FFC9ECF9"  ></Label>
+            <Label x:Name="LName" Content="Activity Name" Grid.Column="0" Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="LightBlue"></Label>
+            <Label x:Name="LContent" Content="Activity Content" Grid.Column="3" Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="LightBlue"  ></Label>
 
             <Grid Grid.Row="2" Grid.Column="5" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="40"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                
-                <Label x:Name="LDay" Content="Day:" Grid.Row="0" Grid.Column="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#FFC9ECF9" ></Label>
-                <TextBox x:Name="TDay" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="1" IsReadOnly="True" Background="LightBlue"></TextBox>
+
+                <Label x:Name="LDay" Content="Day:" Grid.Row="0" Grid.Column="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="LightBlue" ></Label>
+                <TextBox x:Name="TDay" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="1" IsReadOnly="True" Background="#FFC9ECF9"></TextBox>
 
                 <ComboBox Name="ComboBoxDays" Grid.Row="1"  SelectionChanged="ComboBoxDays_SelectionChanged"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Visibility="Hidden" Background="White"></ComboBox>
 
             </Grid>
 
-            <TextBox x:Name="TContent" VerticalContentAlignment="Top"   HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Row="2" Background="LightBlue" Grid.Column="4" AcceptsReturn="True"  IsReadOnly="True" ></TextBox>
-            <TextBox x:Name="TTitle" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalScrollBarVisibility="Auto"  Grid.Row="2" Grid.Column="1" AcceptsReturn="True" Grid.ColumnSpan="2" IsReadOnly="True" Background="LightBlue"></TextBox>
+            <TextBox x:Name="TContent" VerticalContentAlignment="Top"   HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Row="2" Background="#FFC9ECF9" Grid.Column="4" AcceptsReturn="True"  IsReadOnly="True" ></TextBox>
+            <TextBox x:Name="TTitle" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalScrollBarVisibility="Auto"  Grid.Row="2" Grid.Column="1" AcceptsReturn="True" Grid.ColumnSpan="2" IsReadOnly="True" Background="#FFC9ECF9" ></TextBox>
 
 
         </Grid>
 
-        <Button x:Name="BCreateActivity" Content="Create an Activity" Grid.Column="0" Click="BCreateActivity_Click"></Button>
-        <Button x:Name="BDeleteActivity" Content="Delete an Activity" Grid.Column="2" Click="BDeleteActivity_Click"></Button>
-        <Button x:Name="BEditActivity" Content="Edit Activity" Grid.Column="1" Click="BEditActivity_Click"></Button>
-        <Button x:Name="BAExternalView" Content="Activity External View" Grid.Column="3" Click="BAExternalView_Click" ></Button>
-        <Button x:Name="BNotes" Content="Notes" Grid.Column="4" Click="BNotes_Click"  ></Button>
+        <Button x:Name="BCreateActivity" Content="Create an Activity" Grid.Column="0" Click="BCreateActivity_Click" Background="LightCyan"></Button>
+        <Button x:Name="BDeleteActivity" Content="Delete an Activity" Grid.Column="2" Click="BDeleteActivity_Click" Background="LightCyan"></Button>
+        <Button x:Name="BEditActivity" Content="Edit Activity" Grid.Column="1" Click="BEditActivity_Click" Background="LightCyan"></Button>
+        <Button x:Name="BAExternalView" Content="Activity External View" Grid.Column="3" Click="BAExternalView_Click" Background="LightCyan" ></Button>
+        <Button x:Name="BNotes" Content="Notes" Grid.Column="4" Click="BNotes_Click" Background="LightCyan"  ></Button>
 
 
 

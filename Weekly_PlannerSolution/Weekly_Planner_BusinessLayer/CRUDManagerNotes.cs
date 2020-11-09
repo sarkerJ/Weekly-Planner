@@ -67,6 +67,36 @@ namespace Weekly_Planner_BusinessLayer
             }
         }
 
+        public List<String> ListOfDaysString()
+        {
+            using (var db = new WeeklyPlannerDBContext())
+            {
+                List<String> days = new List<string>();
+
+                foreach (var item in db.WeekDays.ToList())
+                {
+                    days.Add(item.Day);
+                }
+
+                return days;
+            }
+        }
+
+        public List<String> ListOfColourStrings()
+        {
+            using (var db = new WeeklyPlannerDBContext())
+            {
+                List<String> colours = new List<string>();
+
+                foreach (var item in db.NotesColourCategories.ToList())
+                {
+                    colours.Add(item.Colour);
+                }
+
+                return colours;
+            }
+        }
+
         public List<NotesColourCategory> ListOfColours()
         {
             using (var db = new WeeklyPlannerDBContext())

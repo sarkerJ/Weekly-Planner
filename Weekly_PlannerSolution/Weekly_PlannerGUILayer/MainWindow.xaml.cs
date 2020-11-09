@@ -170,9 +170,10 @@ namespace Weekly_PlannerGUILayer
         {
             TDay.IsReadOnly = true;
             TTitle.IsReadOnly = true;
-            TTitle.Background = Brushes.LightBlue;
+            TTitle.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFC9ECF9"));
             TContent.IsReadOnly = true;
-            TContent.Background = Brushes.LightBlue;
+            TContent.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFC9ECF9"));
+
         }
 
         private void BEditActivity_Click(object sender, RoutedEventArgs e)
@@ -185,6 +186,7 @@ namespace Weekly_PlannerGUILayer
                     ComboBoxDays.SelectedItem = _crudManager.currentDay.Day;
                     ComboBoxDays.Visibility = Visibility.Visible;
                     bt.Content = "Update Activity";
+                    bt.Background = Brushes.DarkCyan;
                     break;
 
                 case "Update Activity":
@@ -204,6 +206,7 @@ namespace Weekly_PlannerGUILayer
                     bt.Content = "Edit Activity";
                     ComboBoxDays.Visibility = Visibility.Hidden;
                     isDisabled();
+                    bt.Background = Brushes.LightCyan;
                     break;
             }
 

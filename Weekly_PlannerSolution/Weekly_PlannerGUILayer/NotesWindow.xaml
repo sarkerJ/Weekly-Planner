@@ -18,18 +18,18 @@
 
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="70"/>
+                <RowDefinition Height="120"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <ListBox x:Name="ListBoxNotes" Grid.Row="1" Background="#FFAAE9F1" HorizontalContentAlignment="Center" SelectionChanged="ListBoxNotes_SelectionChanged"  >
+            <ListBox x:Name="ListBoxNotes" Grid.Row="1" Background="#FFD0EFF3" HorizontalContentAlignment="Center" SelectionChanged="ListBoxNotes_SelectionChanged"  >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Border>
                             <Border.Background>
                                 <SolidColorBrush/>
                             </Border.Background>
-                            <TextBlock x:Name="TestingName" Text="{Binding Title}" Foreground="{Binding NotesColourCategorys.Colour}" />
+                            <TextBlock x:Name="TestingName" FontWeight="Bold" Text="{Binding Title}"  Foreground="{Binding NotesColourCategorys.Colour}" />
                         </Border>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
@@ -37,7 +37,7 @@
 
             <Grid Grid.Row="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition/>
+                    <RowDefinition Height="60"/>
                     <RowDefinition/>
                     <RowDefinition/>
 
@@ -46,11 +46,11 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <ComboBox Name="ComboBoxDays"  Grid.Column="0" Grid.Row="1" HorizontalContentAlignment="Center" Text="--Select Day Filter --" IsReadOnly="True" IsEditable="True" SelectionChanged="ComboBoxDays_SelectionChanged"></ComboBox>
-                <ComboBox Name="ComboBoxColours"  Grid.Column="1" Grid.Row="1" HorizontalContentAlignment="Center" Text="--Select Colour Filter --" IsReadOnly="True" IsEditable="True" SelectionChanged="ComboBoxColours_SelectionChanged" ></ComboBox>
-                <Button x:Name="BClear" Grid.Column="0" Grid.Row="2" Content="Clear" Click="BClear_Click" Grid.ColumnSpan="2" ></Button>
+                <ComboBox Name="ComboBoxDays" VerticalContentAlignment="Center"  Grid.Column="0" Grid.Row="1" HorizontalContentAlignment="Center" Text="--Select Day Filter --" IsReadOnly="True" IsEditable="True" SelectionChanged="ComboBoxAll_SelectionChanged"></ComboBox>
+                <ComboBox Name="ComboBoxColours" VerticalContentAlignment="Center" Grid.Column="1" Grid.Row="1" HorizontalContentAlignment="Center" Text="--Select Colour Filter --" IsReadOnly="True" IsEditable="True" SelectionChanged="ComboBoxAll_SelectionChanged" ></ComboBox>
+                <Button x:Name="BClear" Grid.Column="0" Grid.Row="2" Content="Clear" Click="BFunctions_Click" Grid.ColumnSpan="2" Background="LightCyan"  ></Button>
 
-                <Label Name="LNote" Content="Notes" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Grid.Row="0" Grid.ColumnSpan="2" ></Label>
+                <Label Name="LNote" Content="List of Notes" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  FontSize="40" Grid.Row="0" Grid.ColumnSpan="2" Background="#FFB7E6F7"></Label>
             </Grid>
         </Grid>
 
@@ -68,15 +68,30 @@
 
             </Grid.RowDefinitions>
 
-            <Label x:Name="LNName" Content="Note Name" Grid.Row="0" HorizontalContentAlignment="Center" Background="#FFC9ECF9"></Label>
-            <Label x:Name="LNColour" Content="Note Priority Colour" Grid.Row="2" HorizontalContentAlignment="Center" Background="#FFC9ECF9"></Label>
-            <Label x:Name="LNContent" Content="Note Content" Grid.Row="6" HorizontalContentAlignment="Center" Background="#FFC9ECF9"></Label>
-            <Label x:Name="LNDay" Content="Day" Grid.Row="4" HorizontalContentAlignment="Center" Background="#FFC9ECF9"></Label>
+            <Label x:Name="LNName" Content="Note Name" FontWeight="Bold" Grid.Row="0" HorizontalContentAlignment="Center" Background="#FFCBE8DF"></Label>
+            <Label x:Name="LNColour" Content="Note Priority Colour" FontWeight="Bold" Grid.Row="2" HorizontalContentAlignment="Center" Background="#FFCBE8DF"></Label>
+            <Label x:Name="LNContent" FontWeight="Bold" Content="Note Content" Grid.Row="6" HorizontalContentAlignment="Center" Background="#FFCBE8DF"></Label>
+            <Label x:Name="LNDay" FontWeight="Bold" Content="Day" Grid.Row="4" HorizontalContentAlignment="Center" Background="#FFCBE8DF"></Label>
 
-            <TextBox x:Name="TNName" Grid.Row="1" HorizontalContentAlignment="Center" HorizontalScrollBarVisibility="Auto" IsReadOnly="True"></TextBox>
-            <TextBox x:Name="TNPriority" VerticalContentAlignment="Top" HorizontalContentAlignment="Center"  HorizontalScrollBarVisibility="Auto" Grid.Row="3" IsReadOnly="True" ></TextBox>
-            <TextBox x:Name="TNDay" VerticalContentAlignment="Top" HorizontalContentAlignment="Center"  HorizontalScrollBarVisibility="Auto" Grid.Row="5" IsReadOnly="True" ></TextBox>
-            <TextBox x:Name="TNContent" VerticalContentAlignment="Top" HorizontalContentAlignment="Center"  HorizontalScrollBarVisibility="Auto" Grid.Row="7" AcceptsReturn="True"  IsReadOnly="True"></TextBox>
+            <TextBox x:Name="TNName" Grid.Row="1" HorizontalContentAlignment="Center" HorizontalScrollBarVisibility="Auto" IsReadOnly="True" Background="#FFC9F9E1"></TextBox>
+            <TextBox x:Name="TNPriority" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  HorizontalScrollBarVisibility="Auto" Background="#FFC9F9E1" Grid.Row="3" IsReadOnly="True" ></TextBox>
+            <TextBox x:Name="TNDay" VerticalContentAlignment="Top" HorizontalContentAlignment="Center"  HorizontalScrollBarVisibility="Auto" Grid.Row="5" IsReadOnly="True" Background="#FFC9F9E1" ></TextBox>
+            <TextBox x:Name="TNContent" VerticalContentAlignment="Top" HorizontalContentAlignment="Center"  HorizontalScrollBarVisibility="Auto" Grid.Row="7" AcceptsReturn="True" Background="#FFC9F9E1"  IsReadOnly="True"></TextBox>
+
+            <ComboBox Name="ComboBoxDays2" Grid.Row="5"   HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Visibility="Hidden" Background="White" SelectionChanged="ComboBoxAll_SelectionChanged"></ComboBox>
+            <ComboBox Name="ComboBoxColours2" Grid.Row="3"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Visibility="Hidden"  SelectionChanged="ComboBoxAll_SelectionChanged">
+                <ComboBox.ItemTemplate >
+                    <DataTemplate>
+                        <Border>
+                            <Border.Background>
+                                <SolidColorBrush  />
+                            </Border.Background>
+                            <TextBlock x:Name="TestingName" FontWeight="Bold" Text="{Binding}"  Foreground="{Binding}" TextWrapping="Wrap"/>
+                        </Border>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
 
             <Grid Grid.Row="8">
                 <Grid.RowDefinitions>
@@ -85,9 +100,9 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <Button x:Name="BCreateNote" Content="Create New Note" Grid.Row="0" Click="BFunctions_Click" ></Button>
-                <Button x:Name="BEditNote" Content="Edit Note" Grid.Row="1" Click="BFunctions_Click" ></Button>
-                <Button x:Name="BDeleteNote" Content="Delete Note" Grid.Row="2" Click="BFunctions_Click"></Button>
+                <Button x:Name="BCreateNote" Content="Create New Note" Grid.Row="0"  Click="BFunctions_Click" Background="LightCyan" ></Button>
+                <Button x:Name="BEditNote" Content="Edit Note" Grid.Row="1" Click="BFunctions_Click" Background="LightCyan"></Button>
+                <Button x:Name="BDeleteNote" Content="Delete Note" Grid.Row="2" Click="BFunctions_Click" Background="LightCyan"></Button>
 
 
             </Grid>

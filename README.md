@@ -74,13 +74,24 @@ The application will then be extended to include a notes feature where the user 
 - [x] Make sure all the unit tests pass
 - [x] Push Solution to GitHub 
 
-##### Review
+##### Sprint 2 Review
 
-Sprint 2 Review
+The goal of this sprint was to allow users to filter all of the activities based on a day with the additional functionality for a notes section which would result in allowing users to create, edit, read and delete notes. 
 
-##### Retrospective
+- [x] All of the user stories were completed
+- [x] new CRUD functionalities were created and passed tests
+- [x] Updated the GUI
 
-Sprint 2 retrospective
+##### Sprint 2 Retrospective
+
+Overall the sprint 2 was quite successful, however throughout the sprint I realized additional user stories were required for the Notes functionality which have been added to the project backlog. Quite a few bugs also arose whilst testing the GUI in general mainly dealing with null query data due to missing read methods or due to missing updates to the current properties, all of which were swiftly dealt with within a reasonable amount of time. 
+
+- In the next sprint I have to add the following:
+  -  I have to ensure the notes window checks for duplicate notes
+  - Each note should change to its appropriate priority colour 
+  - Improve the overall GUI layout
+  - Ensure new windows open at the centre of main window
+  - Refactor the entirety of the project 
 
 ---
 

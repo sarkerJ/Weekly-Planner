@@ -147,7 +147,7 @@ What would I do next?
 
 ####  Sprint-3-Board(Before)
 
-![Project-Board-Before-Sprint-2](https://github.com/sarkerJ/Weekly-Planner/blob/main/Images/Sprint%203%20(before).JPG)
+![Project-Board-Before-Sprint-2](https://github.com/sarkerJ/Weekly-Planner/blob/main/Images/Sprint%203%20(before)..JPG)
 
 #### Sprint-3-Board(After)
 

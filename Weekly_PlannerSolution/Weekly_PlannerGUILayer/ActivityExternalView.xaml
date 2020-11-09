@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Weekly_PlannerGUILayer"
         mc:Ignorable="d"
-        Title="ActivityExternalView" Height="250" Width="800">
+        Title="ActivityExternalView" Height="370" Width="800">
     <Grid>
 
         <Grid.ColumnDefinitions>

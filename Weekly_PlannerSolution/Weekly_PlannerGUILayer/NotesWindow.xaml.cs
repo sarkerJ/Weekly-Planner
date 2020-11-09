@@ -150,7 +150,7 @@ namespace Weekly_PlannerGUILayer
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message, "Missing input values!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        MessageBox.Show(ex.Message, "Duplicate or Missing input values!", MessageBoxButton.OK, MessageBoxImage.Warning);
                         ((MainWindow)this.Owner).Focus();
 
                     }

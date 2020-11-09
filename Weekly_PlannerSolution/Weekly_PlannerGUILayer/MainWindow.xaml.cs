@@ -27,6 +27,8 @@ namespace Weekly_PlannerGUILayer
         {
             InitializeComponent();
             fillUpLists();
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            
         }
 
         public void fillUpLists()
@@ -144,8 +146,9 @@ namespace Weekly_PlannerGUILayer
         private void BCreateActivity_Click(object sender, RoutedEventArgs e)
         {
             CreateActivity ca = new CreateActivity();
-            ca.Show();
             ca.Owner = this;
+            ca.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            ca.Show();
         }
 
         private void BEditActivity_Click(object sender, RoutedEventArgs e)
@@ -167,15 +170,20 @@ namespace Weekly_PlannerGUILayer
         private void BAExternalView_Click(object sender, RoutedEventArgs e)
         {
             ActivityExternalView nw = new ActivityExternalView();
-            nw.Show();
             nw.Owner = this;
+            nw.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            nw.Show();
+
         }
 
         private void BNotes_Click(object sender, RoutedEventArgs e)
         {
             NotesWindow nw = new NotesWindow();
-            nw.Show();
             nw.Owner = this;
+            nw.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            nw.Show();
+
+
         }
     }
 }

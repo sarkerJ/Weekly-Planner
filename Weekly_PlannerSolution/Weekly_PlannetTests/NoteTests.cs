@@ -98,6 +98,30 @@ namespace Weekly_PlannetTests
         [Test]
         public void WhenANoteWithoutAContentIsCreated_AnExceptionIsThrown()
         {
+            using (var db = new WeeklyPlannerDBContext())
+            {
+                var getDay = db.WeekDays.Where(w => w.Day == "Monday").FirstOrDefault();
+                var getColour = db.NotesColourCategories.Where(p => p.Colour == "Red").FirstOrDefault();
+
+                Note newNote = new Note()
+                {
+                    Title = "Test",
+                    Content = "This is my second note for the day",
+                    NotesColourCategorys = getColour,
+                    WeekDays = getDay
+                };
+
+                db.Notes.Add(newNote);
+                db.SaveChanges();
+
+                var ex = Assert.Throws<ArgumentException>(() => _crudManager.CreateNote("Green", "Tuesday", "Test", "This is my second note for the day"));
+                Assert.AreEqual("A Note with the same name already exists!", ex.Message);
+            }
+        }
+
+        [Test]
+        public void WhenANoteWithTheSameNameIsCreated_AnExceptionIsThrown()
+        {
             var ex = Assert.Throws<ArgumentException>(() => _crudManager.CreateNote("Red", "Monday", "Test", ""));
             Assert.AreEqual("The Note's content cannot be empty!", ex.Message);
         }
@@ -184,6 +208,43 @@ namespace Weekly_PlannetTests
 
                 var ex = Assert.Throws<ArgumentException>(() => _crudManager.EditNote(getNote.NoteId, "Testing", "", "Wednesday", "Green"));
                 Assert.AreEqual("The Note's content cannot be empty!", ex.Message);
+            }
+        }
+
+        [Test]
+        public void WhenANoteIsEdited_WithAnExisitingTitleAnExceptionIsThrown()
+        {
+            using (var db = new WeeklyPlannerDBContext())
+            {
+                var getDay = db.WeekDays.Where(w => w.Day == "Monday").FirstOrDefault();
+                var getColour = db.NotesColourCategories.Where(p => p.Colour == "Red").FirstOrDefault();
+
+                Note newNote = new Note()
+                {
+                    Title = "Test",
+                    Content = "This is my second note for the day",
+                    NotesColourCategorys = getColour,
+                    WeekDays = getDay
+                };
+                Note newNote1 = new Note()
+                {
+                    Title = "Testing",
+                    Content = "This is my Third note for the day",
+                    NotesColourCategorys = getColour,
+                    WeekDays = getDay
+                };
+                db.Notes.Add(newNote);
+                db.Notes.Add(newNote1);
+
+                db.SaveChanges();
+
+                var getNote = db.Notes.Where(w => w.Title == "Testing").FirstOrDefault();
+
+                var ex = Assert.Throws<ArgumentException>(() => _crudManager.EditNote(getNote.NoteId, "Test", "This is my edited comment note for the day", "Wednesday", "Green"));
+                Assert.AreEqual("A Note with the same name already exists!", ex.Message);
+
+                db.Notes.RemoveRange(newNote1);
+                db.SaveChanges();
             }
         }
 

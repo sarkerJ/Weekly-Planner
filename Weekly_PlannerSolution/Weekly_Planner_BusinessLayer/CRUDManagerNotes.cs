@@ -105,8 +105,10 @@ namespace Weekly_Planner_BusinessLayer
             using(var db = new WeeklyPlannerDBContext())
             {
                 if (title.Count() == 0) throw new ArgumentException("Title cannot be empty!");
-
                 if (content.Count() == 0) throw new ArgumentException("The Note's content cannot be empty!");
+
+                var isCreatedQ = db.Notes.Where(a => a.Title == title.Trim()).FirstOrDefault();
+                if (isCreatedQ != null) throw new ArgumentException("A Note with the same name already exists!");
 
                 var getDay = db.WeekDays.Where(w => w.Day == day.Trim()).FirstOrDefault();
                 var getColour = db.NotesColourCategories.Where(p => p.Colour == colour.Trim()).FirstOrDefault();
@@ -131,6 +133,9 @@ namespace Weekly_Planner_BusinessLayer
 
                 if (content.Count() == 0) throw new ArgumentException("The Note's content cannot be empty!");
 
+                var isCreatedQ = db.Notes.Where(a => a.Title == title.Trim()).FirstOrDefault();
+                if (isCreatedQ != null) throw new ArgumentException("A Note with the same name already exists!");
+                
                 var getDay = db.WeekDays.Where(w => w.Day == day.Trim()).FirstOrDefault();
                 var getColour = db.NotesColourCategories.Where(p => p.Colour == colour.Trim()).FirstOrDefault();
 

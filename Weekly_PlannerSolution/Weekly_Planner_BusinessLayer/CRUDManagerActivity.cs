@@ -25,6 +25,14 @@ namespace Weekly_Planner_BusinessLayer
                 currentDay = (WeekDay)selectedItem;   
         }
 
+        public void setSelectedDay(string day)
+        {
+            using (var db = new WeeklyPlannerDBContext())
+            {
+                currentDay = db.WeekDays.Where(w => w.Day == day.Trim()).FirstOrDefault();
+            }
+        }
+
         public void setSelectedDay()
         {
             using (var db = new WeeklyPlannerDBContext())
@@ -39,7 +47,7 @@ namespace Weekly_Planner_BusinessLayer
         {
             using (var db = new WeeklyPlannerDBContext())
             {
-                return db.Activities.Where(w => w.WeekDays.Day == day.Trim()).ToList();                
+                return db.Activities.Include(o=> o.WeekDays).Where(w => w.WeekDays.Day == day.Trim()).ToList();                
             }
         }
 
@@ -50,6 +58,22 @@ namespace Weekly_Planner_BusinessLayer
                 return db.WeekDays.ToList();
             }
         }
+
+        public List<String> ListOfDaysString()
+        {
+            using (var db = new WeeklyPlannerDBContext())
+            {
+                List<String> days = new List<string>();
+
+                foreach(var item in db.WeekDays.ToList())
+                {
+                    days.Add(item.Day);
+                }
+
+                return days;
+            }
+        }
+
 
 
         //Create an Activity

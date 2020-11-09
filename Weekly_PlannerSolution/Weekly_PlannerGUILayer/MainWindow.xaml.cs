@@ -27,8 +27,16 @@ namespace Weekly_PlannerGUILayer
         {
             InitializeComponent();
             fillUpLists();
+            fillUpComboBox();
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
             
+        }
+
+        public void fillUpComboBox()
+        {
+            ComboBoxDays.Background = Brushes.White;
+            ComboBoxDays.ItemsSource = _crudManager.ListOfDaysString();
+            //ComboBoxDays.DisplayMemberPath = "Day";
         }
 
         public void fillUpLists()
@@ -146,20 +154,59 @@ namespace Weekly_PlannerGUILayer
             ca.Show();
         }
 
+
+        public void isEditable()
+        {
+            TDay.IsReadOnly = false;
+            TTitle.IsReadOnly = false;
+            TTitle.Background = Brushes.White;
+            TContent.IsReadOnly = false;
+            TContent.Background = Brushes.White;
+
+        }
+
+        public void isDisabled()
+        {
+            TDay.IsReadOnly = true;
+            TTitle.IsReadOnly = true;
+            TTitle.Background = Brushes.LightGray;
+            TContent.IsReadOnly = true;
+            TContent.Background = Brushes.LightGray;
+        }
+
         private void BEditActivity_Click(object sender, RoutedEventArgs e)
         {
-            try
+            Button bt = (Button)sender;
+            switch (bt.Content)
             {
-                if (_crudManager.currentActivity == null) throw new Exception("You have not selected anything!");
-                _crudManager.EditActivity(_crudManager.currentActivity.ActivityId, TTitle.Text.Trim(), TContent.Text.Trim(), TDay.Text.Trim());
-                fillUpLists();
-                MessageBox.Show("Updated Activity");
+                case "Edit Activity":
+                    isEditable();
+                    ComboBoxDays.SelectedItem = _crudManager.currentDay.Day;
+                    ComboBoxDays.Visibility = Visibility.Visible;
+                    bt.Content = "Update Activity";
+                    break;
 
+                case "Update Activity":
+                    try
+                    {
+                        if (_crudManager.currentActivity == null) throw new Exception("You have not selected anything!");
+                        _crudManager.EditActivity(_crudManager.currentActivity.ActivityId, TTitle.Text.Trim(), TContent.Text.Trim(), TDay.Text.Trim());
+                        fillUpLists();
+                        _crudManager.setSelectedDay();
+                        MessageBox.Show("Updated Activity");
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Missing input values!", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+                    bt.Content = "Edit Activity";
+                    ComboBoxDays.Visibility = Visibility.Hidden;
+                    isDisabled();
+                    break;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Missing input values!", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
+
+            
         }
 
         private void BAExternalView_Click(object sender, RoutedEventArgs e)
@@ -179,6 +226,16 @@ namespace Weekly_PlannerGUILayer
             nw.Show();
 
 
+        }
+
+        private void ComboBoxDays_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(ComboBoxDays.SelectedItem != null)
+            {
+                _crudManager.setSelectedDay(ComboBoxDays.SelectedItem.ToString());
+                TDay.Text = _crudManager.currentDay.Day;
+            }
+            
         }
     }
 }

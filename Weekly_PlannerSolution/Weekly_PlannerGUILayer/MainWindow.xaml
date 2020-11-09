@@ -52,27 +52,31 @@
             <ListBox x:Name="ListBoxThursday" Grid.Column="4" Grid.Row="1" Background="#FFE7F1EF" SelectionChanged="ListBoxAll_SelectionChanged"  HorizontalContentAlignment="Center"  ></ListBox>
             <ListBox x:Name="ListBoxFriday" Grid.Column="5" Grid.Row="1" Background="#FFE7F1EF" SelectionChanged="ListBoxAll_SelectionChanged"  HorizontalContentAlignment="Center"  ></ListBox>
 
-            <Label x:Name="LName" Content="Activity Name" Grid.Column="0" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#FFC9ECF9" Margin="0,274,0,0" Grid.RowSpan="2" ></Label>
-            <Label x:Name="LContent" Content="Activity Content" Grid.Column="3" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#FFC9ECF9" Margin="0,274,0,0" Grid.RowSpan="2" ></Label>
+            <Label x:Name="LName" Content="Activity Name" Grid.Column="0" Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#FFC9ECF9"></Label>
+            <Label x:Name="LContent" Content="Activity Content" Grid.Column="3" Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#FFC9ECF9"  ></Label>
 
-            <Grid Grid.Row="1" Grid.Column="5" Margin="0,274,0,0" Grid.RowSpan="2">
+            <Grid Grid.Row="2" Grid.Column="5" >
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="40"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Label x:Name="LDay" Content="Day:" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#FFC9ECF9" ></Label>
-                <TextBox x:Name="TDay" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="1"></TextBox>
+                
+                <Label x:Name="LDay" Content="Day:" Grid.Row="0" Grid.Column="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#FFC9ECF9" ></Label>
+                <TextBox x:Name="TDay" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Row="1" IsReadOnly="True" Background="lightGray"></TextBox>
+
+                <ComboBox Name="ComboBoxDays" Grid.Row="1"  SelectionChanged="ComboBoxDays_SelectionChanged"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Visibility="Hidden" Background="White"></ComboBox>
+
             </Grid>
 
-            <TextBox x:Name="TContent" VerticalContentAlignment="Top" MaxHeight="90" MaxWidth="150"  HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Row="1" Grid.Column="4" AcceptsReturn="True" Margin="0,274,0,0" Grid.RowSpan="2" ></TextBox>
-            <TextBox x:Name="TTitle" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalScrollBarVisibility="Auto"  Grid.Row="1" Grid.Column="1" AcceptsReturn="True" Grid.ColumnSpan="2" Margin="0,274,0,0" Grid.RowSpan="2"></TextBox>
+            <TextBox x:Name="TContent" VerticalContentAlignment="Top"   HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Row="2" Background="LightGray" Grid.Column="4" AcceptsReturn="True"  IsReadOnly="True" ></TextBox>
+            <TextBox x:Name="TTitle" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalScrollBarVisibility="Auto"  Grid.Row="2" Grid.Column="1" AcceptsReturn="True" Grid.ColumnSpan="2" IsReadOnly="True" Background="LightGray"></TextBox>
 
 
         </Grid>
 
         <Button x:Name="BCreateActivity" Content="Create an Activity" Grid.Column="0" Click="BCreateActivity_Click"></Button>
         <Button x:Name="BDeleteActivity" Content="Delete an Activity" Grid.Column="2" Click="BDeleteActivity_Click"></Button>
-        <Button x:Name="BEditActivity" Content="Update Activity" Grid.Column="1" Click="BEditActivity_Click"></Button>
+        <Button x:Name="BEditActivity" Content="Edit Activity" Grid.Column="1" Click="BEditActivity_Click"></Button>
         <Button x:Name="BAExternalView" Content="Activity External View" Grid.Column="3" Click="BAExternalView_Click" ></Button>
         <Button x:Name="BNotes" Content="Notes" Grid.Column="4" Click="BNotes_Click"  ></Button>
 

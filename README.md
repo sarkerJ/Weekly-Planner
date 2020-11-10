@@ -141,7 +141,16 @@ The project goal is to continue with the user stories which mainly related the n
 
 The goal of this sprint was to improve the way a user edits an activity and a note by adding a drop down menu option. Furthermore a feature on notes would be included to automatically change the text colour of each note based on their set priority. Finally the entire project should be commented or refactored where possible and ensure the README is updated. 
 
+- [x] Update README
+- [x] Complete selected User Stories
+- [x] Refactor code where necessary
+- [x] Update GUI
+- [x] Ensure all testable code is tested
+- [x] Push updated solution to GitHub
+
 ##### Review
+
+* Sprint 3 was fully completed
 
 * All of the user stories were completed
   * [Duplicate Notes](https://github.com/users/sarkerJ/projects/1#card-48938840)

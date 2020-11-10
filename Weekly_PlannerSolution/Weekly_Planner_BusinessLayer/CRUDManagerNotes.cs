@@ -14,6 +14,8 @@ namespace Weekly_Planner_BusinessLayer
         public Note currentNote { get; set; }
 
         public NotesColourCategory currentColour { get; set; }
+
+        //Setting methods
         public void setSelectedNote(object selectedItem)
         {
             currentNote = (Note)selectedItem;

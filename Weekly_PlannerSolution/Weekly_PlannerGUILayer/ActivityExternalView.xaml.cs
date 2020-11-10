@@ -26,6 +26,7 @@ namespace Weekly_PlannerGUILayer
             fillUpComboBox();
         }
 
+        //Action when item is selected in day combobox
         private void ComboBoxDays_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (ComboBoxDays.SelectedItem != null)
@@ -34,6 +35,8 @@ namespace Weekly_PlannerGUILayer
                 populateListBox();
             }
         }
+        //populates the combo box filter 
+        //automatically sets the filter to monday 
         public void fillUpComboBox()
         {
             ComboBoxDays.ItemsSource = _crudManager.ListOfDays();
@@ -44,13 +47,15 @@ namespace Weekly_PlannerGUILayer
             _crudManager.setSelectedActivity(ListBoxActivities.SelectedItem);
 
         }
+
+        //populates the activity listbox
         public void populateListBox()
         {
             ListBoxActivities.ItemsSource = _crudManager.ListOfActivities(_crudManager.currentDay.Day);
         }
 
       
-
+        //Edit button function
         private void BEditActivity_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -69,6 +74,7 @@ namespace Weekly_PlannerGUILayer
             }
         }
 
+        //Action when an item in the activities is selected
         private void ListBoxActivities_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if(ListBoxActivities.SelectedItem != null)

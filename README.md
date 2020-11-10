@@ -25,7 +25,7 @@ The application will then be extended to include a notes feature where the user 
 - [x]  Documentation(README) has been updated
 - [x]  Class Diagram has been updated
 - [x]  The Code is refactored and is readable
-- [ ] The solution has been reviewed and approved
+- [x] The solution has been reviewed and approved
 - [x] All bugs have been recorded and fixed
 - [x] All the Unit Tests pass
 - [x] Unit tests account for approximately 80% of code coverage

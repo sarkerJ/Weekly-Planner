@@ -18,6 +18,12 @@ The project goal is to create an application that allows users to manage their w
 
 The application will then be extended to include a notes feature where the user can create a new notes and rank them based on their priorities. Furthermore the notes can also be set to specific days so that they differentiate further from notes they may have taken throughout the week. 
 
+##### Class-Diagram
+
+![Project Class Diagram](https://github.com/sarkerJ/Weekly-Planner/blob/main/Images/Class%20Diagram.JPG)
+
+---
+
 ## Definition-of-Done
 
 - [x]  All user stories are marked as done
@@ -37,9 +43,8 @@ The application will then be extended to include a notes feature where the user 
 ##### Sprint-1-Goal
 
 [**Project Card**](https://github.com/users/sarkerJ/projects/1#card-48691633)
+
 The goal of the first sprint was to create the initial structure of the project, including the database tables and how each should link with one another. By the end of the sprint an MVP (minimal viable product) should have been created with minimal functionalities
-
-
 
 - [x] Get the product board approved
 - [x] Create the 3 tier project layout
@@ -57,12 +62,17 @@ The goal of the first sprint was to create the initial structure of the project,
 ##### Sprint 1 Review
 
 * Sprint goal was achieved
+
 * All of the user stories that were selected were completed
-		* [Creating an Activity](https://github.com/users/sarkerJ/projects/1#card-48688577)
+		
+	
+	
+	* [Creating an Activity](https://github.com/users/sarkerJ/projects/1#card-48688577)
 	* [Modifying an Activity](https://github.com/users/sarkerJ/projects/1#card-48688980)
 	* [Deleting an Activity](https://github.com/users/sarkerJ/projects/1#card-48689181)
 	* [Viewing the Activities](https://github.com/users/sarkerJ/projects/1#card-48689317)
 	* [Displaying an Activity's Information](https://github.com/users/sarkerJ/projects/1#card-48689493)
+	
 * All of the tests passed
 
 ##### Sprint 1 Retrospective
@@ -80,15 +90,27 @@ The goal of the first sprint was to create the initial structure of the project,
 *  I have to add a User Story to deal with duplicate Activities, something which I hadn't considered earlier
 * Test the GUI layer further for bugs
 
+#### Sprint-1-Board(Before)
+
+![Project-Board-Before-Sprint-1](https://github.com/sarkerJ/Weekly-Planner/blob/main/Images/Sprint%201%20(before).JPG)
+
+#### Sprint-1-Board(After)
+
+![Project-Board-Before-Sprint-1](https://github.com/sarkerJ/Weekly-Planner/blob/main/Images/Sprint%201%20(after).JPG)
+
 ---
 
 ### Sprint-2
 
 [**Project Card**](https://github.com/users/sarkerJ/projects/1#card-48841966)
 
+
+
 ##### Sprint-2-Goal:
 
 The project goal is to continue with the user stories which mainly related the notes functionality. The aim also included preventing users from adding duplicate activities and displaying a message about the issue. 
+
+
 
 - [x] Update README
 - [x] Complete all selected User Stories
@@ -99,13 +121,18 @@ The project goal is to continue with the user stories which mainly related the n
 ##### Sprint 2 Review
 
 - [x] All of the user stories were completed
+  
+  
+  
   * [Duplicate Activities](https://github.com/users/sarkerJ/projects/1#card-48840880)
   * [Filtering Activities](https://github.com/users/sarkerJ/projects/1#card-48689764)
   * [Create a Note](https://github.com/users/sarkerJ/projects/1#card-48689870)
   * [Editing a Note](https://github.com/users/sarkerJ/projects/1#card-48689915)
   * [Deleting a Note](https://github.com/users/sarkerJ/projects/1#card-48690018)
   * [Viewing the Notes](https://github.com/users/sarkerJ/projects/1#card-48690201)
+  
 - [x] new CRUD functionalities were created and passed tests
+
 - [x] Updated the GUI
 
 ##### Sprint 2 Retrospective
@@ -131,11 +158,21 @@ The project goal is to continue with the user stories which mainly related the n
 - Ensure new windows open at the centre of main window
 - Refactor the entirety of the project 
 
+#### Sprint-2-Board(Before)
+
+![Project-Board-Before-Sprint-2](https://github.com/sarkerJ/Weekly-Planner/blob/main/Images/Sprint%202%20(before).JPG)
+
+#### Sprint-2-Board(After)
+
+![Project-Board-Before-Sprint-2](https://github.com/sarkerJ/Weekly-Planner/blob/main/Images/Sprint%202%20(after).JPG)
+
 ---
 
 ### Sprint-3
 
 [**Project Card**](https://github.com/users/sarkerJ/projects/1#card-48977468)
+
+
 
 ##### Sprint 3 Goal:
 
@@ -153,6 +190,9 @@ The goal of this sprint was to improve the way a user edits an activity and a no
 * Sprint 3 was fully completed
 
 * All of the user stories were completed
+  
+  
+  
   * [Duplicate Notes](https://github.com/users/sarkerJ/projects/1#card-48938840)
   * [Filtering Notes by Priority](https://github.com/users/sarkerJ/projects/1#card-48690572)
   * [Duplicate Notes](https://github.com/users/sarkerJ/projects/1#card-48938840)
@@ -183,11 +223,17 @@ The goal of this sprint was to improve the way a user edits an activity and a no
 * Refactored a portion of the project, however some still remains
 * Windows now correctly appear at the centre of the main window, removing the issue where you had to drag the window closer to use it
 
-
-
 ##### Action Plan
 
 * End of Sprint
+
+####  Sprint-3-Board(Before)
+
+![Project-Board-Before-Sprint-3](https://github.com/sarkerJ/Weekly-Planner/blob/main/Images/Sprint%203%20(before)..JPG)
+
+#### Sprint-3-Board(After)
+
+![Project-Board-After-Sprint-3](https://github.com/sarkerJ/Weekly-Planner/blob/main/Images/Sprint%203%20end.JPG)
 
 ---
 
@@ -213,34 +259,9 @@ I would like to further improve the functionality of the application and further
 
 ---
 
-##### Class-Diagram
-
-![Project Class Diagram](https://github.com/sarkerJ/Weekly-Planner/blob/main/Images/Class%20Diagram.JPG)
-
----
 
 
 
-#### Sprint-1-Board(Before)
 
-![Project-Board-Before-Sprint-1](https://github.com/sarkerJ/Weekly-Planner/blob/main/Images/Sprint%201%20(before).JPG)
 
-#### Sprint-1-Board(After)
 
-![Project-Board-Before-Sprint-1](https://github.com/sarkerJ/Weekly-Planner/blob/main/Images/Sprint%201%20(after).JPG)
-
-#### Sprint-2-Board(Before)
-
-![Project-Board-Before-Sprint-2](https://github.com/sarkerJ/Weekly-Planner/blob/main/Images/Sprint%202%20(before).JPG)
-
-#### Sprint-2-Board(After)
-
-![Project-Board-Before-Sprint-2](https://github.com/sarkerJ/Weekly-Planner/blob/main/Images/Sprint%202%20(after).JPG)
-
-####  Sprint-3-Board(Before)
-
-![Project-Board-Before-Sprint-3](https://github.com/sarkerJ/Weekly-Planner/blob/main/Images/Sprint%203%20(before)..JPG)
-
-#### Sprint-3-Board(After)
-
-![Project-Board-After-Sprint-3](https://github.com/sarkerJ/Weekly-Planner/blob/main/Images/Sprint%203%20end.JPG)

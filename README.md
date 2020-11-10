@@ -234,4 +234,4 @@ I would like to further improve the functionality of the application and further
 
 #### Sprint-3-Board(After)
 
-![Project-Board-After-Sprint-3](https://github.com/sarkerJ/Weekly-Planner/blob/main/Images/Sprint%203%20(after).JPG)
+![Project-Board-After-Sprint-3](https://github.com/sarkerJ/Weekly-Planner/blob/main/Images/Sprint%203%20end.JPG)

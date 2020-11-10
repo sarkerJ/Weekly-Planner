@@ -20,17 +20,16 @@ The application will then be extended to include a notes feature where the user 
 
 ## Definition-of-Done
 
-- [ ]  All user stories are marked as done
-- [ ]  Product Backlog has been updated
-- [ ]  Documentation(README) has been updated
-- [ ]  Class Diagram has been updated
-- [ ]  The Code is refactored and is readable
+- [x]  All user stories are marked as done
+- [x]  Product Backlog has been updated
+- [x]  Documentation(README) has been updated
+- [x]  Class Diagram has been updated
+- [x]  The Code is refactored and is readable
 - [ ] The solution has been reviewed and approved
-- [ ] All bugs have been recorded and fixed
-- [ ] All the Unit Tests pass
-- [ ] Unit tests account for approximately 80% of code coverage
-- [ ] The final solution is pushed to GitHub by 10/11/2020 14:00
-- [ ]  The presentation has been planned out and ready to be delivered  
+- [x] All bugs have been recorded and fixed
+- [x] All the Unit Tests pass
+- [x] Unit tests account for approximately 80% of code coverage
+- [x] The final solution is pushed to GitHub by 10/11/2020 14:00
 
 ## Sprints
 ### Sprint-1

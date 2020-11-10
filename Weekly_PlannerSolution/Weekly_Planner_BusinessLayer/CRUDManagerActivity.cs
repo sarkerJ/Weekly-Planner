@@ -11,9 +11,9 @@ namespace Weekly_Planner_BusinessLayer
     {
 
         public Activity currentActivity { get; set; } 
-
         public WeekDay currentDay { get; set; }
 
+        //Setting methods
         public void setSelectedActivity(object selectedItem)
         {
             currentActivity = (Activity)selectedItem;
@@ -32,7 +32,6 @@ namespace Weekly_Planner_BusinessLayer
                 currentDay = db.WeekDays.Where(w => w.Day == day.Trim()).FirstOrDefault();
             }
         }
-
         public void setSelectedDay()
         {
             using (var db = new WeeklyPlannerDBContext())
@@ -42,7 +41,7 @@ namespace Weekly_Planner_BusinessLayer
             }
         }
         
-
+        //List Methods
         public List<Activity> ListOfActivities(string day)
         {
             using (var db = new WeeklyPlannerDBContext())
@@ -50,7 +49,6 @@ namespace Weekly_Planner_BusinessLayer
                 return db.Activities.Include(o=> o.WeekDays).Where(w => w.WeekDays.Day == day.Trim()).ToList();                
             }
         }
-
         public List<WeekDay> ListOfDays()
         {
             using (var db = new WeeklyPlannerDBContext())
@@ -58,8 +56,7 @@ namespace Weekly_Planner_BusinessLayer
                 return db.WeekDays.ToList();
             }
         }
-
-        public List<String> ListOfDaysString()
+        public List<String> ListOfDaysString() //Used for drop down menu for editing an activity
         {
             using (var db = new WeeklyPlannerDBContext())
             {
@@ -74,6 +71,7 @@ namespace Weekly_Planner_BusinessLayer
             }
         }
 
+        //Setting Capacity Limit of activities for each day
         public void maxActivity()
         {
             using (var db = new WeeklyPlannerDBContext())
@@ -144,10 +142,8 @@ namespace Weekly_Planner_BusinessLayer
                 var currentActivity = db.Activities.Where(a => a.ActivityId == activityID).FirstOrDefault();
                 db.Activities.RemoveRange(currentActivity);
                 db.SaveChanges();
-
-
             }
-            currentActivity = null; 
+            currentActivity = null; //used to cause exception if you are trying to delete something again when nothing is selected
         }
 
     }

@@ -28,18 +28,23 @@ namespace Weekly_PlannerGUILayer
             InitializeComponent();
             fillUpLists();
             fillUpComboBox();
+
+            //Once window is open it automatically selects the first item to be displayed from Monday's list
             ListBoxMonday.SelectedItem = ListBoxMonday.Items.CurrentItem;
+
+            //Setting mainwindow to appear in the middle of the screen
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
             
         }
 
+        //populates the edit Day listbox with the names of each day
         public void fillUpComboBox()
         {
             ComboBoxDays.Background = Brushes.White;
             ComboBoxDays.ItemsSource = _crudManager.ListOfDaysString();
-            //ComboBoxDays.DisplayMemberPath = "Day";
         }
 
+        //populates the list of each day in their appropriate listbox
         public void fillUpLists()
         {
             ListBoxMonday.ItemsSource = _crudManager.ListOfActivities("Monday");
@@ -48,7 +53,11 @@ namespace Weekly_PlannerGUILayer
             ListBoxThursday.ItemsSource = _crudManager.ListOfActivities("Thursday");
             ListBoxFriday.ItemsSource = _crudManager.ListOfActivities("Friday");
         }
-       
+
+
+       //Method that deals with the selected item for any of the Week Day listboxes 
+       //If one is selected the rest of the boxes are set to null
+       //Displays information of the selected item in the text boxes
         private void ListBoxAll_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ListBox lbox = (ListBox)sender;
@@ -65,7 +74,6 @@ namespace Weekly_PlannerGUILayer
                         TTitle.Text = _crudManager.currentActivity.Name;
                         TContent.Text = _crudManager.currentActivity.Content;
                         TDay.Text = _crudManager.currentDay.Day;
-                        
                     }
                     break;
 
@@ -122,7 +130,6 @@ namespace Weekly_PlannerGUILayer
                         TTitle.Text = _crudManager.currentActivity.Name;
                         TContent.Text = _crudManager.currentActivity.Content;
                         TDay.Text = _crudManager.currentDay.Day;
-                        
                     }
                     break;
             }
@@ -130,32 +137,10 @@ namespace Weekly_PlannerGUILayer
             
         }
 
-        private void BDeleteActivity_Click(object sender, RoutedEventArgs e)
-        {
-            try 
-            {
-                if (_crudManager.currentActivity == null) throw new Exception("You have not selected anything!");
-                _crudManager.DeleteActivity(_crudManager.currentActivity.ActivityId);
-                fillUpLists();
-                TTitle.Text = "";
-                TContent.Text = "";
-                TDay.Text = "";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "No Activity Selected!", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-        }
 
-        private void BCreateActivity_Click(object sender, RoutedEventArgs e)
-        {
-            CreateActivity ca = new CreateActivity();
-            ca.Owner = this;
-            ca.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            ca.Show();
-        }
-
-
+        //Allows user input in the text boxes
+        //Displays the drop down menu to select a day 
+        //Changes text box background to make it clear its editable
         public void isEditable()
         {
             TDay.IsReadOnly = false;
@@ -163,9 +148,13 @@ namespace Weekly_PlannerGUILayer
             TTitle.Background = Brushes.White;
             TContent.IsReadOnly = false;
             TContent.Background = Brushes.White;
+            ComboBoxDays.Visibility = Visibility.Visible;
 
         }
 
+        //Disables text boxes from being changed
+        //Hides drop down menu
+        //Changes text box background to what it was previously
         public void isDisabled()
         {
             TDay.IsReadOnly = true;
@@ -173,22 +162,37 @@ namespace Weekly_PlannerGUILayer
             TTitle.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFC9ECF9"));
             TContent.IsReadOnly = true;
             TContent.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFC9ECF9"));
+            ComboBoxDays.Visibility = Visibility.Hidden;
 
         }
 
-        private void BEditActivity_Click(object sender, RoutedEventArgs e)
+        private void BAllButton_Click(object sender, RoutedEventArgs e)
         {
             Button bt = (Button)sender;
             switch (bt.Content)
             {
+                //Opens Create Window and sets its owner to be MainWindow
+                //Window should open in the middle of owner
+                case "Create an Activity":
+                    CreateActivity ca = new CreateActivity();
+                    ca.Owner = this;
+                    ca.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                    ca.Show();
+                    break;
+
+                //sets day drop down menu selected item to the current day
+                // text boxes and menu are usable
                 case "Edit Activity":
                     isEditable();
                     ComboBoxDays.SelectedItem = _crudManager.currentDay.Day;
-                    ComboBoxDays.Visibility = Visibility.Visible;
                     bt.Content = "Update Activity";
                     bt.Background = Brushes.DarkCyan;
                     break;
 
+                //Checks if currentday is null to prevent crash
+                //updates activity based on information on the text boxes
+                //shows message if its updated or if there is an error
+                //sets everything back so user can't edit again unless Button is clicked once more
                 case "Update Activity":
                     try
                     {
@@ -200,38 +204,52 @@ namespace Weekly_PlannerGUILayer
 
                     }
                     catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message, "Missing input values!", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    }
+                    { MessageBox.Show(ex.Message, "Missing input values!", MessageBoxButton.OK, MessageBoxImage.Warning);}
+
                     bt.Content = "Edit Activity";
-                    ComboBoxDays.Visibility = Visibility.Hidden;
                     isDisabled();
                     bt.Background = Brushes.LightCyan;
                     break;
+
+                //Checks if currentday is null to prevent crash
+                //Deletes current activity and resets text
+                //Shows message if your are trying to delete when nothing is selected
+                case "Delete an Activity":
+                    try
+                    {
+                        if (_crudManager.currentActivity == null) throw new Exception("You have not selected anything!");
+                        _crudManager.DeleteActivity(_crudManager.currentActivity.ActivityId);
+                        fillUpLists();
+                        TTitle.Text = "";
+                        TContent.Text = "";
+                        TDay.Text = "";
+                    }
+                    catch (Exception ex)
+                    {MessageBox.Show(ex.Message, "No Activity Selected!", MessageBoxButton.OK, MessageBoxImage.Warning);}
+                    break;
+
+                //Opens external activity Window and 
+                //Sets its owner to be Main Window 
+                case "Activity External View":
+                    ActivityExternalView nw = new ActivityExternalView();
+                    nw.Owner = this;
+                    nw.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                    nw.Show();
+                    break;
+
+                //Opens Notes Window
+                //Sets its owner to be Main Window
+                case "Notes":
+                    NotesWindow notesW = new NotesWindow();
+                    notesW.Owner = this;
+                    notesW.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                    notesW.Show();
+                    break;
             }
-
-            
         }
 
-        private void BAExternalView_Click(object sender, RoutedEventArgs e)
-        {
-            ActivityExternalView nw = new ActivityExternalView();
-            nw.Owner = this;
-            nw.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            nw.Show();
-
-        }
-
-        private void BNotes_Click(object sender, RoutedEventArgs e)
-        {
-            NotesWindow nw = new NotesWindow();
-            nw.Owner = this;
-            nw.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            nw.Show();
-
-
-        }
-
+        //Drop down menu used to change day for an activity
+        //sets new value in the Day Text box -> used then in update function
         private void ComboBoxDays_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if(ComboBoxDays.SelectedItem != null)
@@ -239,7 +257,6 @@ namespace Weekly_PlannerGUILayer
                 _crudManager.setSelectedDay(ComboBoxDays.SelectedItem.ToString());
                 TDay.Text = _crudManager.currentDay.Day;
             }
-            
         }
     }
 }

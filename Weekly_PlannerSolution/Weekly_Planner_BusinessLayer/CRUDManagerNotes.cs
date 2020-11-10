@@ -59,6 +59,9 @@ namespace Weekly_Planner_BusinessLayer
             }
         }
 
+
+        //List Methods
+        //This is is for the filtering drop down menu
         public List<WeekDay> ListOfDays()
         {
             using (var db = new WeeklyPlannerDBContext())
@@ -66,8 +69,8 @@ namespace Weekly_Planner_BusinessLayer
                 return db.WeekDays.ToList();
             }
         }
-
-        public List<String> ListOfDaysString()
+        //used for drop down menu during edit
+        public List<String> ListOfDaysString() 
         {
             using (var db = new WeeklyPlannerDBContext())
             {
@@ -81,7 +84,7 @@ namespace Weekly_Planner_BusinessLayer
                 return days;
             }
         }
-
+        //used for drop down menu during edit
         public List<String> ListOfColourStrings()
         {
             using (var db = new WeeklyPlannerDBContext())
@@ -97,6 +100,7 @@ namespace Weekly_Planner_BusinessLayer
             }
         }
 
+        //Used for the colour filtering drop down menu
         public List<NotesColourCategory> ListOfColours()
         {
             using (var db = new WeeklyPlannerDBContext())
@@ -105,6 +109,7 @@ namespace Weekly_Planner_BusinessLayer
             }
         }
 
+        //Used for the notes listbox when filtering is used
         public List<Note> ListOfNotes(object selectedItem)
         {
             using (var db = new WeeklyPlannerDBContext())
@@ -122,6 +127,7 @@ namespace Weekly_Planner_BusinessLayer
             }
         }
 
+        //Used to populate list box at the beginning and when no filtering is used
         public List<Note> ListOfNotes()
         {
             using (var db = new WeeklyPlannerDBContext())
@@ -129,7 +135,9 @@ namespace Weekly_Planner_BusinessLayer
                 return db.Notes.Include(o=> o.NotesColourCategorys).ToList();
             }
         }
+        
 
+        //Creates a new Note
         public void CreateNote(string colour, string day, string title, string content)
         {
             using(var db = new WeeklyPlannerDBContext())
@@ -155,6 +163,8 @@ namespace Weekly_Planner_BusinessLayer
             }
         }
 
+        //Edits a selected note
+        //sets new current day and colour
         public void EditNote(int id, string title, string content, string day, string colour)
         {
             using (var db = new WeeklyPlannerDBContext())
@@ -176,9 +186,12 @@ namespace Weekly_Planner_BusinessLayer
                 getNote.NotesColourCategorys = getColour;
                 db.SaveChanges();
 
+                setSelectedDay(day.Trim());
+                setSelectedColour(getColour);
             }
         }
 
+        //deletes a note
         public void DeleteNote(int id)
         {
             using (var db = new WeeklyPlannerDBContext())

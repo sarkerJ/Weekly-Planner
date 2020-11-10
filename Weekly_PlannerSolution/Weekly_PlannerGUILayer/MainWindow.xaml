@@ -14,7 +14,6 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
-
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -74,11 +73,12 @@
 
         </Grid>
 
-        <Button x:Name="BCreateActivity" Content="Create an Activity" Grid.Column="0" Click="BCreateActivity_Click" Background="LightCyan"></Button>
-        <Button x:Name="BDeleteActivity" Content="Delete an Activity" Grid.Column="2" Click="BDeleteActivity_Click" Background="LightCyan"></Button>
-        <Button x:Name="BEditActivity" Content="Edit Activity" Grid.Column="1" Click="BEditActivity_Click" Background="LightCyan"></Button>
-        <Button x:Name="BAExternalView" Content="Activity External View" Grid.Column="3" Click="BAExternalView_Click" Background="LightCyan" ></Button>
-        <Button x:Name="BNotes" Content="Notes" Grid.Column="4" Click="BNotes_Click" Background="LightCyan"  ></Button>
+        <!-- Buttons-->
+        <Button x:Name="BCreateActivity" Content="Create an Activity" Grid.Column="0" Click="BAllButton_Click" Background="LightCyan"></Button>
+        <Button x:Name="BDeleteActivity" Content="Delete an Activity" Grid.Column="2" Click="BAllButton_Click" Background="LightCyan"></Button>
+        <Button x:Name="BEditActivity" Content="Edit Activity" Grid.Column="1" Click="BAllButton_Click" Background="LightCyan"></Button>
+        <Button x:Name="BAExternalView" Content="Activity External View" Grid.Column="3" Click="BAllButton_Click" Background="LightCyan" ></Button>
+        <Button x:Name="BNotes" Content="Notes" Grid.Column="4" Click="BAllButton_Click" Background="LightCyan"  ></Button>
 
 
 

@@ -27,6 +27,8 @@ namespace Weekly_PlannerGUILayer
             fillUpComboBox();
             ListBoxNotes.SelectedItem = ListBoxNotes.Items.CurrentItem;
         }
+
+        //Populates the data for the 2 Filters in the window (colour, Day)
         public void fillUpComboBox()
         {
             ComboBoxDays.ItemsSource = _crudManager.ListOfDays();
@@ -36,19 +38,30 @@ namespace Weekly_PlannerGUILayer
             fillListBoxNotes1();
 
             ComboBoxDays2.ItemsSource = _crudManager.ListOfDaysString();
+            ComboBoxDays2.SelectedItem = ComboBoxDays2.Items.CurrentItem;
             ComboBoxColours2.ItemsSource = _crudManager.ListOfColourStrings();
+            ComboBoxColours2.SelectedItem = ComboBoxColours2.Items.CurrentItem;
         }
 
+        public void currentEditMenuItem()
+        {
+
+        }
+
+        //Populates the main notes listbox depending on current filter or if there are no filters
         public void fillListBoxNotes1()
         {
             if (ComboBoxDays.SelectedItem != null)
             {ListBoxNotes.ItemsSource = _crudManager.ListOfNotes(ComboBoxDays.SelectedItem);}
+
             else if (ComboBoxColours.SelectedItem != null)
             {ListBoxNotes.ItemsSource = _crudManager.ListOfNotes(ComboBoxColours.SelectedItem);}
+
             else
             {ListBoxNotes.ItemsSource = _crudManager.ListOfNotes();}
         }
 
+        //resets textbox content
         public void resetText()
         {
             TNContent.Text = "";
@@ -56,6 +69,9 @@ namespace Weekly_PlannerGUILayer
             TNDay.Text = "";
             TNPriority.Text = "";
         }
+        //Changes textbox properties so you can edit
+        //Changes background so it is obvious that you can edit
+        //Shows the 2 drop down menus
         public void allowEdit()
         {
             TNContent.IsReadOnly = false;
@@ -67,9 +83,10 @@ namespace Weekly_PlannerGUILayer
             TNContent.Background = Brushes.White;
             TNName.Background = Brushes.White;
             TNDay.Background = Brushes.White;
-
         }
 
+        //Disables everything that allows user input
+        //sets everything to its state before allowEdit was used
         public void disableEdit()
         {
             TNContent.IsReadOnly = true;
@@ -81,9 +98,9 @@ namespace Weekly_PlannerGUILayer
             TNDay.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFC9F9E1")); 
             ComboBoxDays2.Visibility = Visibility.Hidden;
             ComboBoxColours2.Visibility = Visibility.Hidden;
-
         }
-
+        
+        //changes foreground of the PriorityTextbox based on content
         public void changeTextBackground()
         {
             switch (TNPriority.Text)
@@ -112,6 +129,7 @@ namespace Weekly_PlannerGUILayer
 
             switch (cb.Name)
             {
+                //Used for filtering by day ONLY
                 case "ComboBoxDays":
                     if (ComboBoxDays.SelectedItem != null)
                     {
@@ -121,11 +139,13 @@ namespace Weekly_PlannerGUILayer
                     }
                     break;
 
+                //Used edit a current note (mainly the day)
                 case "ComboBoxDays2":
                     TNDay.Text = ComboBoxDays2.SelectedItem.ToString();
                     changeTextBackground();
                     break;
 
+                //Used for filtering by colour ONLY
                 case "ComboBoxColours":
                     if (ComboBoxColours.SelectedItem != null)
                     {
@@ -135,6 +155,7 @@ namespace Weekly_PlannerGUILayer
                     }
                     break;
 
+                //used to edit a current note (mainly the colour)
                 case "ComboBoxColours2":
                     TNPriority.Text = ComboBoxColours2.SelectedItem.ToString();
                     changeTextBackground();
@@ -142,7 +163,7 @@ namespace Weekly_PlannerGUILayer
             }
         }
 
-        //Notes List when selected
+        //Populates text boxes based on selected Note Item
         private void ListBoxNotes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if(ListBoxNotes.SelectedItem != null)
@@ -155,7 +176,17 @@ namespace Weekly_PlannerGUILayer
                 ComboBoxDays2.SelectedItem = TNDay.Text;
                 changeTextBackground();
             }
-            else resetText();
+            else
+            {
+                //resetText();
+                TNName.Text = _crudManager.currentNote.Title;
+                TNPriority.Text = _crudManager.currentColour.Colour;
+                TNContent.Text = _crudManager.currentNote.Content;
+                TNDay.Text = _crudManager.currentDay.Day;
+                ComboBoxDays2.SelectedItem = TNDay.Text;
+                changeTextBackground();
+
+            } 
             
         }
 
@@ -169,6 +200,8 @@ namespace Weekly_PlannerGUILayer
                 {
                     case "Create New Note":
                         resetText();
+                        TNDay.Text = ComboBoxDays2.SelectedItem.ToString();
+                        TNPriority.Text = ComboBoxColours2.SelectedItem.ToString();
                         allowEdit();
                         bt.Content = "Add Note";
                         bt.Background = Brushes.DarkCyan;
@@ -191,6 +224,7 @@ namespace Weekly_PlannerGUILayer
                         fillListBoxNotes1();
                         resetText();
                         ((MainWindow)this.Owner).Focus();
+                        resetText();
                         break;
 
                     case "Edit Note":
@@ -212,6 +246,8 @@ namespace Weekly_PlannerGUILayer
                         disableEdit();
                         bt.Content = "Edit Note";
                         bt.Background = Brushes.LightCyan;
+                        TNDay.Text = _crudManager.currentDay.Day;
+                        TNPriority.Text = _crudManager.currentColour.Colour;
                         MessageBox.Show("Updated Note");
                         fillListBoxNotes1();
                         ((MainWindow)this.Owner).Focus();

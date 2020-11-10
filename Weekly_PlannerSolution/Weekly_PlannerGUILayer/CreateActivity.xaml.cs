@@ -40,6 +40,7 @@ namespace Weekly_PlannerGUILayer
             if(ComboBoxDays.SelectedItem != null)
             {
                 _crudManager.setSelectedDay(ComboBoxDays.SelectedItem);
+
             }
         }
 

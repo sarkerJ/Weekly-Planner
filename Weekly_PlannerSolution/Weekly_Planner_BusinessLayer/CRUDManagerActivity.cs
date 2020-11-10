@@ -71,31 +71,37 @@ namespace Weekly_Planner_BusinessLayer
             }
         }
 
-        //Setting Capacity Limit of activities for each day
-        public void maxActivity()
-        {
-            using (var db = new WeeklyPlannerDBContext())
-            {
-                var listOfDays = ListOfDays();
+        ////Setting Capacity Limit of activities for each day
+        //public void maxActivity(string day)
+        //{
+        //    using (var db = new WeeklyPlannerDBContext())
+        //    {
+        //        var count = db.WeekDays.Where(w => w.Day == day.Trim()).ToList().Count();
+        //        if (count > 15) throw new Exception($"Cannot create any more activities for {day.Trim()}");
 
-                foreach(var item in listOfDays)
-                {
-                    var count = ListOfActivities(item.Day).Count();
+        //        //var listOfDays = ListOfDays();
 
-                    if (count > 15) throw new Exception($"Cannot create any more activities for {item.Day}");
-                }
-            }
-        }
+        //        //foreach(var item in listOfDays)
+        //        //{
+        //        //    var count = ListOfActivities(item.Day).Count();
+
+        //        //    if (count > 15) throw new Exception($"Cannot create any more activities for {item.Day}");
+        //        //}
+        //    }
+        //}
 
         //Create an Activity
         public void CreateActivity(string title, string content, string day)
         {
             if (title.Count() == 0) throw new ArgumentException("Title cannot be empty!");
             if (content.Count() == 0) throw new ArgumentException("The activity's content cannot be empty!");
-            maxActivity();
-
-            using(var db = new WeeklyPlannerDBContext())
+            //maxActivity(day);
+            
+            using (var db = new WeeklyPlannerDBContext())
             {
+                var count = db.Activities.Include(o=> o.WeekDays).Where(w => w.WeekDays.Day == day.Trim()).ToList().Count();
+                if (count > 15) throw new Exception($"Cannot create any more activities for {day.Trim()}");
+
                 var isCreatedQ = db.Activities.Where(a => a.Name == title.Trim()).FirstOrDefault();
                 if (isCreatedQ != null) throw new ArgumentException("An activity with the same name already exists!");
 

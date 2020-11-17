@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "AfM5upjLhc0+nrmWWo3R0MO3OGhIpbEnQ3FBpRm7+wFqpOXp2p/LcMqDQeKCU+wDKU4IUUga69S5Wygx2Go51A==",
+  "dgSpecHash": "OhGlWOm8mJayz65P2mLrcp8k/jCXjoI2H5BoUGkrDGtK5uP/cuiaPokQjTgFWWEezi8aBqetWuhJQvTHVzeqfQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\saadi\\OneDrive\\Desktop\\Sparta Global\\Weekly-Planner\\Weekly_PlannerSolution\\Weekly_PlannetTests\\Weekly_PlannetTests.csproj",
+  "projectFilePath": "C:\\Users\\saadi\\OneDrive\\Desktop\\Sparta Global\\Mini Projects\\Weekly-Planner\\Weekly_PlannerSolution\\Weekly_PlannetTests\\Weekly_PlannetTests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\saadi\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\saadi\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",

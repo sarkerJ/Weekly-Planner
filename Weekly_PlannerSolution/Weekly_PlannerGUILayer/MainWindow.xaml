@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Weekly_PlannerGUILayer"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Weekly Planner" Height="450" Width="800" >
     <Grid>
-
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -23,7 +23,9 @@
 
 
         <Grid Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="1">
-
+            <Grid.Background>
+            <ImageBrush ImageSource="backgroundimage.jpg"/>
+        </Grid.Background>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="20*"/>
                 <ColumnDefinition Width="13*"/>
@@ -39,13 +41,16 @@
                 <RowDefinition Height="100"/>
             </Grid.RowDefinitions>
 
-            <Label x:Name="LMonday" Grid.Column="0" Grid.Row="0" Content="Monday" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="#FFC9ECF9" BorderBrush="#FFC9DEF7" />
-            <Label x:Name="LTuesday" Grid.Column="1" Grid.Row="0" Content="Tuesday" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Background="#FFC9ECF9" BorderBrush="#FFC9DEF7" Grid.ColumnSpan="2"/>
-            <Label x:Name="LWednesday" Grid.Column="3" Grid.Row="0" Content="Wednesday" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Background="#FFC9ECF9" BorderBrush="#FFC9DEF7" />
-            <Label x:Name="LThursday" Grid.Column="4" Grid.Row="0" Content="Thursday" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Background="#FFC9ECF9" BorderBrush="#FFC9DEF7" />
-            <Label x:Name="LFriday" Grid.Column="5" Grid.Row="0" Content="Friday" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Background="#FFC9ECF9" BorderBrush="#FF93BFF3"/>
+            <Label x:Name="LMonday" Grid.Column="0" Grid.Row="0" Content="Monday" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="#FFC9ECF9" BorderBrush="#FF8585F6" BorderThickness="1" />
+            <Label x:Name="LTuesday" Grid.Column="1" Grid.Row="0" Content="Tuesday" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Background="#FFC9ECF9" BorderBrush="#FF8585F6" BorderThickness="1" Grid.ColumnSpan="2"/>
+            <Label x:Name="LWednesday" Grid.Column="3" Grid.Row="0" Content="Wednesday" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Background="#FFC9ECF9" BorderBrush="#FF8585F6" BorderThickness="1" />
+            <Label x:Name="LThursday" Grid.Column="4" Grid.Row="0" Content="Thursday" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Background="#FFC9ECF9" BorderBrush="#FF8585F6" BorderThickness="1" />
+            <Label x:Name="LFriday" Grid.Column="5" Grid.Row="0" Content="Friday" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Background="#FFC9ECF9" BorderBrush="#FF8585F6" BorderThickness="1"/>
 
-            <ListBox x:Name="ListBoxMonday" Grid.Column="0" Grid.Row="1" Background="#FFE7F1EF" SelectionChanged="ListBoxAll_SelectionChanged" HorizontalContentAlignment="Center" ></ListBox>
+            <ListBox x:Name="ListBoxMonday" Grid.Column="0" Grid.Row="1" Background="#FFE7F1EF" SelectionChanged="ListBoxAll_SelectionChanged" HorizontalContentAlignment="Center"  >
+                
+                
+            </ListBox>
             <ListBox x:Name="ListBoxTuesday" Grid.Column="1" Grid.Row="1" Background="#FFE7F1EF" SelectionChanged="ListBoxAll_SelectionChanged"  HorizontalContentAlignment="Center" Grid.ColumnSpan="2"  ></ListBox>
             <ListBox x:Name="ListBoxWednesday" Grid.Column="3" Grid.Row="1" Background="#FFE7F1EF" SelectionChanged="ListBoxAll_SelectionChanged"  HorizontalContentAlignment="Center"  ></ListBox>
             <ListBox x:Name="ListBoxThursday" Grid.Column="4" Grid.Row="1" Background="#FFE7F1EF" SelectionChanged="ListBoxAll_SelectionChanged"  HorizontalContentAlignment="Center"  ></ListBox>

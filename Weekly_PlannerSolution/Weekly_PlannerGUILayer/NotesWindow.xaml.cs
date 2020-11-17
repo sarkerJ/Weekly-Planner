@@ -93,9 +93,9 @@ namespace Weekly_PlannerGUILayer
             TNName.IsReadOnly = true;
             TNDay.IsReadOnly = true;
             TNPriority.IsReadOnly = true;
-            TNContent.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFC9F9E1"));
-            TNName.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFC9F9E1"));
-            TNDay.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFC9F9E1")); 
+            TNContent.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFC9ECF9"));
+            TNName.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFC9ECF9"));
+            TNDay.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFC9ECF9")); 
             ComboBoxDays2.Visibility = Visibility.Hidden;
             ComboBoxColours2.Visibility = Visibility.Hidden;
         }

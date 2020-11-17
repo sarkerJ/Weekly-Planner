@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\saadi\\OneDrive\\Desktop\\Sparta Global\\Weekly-Planner\\Weekly_PlannerSolution\\Weekly_PlannerDataLayer\\Weekly_PlannerDataLayer.csproj": {}
+    "C:\\Users\\saadi\\OneDrive\\Desktop\\Sparta Global\\Mini Projects\\Weekly-Planner\\Weekly_PlannerSolution\\Weekly_PlannerDataLayer\\Weekly_PlannerDataLayer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\saadi\\OneDrive\\Desktop\\Sparta Global\\Weekly-Planner\\Weekly_PlannerSolution\\Weekly_PlannerDataLayer\\Weekly_PlannerDataLayer.csproj": {
+    "C:\\Users\\saadi\\OneDrive\\Desktop\\Sparta Global\\Mini Projects\\Weekly-Planner\\Weekly_PlannerSolution\\Weekly_PlannerDataLayer\\Weekly_PlannerDataLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\saadi\\OneDrive\\Desktop\\Sparta Global\\Weekly-Planner\\Weekly_PlannerSolution\\Weekly_PlannerDataLayer\\Weekly_PlannerDataLayer.csproj",
+        "projectUniqueName": "C:\\Users\\saadi\\OneDrive\\Desktop\\Sparta Global\\Mini Projects\\Weekly-Planner\\Weekly_PlannerSolution\\Weekly_PlannerDataLayer\\Weekly_PlannerDataLayer.csproj",
         "projectName": "Weekly_PlannerDataLayer",
-        "projectPath": "C:\\Users\\saadi\\OneDrive\\Desktop\\Sparta Global\\Weekly-Planner\\Weekly_PlannerSolution\\Weekly_PlannerDataLayer\\Weekly_PlannerDataLayer.csproj",
+        "projectPath": "C:\\Users\\saadi\\OneDrive\\Desktop\\Sparta Global\\Mini Projects\\Weekly-Planner\\Weekly_PlannerSolution\\Weekly_PlannerDataLayer\\Weekly_PlannerDataLayer.csproj",
         "packagesPath": "C:\\Users\\saadi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\saadi\\OneDrive\\Desktop\\Sparta Global\\Weekly-Planner\\Weekly_PlannerSolution\\Weekly_PlannerDataLayer\\obj\\",
+        "outputPath": "C:\\Users\\saadi\\OneDrive\\Desktop\\Sparta Global\\Mini Projects\\Weekly-Planner\\Weekly_PlannerSolution\\Weekly_PlannerDataLayer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"

@@ -22,7 +22,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <ListBox x:Name="ListBoxActivities" Grid.Row="1" Background="#FFE7F1EF" HorizontalContentAlignment="Center" SelectionChanged="ListBoxActivities_SelectionChanged"></ListBox>
+            <ListBox x:Name="ListBoxActivities" Grid.Row="1" Background="#FFC9ECF9" HorizontalContentAlignment="Center" SelectionChanged="ListBoxActivities_SelectionChanged"></ListBox>
             <ComboBox Name="ComboBoxDays" Grid.Column="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" SelectionChanged="ComboBoxDays_SelectionChanged" ></ComboBox>
         </Grid>
 
@@ -36,12 +36,12 @@
 
             </Grid.RowDefinitions>
 
-            <Label x:Name="LName" Content="Activity Name" Grid.Row="0" HorizontalContentAlignment="Center" Background="#FFC9ECF9"></Label>
-            <Label x:Name="LContent" Content="Activity Content" Grid.Row="2" HorizontalContentAlignment="Center" Background="#FFC9ECF9"></Label>
+            <Label x:Name="LName" Content="Activity Name" Grid.Row="0" HorizontalContentAlignment="Center" Background="LightBlue"></Label>
+            <Label x:Name="LContent" Content="Activity Content" Grid.Row="2" HorizontalContentAlignment="Center" Background="LightBlue"></Label>
 
-            <TextBox x:Name="TName" Grid.Row="1" HorizontalContentAlignment="Center" HorizontalScrollBarVisibility="Auto"></TextBox>
-            <TextBox x:Name="TContent" VerticalContentAlignment="Top" HorizontalContentAlignment="Center" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Row="3" AcceptsReturn="True" ></TextBox>
-            <Button x:Name="BEditActivity" Content="Edit an Activity" Grid.Row="4" Click="BEditActivity_Click"></Button>
+            <TextBox x:Name="TName" Grid.Row="1" HorizontalContentAlignment="Center" HorizontalScrollBarVisibility="Auto" Background="#FFC9ECF9"></TextBox>
+            <TextBox x:Name="TContent" VerticalContentAlignment="Top" HorizontalContentAlignment="Center" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Row="3" AcceptsReturn="True" Background="#FFC9ECF9" ></TextBox>
+            <Button x:Name="BEditActivity" Content="Edit an Activity" Grid.Row="4" Click="BEditActivity_Click" Background="LightCyan"></Button>
 
 
         </Grid>

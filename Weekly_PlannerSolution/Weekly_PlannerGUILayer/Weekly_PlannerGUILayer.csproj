@@ -7,7 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="backgroundimage.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Weekly_Planner_BusinessLayer\Weekly_Planner_BusinessLayer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="backgroundimage.jpg" />
   </ItemGroup>
 
 </Project>

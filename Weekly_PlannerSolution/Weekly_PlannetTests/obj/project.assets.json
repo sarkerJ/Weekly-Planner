@@ -7116,11 +7116,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\saadi\\OneDrive\\Desktop\\Sparta Global\\Weekly-Planner\\Weekly_PlannerSolution\\Weekly_PlannetTests\\Weekly_PlannetTests.csproj",
+      "projectUniqueName": "C:\\Users\\saadi\\OneDrive\\Desktop\\Sparta Global\\Mini Projects\\Weekly-Planner\\Weekly_PlannerSolution\\Weekly_PlannetTests\\Weekly_PlannetTests.csproj",
       "projectName": "Weekly_PlannetTests",
-      "projectPath": "C:\\Users\\saadi\\OneDrive\\Desktop\\Sparta Global\\Weekly-Planner\\Weekly_PlannerSolution\\Weekly_PlannetTests\\Weekly_PlannetTests.csproj",
+      "projectPath": "C:\\Users\\saadi\\OneDrive\\Desktop\\Sparta Global\\Mini Projects\\Weekly-Planner\\Weekly_PlannerSolution\\Weekly_PlannetTests\\Weekly_PlannetTests.csproj",
       "packagesPath": "C:\\Users\\saadi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\saadi\\OneDrive\\Desktop\\Sparta Global\\Weekly-Planner\\Weekly_PlannerSolution\\Weekly_PlannetTests\\obj\\",
+      "outputPath": "C:\\Users\\saadi\\OneDrive\\Desktop\\Sparta Global\\Mini Projects\\Weekly-Planner\\Weekly_PlannerSolution\\Weekly_PlannetTests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -7140,11 +7140,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\saadi\\OneDrive\\Desktop\\Sparta Global\\Weekly-Planner\\Weekly_PlannerSolution\\Weekly_PlannerDataLayer\\Weekly_PlannerDataLayer.csproj": {
-              "projectPath": "C:\\Users\\saadi\\OneDrive\\Desktop\\Sparta Global\\Weekly-Planner\\Weekly_PlannerSolution\\Weekly_PlannerDataLayer\\Weekly_PlannerDataLayer.csproj"
+            "C:\\Users\\saadi\\OneDrive\\Desktop\\Sparta Global\\Mini Projects\\Weekly-Planner\\Weekly_PlannerSolution\\Weekly_PlannerDataLayer\\Weekly_PlannerDataLayer.csproj": {
+              "projectPath": "C:\\Users\\saadi\\OneDrive\\Desktop\\Sparta Global\\Mini Projects\\Weekly-Planner\\Weekly_PlannerSolution\\Weekly_PlannerDataLayer\\Weekly_PlannerDataLayer.csproj"
             },
-            "C:\\Users\\saadi\\OneDrive\\Desktop\\Sparta Global\\Weekly-Planner\\Weekly_PlannerSolution\\Weekly_Planner_BusinessLayer\\Weekly_Planner_BusinessLayer.csproj": {
-              "projectPath": "C:\\Users\\saadi\\OneDrive\\Desktop\\Sparta Global\\Weekly-Planner\\Weekly_PlannerSolution\\Weekly_Planner_BusinessLayer\\Weekly_Planner_BusinessLayer.csproj"
+            "C:\\Users\\saadi\\OneDrive\\Desktop\\Sparta Global\\Mini Projects\\Weekly-Planner\\Weekly_PlannerSolution\\Weekly_Planner_BusinessLayer\\Weekly_Planner_BusinessLayer.csproj": {
+              "projectPath": "C:\\Users\\saadi\\OneDrive\\Desktop\\Sparta Global\\Mini Projects\\Weekly-Planner\\Weekly_PlannerSolution\\Weekly_Planner_BusinessLayer\\Weekly_Planner_BusinessLayer.csproj"
             }
           }
         }

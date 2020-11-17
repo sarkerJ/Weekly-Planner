@@ -22,7 +22,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <ListBox x:Name="ListBoxNotes" Grid.Row="1" Background="#FFD0EFF3" HorizontalContentAlignment="Center" SelectionChanged="ListBoxNotes_SelectionChanged"  >
+            <ListBox x:Name="ListBoxNotes" Grid.Row="1" Background="#FFC9ECF9" HorizontalContentAlignment="Center" SelectionChanged="ListBoxNotes_SelectionChanged"  >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Border>
@@ -68,15 +68,15 @@
 
             </Grid.RowDefinitions>
 
-            <Label x:Name="LNName" Content="Note Name" FontWeight="Bold" Grid.Row="0" HorizontalContentAlignment="Center" Background="#FFCBE8DF"></Label>
-            <Label x:Name="LNColour" Content="Note Priority Colour" FontWeight="Bold" Grid.Row="2" HorizontalContentAlignment="Center" Background="#FFCBE8DF"></Label>
-            <Label x:Name="LNContent" FontWeight="Bold" Content="Note Content" Grid.Row="6" HorizontalContentAlignment="Center" Background="#FFCBE8DF"></Label>
-            <Label x:Name="LNDay" FontWeight="Bold" Content="Day" Grid.Row="4" HorizontalContentAlignment="Center" Background="#FFCBE8DF"></Label>
+            <Label x:Name="LNName" Content="Note Name" FontWeight="Bold" Grid.Row="0" HorizontalContentAlignment="Center" Background="LightBlue"></Label>
+            <Label x:Name="LNColour" Content="Note Priority Colour" FontWeight="Bold" Grid.Row="2" HorizontalContentAlignment="Center" Background="LightBlue"></Label>
+            <Label x:Name="LNContent" FontWeight="Bold" Content="Note Content" Grid.Row="6" HorizontalContentAlignment="Center" Background="LightBlue"></Label>
+            <Label x:Name="LNDay" FontWeight="Bold" Content="Day" Grid.Row="4" HorizontalContentAlignment="Center" Background="LightBlue"></Label>
 
-            <TextBox x:Name="TNName" Grid.Row="1" HorizontalContentAlignment="Center" HorizontalScrollBarVisibility="Auto" IsReadOnly="True" Background="#FFC9F9E1"></TextBox>
-            <TextBox x:Name="TNPriority" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  HorizontalScrollBarVisibility="Auto" Background="#FFC9F9E1" Grid.Row="3" IsReadOnly="True" ></TextBox>
-            <TextBox x:Name="TNDay" VerticalContentAlignment="Top" HorizontalContentAlignment="Center"  HorizontalScrollBarVisibility="Auto" Grid.Row="5" IsReadOnly="True" Background="#FFC9F9E1" ></TextBox>
-            <TextBox x:Name="TNContent" VerticalContentAlignment="Top" HorizontalContentAlignment="Center"  HorizontalScrollBarVisibility="Auto" Grid.Row="7" AcceptsReturn="True" Background="#FFC9F9E1"  IsReadOnly="True"></TextBox>
+            <TextBox x:Name="TNName" Grid.Row="1" HorizontalContentAlignment="Center" HorizontalScrollBarVisibility="Auto" IsReadOnly="True" Background="#FFC9ECF9"></TextBox>
+            <TextBox x:Name="TNPriority" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  HorizontalScrollBarVisibility="Auto" Background="#FFC9ECF9" Grid.Row="3" IsReadOnly="True" ></TextBox>
+            <TextBox x:Name="TNDay" VerticalContentAlignment="Top" HorizontalContentAlignment="Center"  HorizontalScrollBarVisibility="Auto" Grid.Row="5" IsReadOnly="True" Background="#FFC9ECF9" ></TextBox>
+            <TextBox x:Name="TNContent" VerticalContentAlignment="Top" HorizontalContentAlignment="Center"  HorizontalScrollBarVisibility="Auto" Grid.Row="7" AcceptsReturn="True" Background="#FFC9ECF9"  IsReadOnly="True"></TextBox>
 
             <ComboBox Name="ComboBoxDays2" Grid.Row="5"   HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Visibility="Hidden" Background="White" SelectionChanged="ComboBoxAll_SelectionChanged"></ComboBox>
             <ComboBox Name="ComboBoxColours2" Grid.Row="3"  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Visibility="Hidden"  SelectionChanged="ComboBoxAll_SelectionChanged">

@@ -197,7 +197,7 @@ namespace Weekly_PlannerGUILayer {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Weekly_PlannerGUILayer;V1.0.0.0;component/noteswindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Weekly_PlannerGUILayer;component/noteswindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\NotesWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

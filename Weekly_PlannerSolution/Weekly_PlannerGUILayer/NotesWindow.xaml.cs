@@ -43,10 +43,10 @@ namespace Weekly_PlannerGUILayer
             ComboBoxColours2.SelectedItem = ComboBoxColours2.Items.CurrentItem;
         }
 
-        public void currentEditMenuItem()
-        {
+        //public void currentEditMenuItem()
+        //{
 
-        }
+        //}
 
         //Populates the main notes listbox depending on current filter or if there are no filters
         public void fillListBoxNotes1()

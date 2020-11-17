@@ -71,6 +71,8 @@ namespace Weekly_PlannerGUILayer
                         ListBoxThursday.SelectedItem = null;
                         ListBoxFriday.SelectedItem = null;
                         _crudManager.setSelectedActivity(ListBoxMonday.SelectedItem);
+                        
+                        //make a method for this 
                         TTitle.Text = _crudManager.currentActivity.Name;
                         TContent.Text = _crudManager.currentActivity.Content;
                         TDay.Text = _crudManager.currentDay.Day;
@@ -85,6 +87,8 @@ namespace Weekly_PlannerGUILayer
                         ListBoxThursday.SelectedItem = null;
                         ListBoxFriday.SelectedItem = null;
                         _crudManager.setSelectedActivity(ListBoxTuesday.SelectedItem);
+
+                        //
                         TTitle.Text = _crudManager.currentActivity.Name;
                         TContent.Text = _crudManager.currentActivity.Content;
                         TDay.Text = _crudManager.currentDay.Day;
@@ -99,6 +103,8 @@ namespace Weekly_PlannerGUILayer
                         ListBoxThursday.SelectedItem = null;
                         ListBoxFriday.SelectedItem = null;
                         _crudManager.setSelectedActivity(ListBoxWednesday.SelectedItem);
+
+                        //
                         TTitle.Text = _crudManager.currentActivity.Name;
                         TContent.Text = _crudManager.currentActivity.Content;
                         TDay.Text = _crudManager.currentDay.Day;

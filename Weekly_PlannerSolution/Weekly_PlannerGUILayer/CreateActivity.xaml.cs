@@ -37,11 +37,7 @@ namespace Weekly_PlannerGUILayer
 
         private void ComboBoxDays_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(ComboBoxDays.SelectedItem != null)
-            {
-                _crudManager.setSelectedDay(ComboBoxDays.SelectedItem);
-
-            }
+            if(ComboBoxDays.SelectedItem != null) _crudManager.setSelectedDay(ComboBoxDays.SelectedItem);
         }
 
         private void BAdd_Click(object sender, RoutedEventArgs e)

@@ -138,18 +138,32 @@ namespace Weekly_Planner_BusinessLayer
             }
         }
         
+        public void checkInput(string title, string content, int? id = null)
+        {
+            using (var db = new WeeklyPlannerDBContext())
+            {
+                if (title.Count() == 0) throw new ArgumentException("Title cannot be empty!");
+                if (content.Count() == 0) throw new ArgumentException("The Note's content cannot be empty!");
+
+                if(id == null)
+                {
+                    var isCreatedQ = db.Notes.Where(a => a.Title == title.Trim()).FirstOrDefault();
+                    if (isCreatedQ != null) throw new ArgumentException("A Note with the same name already exists!");
+                }
+                else
+                {
+                    var isCreatedQ = db.Notes.Where(a => a.Title == title.Trim() & a.NoteId != id).FirstOrDefault();
+                    if (isCreatedQ != null) throw new ArgumentException("A Note with the same name already exists!");
+                }
+            }
+        }
 
         //Creates a new Note
         public void CreateNote(string colour, string day, string title, string content)
         {
             using(var db = new WeeklyPlannerDBContext())
             {
-                if (title.Count() == 0) throw new ArgumentException("Title cannot be empty!");
-                if (content.Count() == 0) throw new ArgumentException("The Note's content cannot be empty!");
-
-                var isCreatedQ = db.Notes.Where(a => a.Title == title.Trim()).FirstOrDefault();
-                if (isCreatedQ != null) throw new ArgumentException("A Note with the same name already exists!");
-
+                checkInput(title, content);
                 var getDay = db.WeekDays.Where(w => w.Day == day.Trim()).FirstOrDefault();
                 var getColour = db.NotesColourCategories.Where(p => p.Colour == colour.Trim()).FirstOrDefault();
                 Note newNote = new Note()
@@ -171,30 +185,25 @@ namespace Weekly_Planner_BusinessLayer
         {
             using (var db = new WeeklyPlannerDBContext())
             {
-                if (title.Count() == 0) throw new ArgumentException("Title cannot be empty!");
-
-                if (content.Count() == 0) throw new ArgumentException("The Note's content cannot be empty!");
-
-                var isCreatedQ = db.Notes.Where(a => a.Title == title.Trim() & a.NoteId != id ).FirstOrDefault();
-                if (isCreatedQ != null) throw new ArgumentException("A Note with the same name already exists!");
-                
+                checkInput(title.Trim(), content.Trim(), id);
                 var getDay = db.WeekDays.Where(w => w.Day == day.Trim()).FirstOrDefault();
                 var getColour = db.NotesColourCategories.Where(p => p.Colour == colour.Trim()).FirstOrDefault();
-
                 var getNote = db.Notes.Where(w => w.NoteId == id).FirstOrDefault();
+
+
                 getNote.Title = title.Trim();
                 getNote.Content = content.Trim();
                 getNote.WeekDays = getDay;
                 getNote.NotesColourCategorys = getColour;
                 db.SaveChanges();
 
-                setSelectedDay(day.Trim());
+                setSelectedDay(getDay);
                 setSelectedColour(getColour);
             }
         }
 
         //deletes a note
-        public void DeleteNote(int id)
+        public void DeleteNote(int id) //create a generic function -> in base class
         {
             using (var db = new WeeklyPlannerDBContext())
             {

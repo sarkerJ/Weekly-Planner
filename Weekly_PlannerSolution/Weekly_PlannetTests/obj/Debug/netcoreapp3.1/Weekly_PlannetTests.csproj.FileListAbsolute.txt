@@ -140,11 +140,11 @@ C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Weekly_PlannerSolut
 C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannetTests\obj\Debug\netcoreapp3.1\Weekly_PlannetTests.pdb
 C:\Users\saadi\OneDrive\Desktop\Sparta Global\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannetTests\obj\Debug\netcoreapp3.1\Weekly_PlannetTests.genruntimeconfig.cache
 C:\Users\saadi\OneDrive\Desktop\Sparta Global\Mini Projects\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannetTests\bin\Debug\netcoreapp3.1\Weekly_PlannerDataLayer.exe
+C:\Users\saadi\OneDrive\Desktop\Sparta Global\Mini Projects\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannetTests\bin\Debug\netcoreapp3.1\Weekly_Planner_BusinessLayer.exe
 C:\Users\saadi\OneDrive\Desktop\Sparta Global\Mini Projects\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannetTests\bin\Debug\netcoreapp3.1\NUnit3.TestAdapter.dll
 C:\Users\saadi\OneDrive\Desktop\Sparta Global\Mini Projects\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannetTests\bin\Debug\netcoreapp3.1\NUnit3.TestAdapter.pdb
 C:\Users\saadi\OneDrive\Desktop\Sparta Global\Mini Projects\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannetTests\bin\Debug\netcoreapp3.1\nunit.engine.dll
 C:\Users\saadi\OneDrive\Desktop\Sparta Global\Mini Projects\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannetTests\bin\Debug\netcoreapp3.1\nunit.engine.api.dll
-C:\Users\saadi\OneDrive\Desktop\Sparta Global\Mini Projects\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannetTests\bin\Debug\netcoreapp3.1\Weekly_Planner_BusinessLayer.exe
 C:\Users\saadi\OneDrive\Desktop\Sparta Global\Mini Projects\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannetTests\bin\Debug\netcoreapp3.1\Weekly_PlannetTests.deps.json
 C:\Users\saadi\OneDrive\Desktop\Sparta Global\Mini Projects\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannetTests\bin\Debug\netcoreapp3.1\Weekly_PlannetTests.runtimeconfig.json
 C:\Users\saadi\OneDrive\Desktop\Sparta Global\Mini Projects\Weekly-Planner\Weekly_PlannerSolution\Weekly_PlannetTests\bin\Debug\netcoreapp3.1\Weekly_PlannetTests.runtimeconfig.dev.json

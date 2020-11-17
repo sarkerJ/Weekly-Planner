@@ -4,11 +4,21 @@ using System.Text;
 using System.Linq;
 using Weekly_PlannerDataLayer;
 using Microsoft.EntityFrameworkCore;
+using Weekly_PlannerDataLayer.Services;
 
 namespace Weekly_Planner_BusinessLayer
 {
     public class CRUDManagerActivity
     {
+        private ActivityService _activityService;
+        private DayService _dayService;
+
+        public CRUDManagerActivity()
+        {
+            WeeklyPlannerDBContext db = new WeeklyPlannerDBContext();
+            _activityService = new ActivityService(db);
+            _dayService = new DayService(db);
+        }
 
         public Activity currentActivity { get; set; } 
         public WeekDay currentDay { get; set; }
@@ -20,130 +30,77 @@ namespace Weekly_Planner_BusinessLayer
             setSelectedDay();
         }
 
-        public void setSelectedDay(object selectedItem) //baee class empty body
-        {
-                currentDay = (WeekDay)selectedItem;   
-        }
+        public void setSelectedDay(object selectedItem) => currentDay = (WeekDay)selectedItem;
 
-        public void setSelectedDay(string day)
-        {
-            using (var db = new WeeklyPlannerDBContext())
-            {
-                currentDay = db.WeekDays.Where(w => w.Day == day.Trim()).FirstOrDefault();
-            }
-        }
-        public void setSelectedDay()
-        {
-            using (var db = new WeeklyPlannerDBContext())
-            {
-                var getDay = db.Activities.Where(a => a.ActivityId == currentActivity.ActivityId).Include(o => o.WeekDays).FirstOrDefault();
-                currentDay = getDay.WeekDays;
-            }
-        }
+        public void setSelectedDay(string day) => currentDay = _dayService.GetDayByString(day.Trim());
+        
+        public void setSelectedDay() => currentDay = _dayService.GetDayByActivity(currentActivity);
         
         //List Methods
-        public List<Activity> ListOfActivities(string day)
-        {
-            using (var db = new WeeklyPlannerDBContext())
-            {
-                return db.Activities.Include(o=> o.WeekDays).Where(w => w.WeekDays.Day == day.Trim()).ToList();                
-            }
-        }
-        public List<WeekDay> ListOfDays() //should be in a base class
-        {
-            using (var db = new WeeklyPlannerDBContext())
-            {
-                return db.WeekDays.ToList();
-            }
-        }
-        public List<String> ListOfDaysString() //Used for drop down menu for editing an activity     //baseclass
-        {
-            using (var db = new WeeklyPlannerDBContext())
-            {
-                List<String> days = new List<string>();
+        public List<Activity> ListOfActivities(string day) =>  _activityService.GetListOfActivitiesByDay(day.Trim());
 
-                foreach(var item in db.WeekDays.ToList())
-                {
-                    days.Add(item.Day);
-                }
+        public List<WeekDay> ListOfDays() => _dayService.GetListOfDays();
 
-                return days;
-            }
-        }
-
+        public List<String> ListOfDaysString() => _dayService.GetListOfDaysString();
+        
 
         public void checkInput(string title, string content, string day, int? id = null )
         {
-            using (var db = new WeeklyPlannerDBContext())
+            
+            if (title.Count() == 0) throw new ArgumentException("Title cannot be empty!");
+            if (content.Count() == 0) throw new ArgumentException("The activity's content cannot be empty!");
+
+            var count = _activityService.GetActivitiesCountByDay(day.Trim());
+            if (count > 15) throw new Exception($"Cannot create any more activities for {day.Trim()}");
+
+            if (id == null)
             {
-                if (title.Count() == 0) throw new ArgumentException("Title cannot be empty!");
-                if (content.Count() == 0) throw new ArgumentException("The activity's content cannot be empty!");
-
-                var count = db.Activities.Include(o => o.WeekDays).Where(w => w.WeekDays.Day == day.Trim()).ToList().Count(); //make a method
-                if (count > 15) throw new Exception($"Cannot create any more activities for {day.Trim()}");
-
-                if (id == null)
-                {
-                    var isCreatedQ = db.Activities.Where(a => a.Name == title.Trim()).FirstOrDefault();
-                    if (isCreatedQ != null) throw new ArgumentException("An activity with the same name already exists!");
-                }
-                else
-                {
-                    var isCreatedQ = db.Activities.Where(a => a.Name == title.Trim() & a.ActivityId != id ).FirstOrDefault();
-                    if (isCreatedQ != null) throw new ArgumentException("An activity with the same name already exists!");
-                }
-
+                var isCreatedQ = _activityService.GetActivityByName(title.Trim());
+                if (isCreatedQ != null) throw new ArgumentException("An activity with the same name already exists!");
             }
-
+            else
+            {
+                var isCreatedQ = _activityService.GetActivityByNameAndId(title, id);
+                if (isCreatedQ != null) throw new ArgumentException("An activity with the same name already exists!");
+            }
         }
 
-            //Create an Activity
-            public void CreateActivity(string title, string content, string day)
-            {
+        //Create an Activity
+        public void CreateActivity(string title, string content, string day)
+        {
             checkInput(title.Trim(), content.Trim(), day.Trim());
-
-            using (var db = new WeeklyPlannerDBContext())
+            var getDay = _dayService.GetDayByString(day.Trim());
+            Activity newActivity = new Activity()
             {
-                var getDay = db.WeekDays.Where(w => w.Day == day.Trim()).FirstOrDefault();
-
-                Activity newActivity = new Activity()
-                {
-                    Name = title,
-                    Content = content,
-                    WeekDays = getDay
-                };
-
-                db.Activities.Add(newActivity);
-                db.SaveChanges();
-            }
+                Name = title,
+                Content = content,
+                WeekDays = getDay
+            };
+            _activityService.AddActivity(newActivity);
+            _activityService.UpdateActivity();
         }
 
         //Modifying an Activity
         public void EditActivity(int activityID, string title, string content, string day)
         {
             checkInput(title.Trim(), content.Trim(), day.Trim(), activityID);
-            using (var db = new WeeklyPlannerDBContext())
-            {
-                var currentActivity = db.Activities.Where(a => a.ActivityId == activityID).FirstOrDefault();
-                var getDay = db.WeekDays.Where(w => w.Day == day.Trim()).FirstOrDefault();
 
-                currentActivity.Name = title.Trim();
-                currentActivity.Content = content.Trim();
-                currentActivity.WeekDays = getDay;
-                db.SaveChanges();
-            }
+            var currentActivity = _activityService.GetActivityById(activityID);
+            var getDay = _dayService.GetDayByString(day.Trim());
+
+            currentActivity.Name = title.Trim();
+            currentActivity.Content = content.Trim();
+            currentActivity.WeekDays = getDay;
+            _activityService.UpdateActivity();
         }
 
         //Deleting an Activity
         public void DeleteActivity(int activityID)
         {
-            using(var db = new WeeklyPlannerDBContext())
-            {
-                var currentActivity = db.Activities.Where(a => a.ActivityId == activityID).FirstOrDefault();
-                db.Activities.RemoveRange(currentActivity);
-                db.SaveChanges();
-            }
-            currentActivity = null; //used to cause exception if you are trying to delete something again when nothing is selected
+            var currentActivity = _activityService.GetActivityById(activityID);
+            _activityService.DeleteActivity(currentActivity);
+            _activityService.UpdateActivity();
+             currentActivity = null; //used to cause exception if you are trying to delete something again when nothing is selected
         }
 
     }

@@ -16,8 +16,7 @@ namespace Weekly_PlannerDataLayer.Services
         //Get Day
         public WeekDay GetDayByActivity(Activity activity)
         {
-            var getDay = _context.Activities.Where(a => a.ActivityId == activity.ActivityId).Include(o => o.WeekDays).FirstOrDefault();
-            return getDay.WeekDays;
+            return  _context.Activities.Where(a => a.ActivityId == activity.ActivityId).Include(o => o.WeekDays).Select(o => o.WeekDays).FirstOrDefault();
         }
 
         //Get Day List

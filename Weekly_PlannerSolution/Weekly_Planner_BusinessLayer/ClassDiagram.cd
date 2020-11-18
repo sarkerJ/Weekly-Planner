@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Weekly_Planner_BusinessLayer.CRUDManagerActivity" Collapsed="true">
+    <Position X="3" Y="2.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAIAQBAAAkAEAAAAAAEAAAAAAAAAACUAAACAAQ=</HashCode>
+      <FileName>CRUDManagerActivity.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_activityService" />
+      <Field Name="_dayService" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Weekly_Planner_BusinessLayer.CRUDManagerNotes" Collapsed="true">
+    <Position X="7.25" Y="2.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAQAAAAAAAAAgAAEAAECEAAAAAAQIgADQAAIiBAA=</HashCode>
+      <FileName>CRUDManagerNotes.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_dayService" />
+      <Field Name="_notesColourService" />
+      <Field Name="_noteService" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Weekly_PlannerDataLayer.Services.ActivityService" Collapsed="true">
+    <Position X="2.5" Y="0.5" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Weekly_PlannerDataLayer.Services.DayService" Collapsed="true">
+    <Position X="4.75" Y="0.5" Width="2.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Weekly_PlannerDataLayer.Services.NotesColourService" Collapsed="true">
+    <Position X="7.75" Y="0.5" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Weekly_PlannerDataLayer.Services.NoteService" Collapsed="true">
+    <Position X="10.5" Y="0.5" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

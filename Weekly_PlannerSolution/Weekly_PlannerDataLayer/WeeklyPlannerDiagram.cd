@@ -8,7 +8,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Weekly_PlannerDataLayer.NotesColourCategory">
-    <Position X="4.25" Y="6" Width="2.75" />
+    <Position X="10" Y="5" Width="2.75" />
     <TypeIdentifier>
       <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
       <FileName>Model.cs</FileName>
@@ -25,15 +25,47 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Weekly_PlannerDataLayer.Note">
-    <Position X="5" Y="3.25" Width="4" />
+    <Position X="5.25" Y="3" Width="4" />
     <TypeIdentifier>
-      <HashCode>ADQAAAAAAgAAAEAAAgAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Model.cs</FileName>
+      <HashCode>ADQAAAAAAgAAAEAEAgAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Class Customisations\Note.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="WeekDays" />
       <Property Name="NotesColourCategorys" />
+      <Property Name="WeekDays" />
     </ShowAsAssociation>
+  </Class>
+  <Class Name="Weekly_PlannerDataLayer.Services.DayService" Collapsed="true">
+    <Position X="13.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAgAAAAAAABgEAAAAAAAAAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Services\DayService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Weekly_PlannerDataLayer.Services.ActivityService" Collapsed="true">
+    <Position X="15.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAFAAAAAACAhAkAAAAEAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Services\ActivityService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Weekly_PlannerDataLayer.Services.NotesColourService" Collapsed="true">
+    <Position X="13.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAEAgAAAAAAhAAAAAAAAAAA=</HashCode>
+      <FileName>Services\NotesColourService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Weekly_PlannerDataLayer.Services.NoteService" Collapsed="true">
+    <Position X="15.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAgAAAAAACBAQAACAAAAEEAAAAAEAAAAAAAAAIAAA=</HashCode>
+      <FileName>Services\NoteService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

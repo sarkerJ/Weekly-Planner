@@ -168,21 +168,21 @@ namespace Weekly_PlannerGUILayer
         {
             if(ListBoxNotes.SelectedItem != null)
             {
-                _crudManager.setSelectedNote(ListBoxNotes.SelectedItem);
-                TNName.Text = _crudManager.currentNote.Title;
-                TNPriority.Text = _crudManager.currentColour.Colour;
-                TNContent.Text = _crudManager.currentNote.Content;
-                TNDay.Text = _crudManager.currentDay.Day;
+                _crudManager.SetSelectedNote(ListBoxNotes.SelectedItem);
+                TNName.Text = _crudManager.CurrentNote.Title;
+                TNPriority.Text = _crudManager.CurrentColour.Colour;
+                TNContent.Text = _crudManager.CurrentNote.Content;
+                TNDay.Text = _crudManager.CurrentDay.Day;
                 ComboBoxDays2.SelectedItem = TNDay.Text;
                 changeTextBackground();
             }
             else
             {
                 //resetText();
-                TNName.Text = _crudManager.currentNote.Title;
-                TNPriority.Text = _crudManager.currentColour.Colour;
-                TNContent.Text = _crudManager.currentNote.Content;
-                TNDay.Text = _crudManager.currentDay.Day;
+                TNName.Text = _crudManager.CurrentNote.Title;
+                TNPriority.Text = _crudManager.CurrentColour.Colour;
+                TNContent.Text = _crudManager.CurrentNote.Content;
+                TNDay.Text = _crudManager.CurrentDay.Day;
                 ComboBoxDays2.SelectedItem = TNDay.Text;
                 changeTextBackground();
 
@@ -220,7 +220,7 @@ namespace Weekly_PlannerGUILayer
 
                     case "Delete Note":
                         if (ListBoxNotes.SelectedItem == null) throw new ArgumentException("Nothing is Selected");
-                        _crudManager.DeleteNote(_crudManager.currentNote.NoteId);
+                        _crudManager.DeleteNote(_crudManager.CurrentNote.NoteId);
                         fillListBoxNotes1();
                         resetText();
                         ((MainWindow)this.Owner).Focus();
@@ -242,12 +242,12 @@ namespace Weekly_PlannerGUILayer
                     
                         if (ListBoxNotes.SelectedItem == null) throw new ArgumentException("Nothing is Selected");
                         
-                        _crudManager.EditNote(_crudManager.currentNote.NoteId, TNName.Text, TNContent.Text, TNDay.Text, TNPriority.Text);
+                        _crudManager.EditNote(_crudManager.CurrentNote.NoteId, TNName.Text, TNContent.Text, TNDay.Text, TNPriority.Text);
                         disableEdit();
                         bt.Content = "Edit Note";
                         bt.Background = Brushes.LightCyan;
-                        TNDay.Text = _crudManager.currentDay.Day;
-                        TNPriority.Text = _crudManager.currentColour.Colour;
+                        TNDay.Text = _crudManager.CurrentDay.Day;
+                        TNPriority.Text = _crudManager.CurrentColour.Colour;
                         MessageBox.Show("Updated Note");
                         fillListBoxNotes1();
                         ((MainWindow)this.Owner).Focus();

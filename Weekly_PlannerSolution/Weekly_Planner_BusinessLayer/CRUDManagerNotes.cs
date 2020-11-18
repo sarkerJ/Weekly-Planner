@@ -4,213 +4,148 @@ using System.Text;
 using System.Linq;
 using Weekly_PlannerDataLayer;
 using Microsoft.EntityFrameworkCore;
+using Weekly_PlannerDataLayer.Services;
 
 namespace Weekly_Planner_BusinessLayer
 {
     public class CRUDManagerNotes
     {
-        public WeekDay currentDay { get; set; }
+        private readonly NoteService _noteService;
+        private readonly DayService _dayService;
+        private readonly NotesColourService _notesColourService;
 
-        public Note currentNote { get; set; }
+        public CRUDManagerNotes()
+        {
+            WeeklyPlannerDBContext db = new WeeklyPlannerDBContext();
+            _noteService = new NoteService(db);
+            _dayService = new DayService(db);
+            _notesColourService = new NotesColourService(db);
+        }
 
-        public NotesColourCategory currentColour { get; set; }
+        public WeekDay CurrentDay { get; set; }
+
+        public Note CurrentNote { get; set; }
+
+        public NotesColourCategory CurrentColour { get; set; }
 
         //Setting methods
-        public void setSelectedNote(object selectedItem)
+        public void SetSelectedNote(object selectedItem)
         {
-            currentNote = (Note)selectedItem;
-            setSelectedColour(); 
-            setSelectedDay();
+            CurrentNote = (Note)selectedItem;
+            SetSelectedColour(); 
+            SetSelectedDay();
             
         }
-        public void setSelectedDay(object selectedItem)
+        public void SetSelectedDay(object selectedItem)
         {
             try
-            {currentDay = (WeekDay)selectedItem;}
+            {CurrentDay = (WeekDay)selectedItem;}
             catch
-            { setSelectedDay();}
+            { SetSelectedDay();}
         }
 
-        public void setSelectedDay() 
-        {
-            using (var db = new WeeklyPlannerDBContext())
-            {
-                currentDay = db.Notes.Where(a => a.NoteId == currentNote.NoteId)
-                    .Include(o => o.WeekDays)
-                    .Select(s => s.WeekDays)
-                    .FirstOrDefault(); 
-            }
-        }
+        public void SetSelectedDay() => CurrentDay = _dayService.GetDayByNote(CurrentNote);            
 
-        public void setSelectedColour(object selectedItem)
+        public void SetSelectedColour(object selectedItem)
         {
             try
-            {currentColour = (NotesColourCategory)selectedItem;}
+            {CurrentColour = (NotesColourCategory)selectedItem;}
             catch
-            {setSelectedColour();}
+            {SetSelectedColour();}
         }
 
-        public void setSelectedColour()  
-        {
-            using (var db = new WeeklyPlannerDBContext())
-            {
-                currentColour = db.Notes.Where(a => a.NoteId == currentNote.NoteId)
-                    .Include(o => o.NotesColourCategorys)
-                    .Select(o => o.NotesColourCategorys)
-                    .FirstOrDefault(); 
-            }
-        }
-
-
+        public void SetSelectedColour() => CurrentColour = _notesColourService.GetColourByNoteId(CurrentNote);
+        
         //List Methods
-        //This is is for the filtering drop down menu
-        public List<WeekDay> ListOfDays()
-        {
-            using (var db = new WeeklyPlannerDBContext())
-            {
-                return db.WeekDays.ToList();
-            }
-        }
-        //used for drop down menu during edit
-        public List<String> ListOfDaysString() 
-        {
-            using (var db = new WeeklyPlannerDBContext())
-            {
-                List<String> days = new List<string>();
+        public List<WeekDay> ListOfDays() => _dayService.GetListOfDays();
 
-                foreach (var item in db.WeekDays.ToList())
-                {
-                    days.Add(item.Day);
-                }
+        public List<string> ListOfDaysString() => _dayService.GetListOfDaysString();
 
-                return days;
-            }
-        }
-        //used for drop down menu during edit
-        public List<String> ListOfColourStrings()
-        {
-            using (var db = new WeeklyPlannerDBContext())
-            {
-                List<String> colours = new List<string>();
+        public List<string> ListOfColourStrings()=> _notesColourService.GetListOfColourStrings();
 
-                foreach (var item in db.NotesColourCategories.ToList())
-                {
-                    colours.Add(item.Colour);
-                }
+        public List<NotesColourCategory> ListOfColours() => _notesColourService.GetListOfColourObjects();
 
-                return colours;
-            }
-        }
-
-        //Used for the colour filtering drop down menu
-        public List<NotesColourCategory> ListOfColours()
-        {
-            using (var db = new WeeklyPlannerDBContext())
-            {
-                return db.NotesColourCategories.ToList();
-            }
-        }
-
-        //Used for the notes listbox when filtering is used
         public List<Note> ListOfNotes(object selectedItem)
         {
-            using (var db = new WeeklyPlannerDBContext())
+            
+            try
             {
-                try
-                {
-                    var item = (WeekDay)selectedItem;
-                    return db.Notes.Where(o => o.WeekDayId == item.WeekDayId).Include(s => s.WeekDays).Include(o=> o.NotesColourCategorys).ToList();
-                }
-                catch //if its not a weekday object it will do try convert it to a coloured one
-                {
-                    var item = (NotesColourCategory)selectedItem;
-                    return db.Notes.Where(o => o.NotesColourCategoryId == item.NotesColourCategoryId).Include(s => s.NotesColourCategorys).ToList();
-                }
+                var getDay = (WeekDay)selectedItem;
+                return _noteService.GetListOfNoteByDay(getDay);
             }
+            catch //if its not a weekday object it will do try convert it to a coloured one
+            {
+                var getColour = (NotesColourCategory)selectedItem;
+                return _noteService.GetListOfNoteByColour(getColour);
+            }
+            
         }
 
-        //Used to populate list box at the beginning and when no filtering is used
-        public List<Note> ListOfNotes()
-        {
-            using (var db = new WeeklyPlannerDBContext())
-            {
-                return db.Notes.Include(o=> o.NotesColourCategorys).ToList();
-            }
-        }
+        public List<Note> ListOfNotes() =>  _noteService.GetListOfNoteObjects();
         
-        public void checkInput(string title, string content, int? id = null)
+        public void CheckInput(string title, string content, int? id = null)
         {
-            using (var db = new WeeklyPlannerDBContext())
-            {
-                if (title.Count() == 0) throw new ArgumentException("Title cannot be empty!");
-                if (content.Count() == 0) throw new ArgumentException("The Note's content cannot be empty!");
+           
+            if (title.Count() == 0) throw new ArgumentException("Title cannot be empty!");
+            if (content.Count() == 0) throw new ArgumentException("The Note's content cannot be empty!");
 
-                if(id == null)
-                {
-                    var isCreatedQ = db.Notes.Where(a => a.Title == title.Trim()).FirstOrDefault();
-                    if (isCreatedQ != null) throw new ArgumentException("A Note with the same name already exists!");
-                }
-                else
-                {
-                    var isCreatedQ = db.Notes.Where(a => a.Title == title.Trim() & a.NoteId != id).FirstOrDefault();
-                    if (isCreatedQ != null) throw new ArgumentException("A Note with the same name already exists!");
-                }
+            if(id == null)
+            {
+                var isCreatedQ = _noteService.GetNoteByTitle(title.Trim());
+                if (isCreatedQ != null) throw new ArgumentException("A Note with the same name already exists!");
             }
+            else
+            {
+                var isCreatedQ = _noteService.GetNoteByIdAndTitle(id, title.Trim());
+                if (isCreatedQ != null) throw new ArgumentException("A Note with the same name already exists!");
+            }
+            
         }
 
         //Creates a new Note
         public void CreateNote(string colour, string day, string title, string content)
         {
-            using(var db = new WeeklyPlannerDBContext())
+            
+            CheckInput(title, content);
+            var getDay = _dayService.GetDayByString(day.Trim());
+            var getColour = _notesColourService.GetColourByNoteColourString(colour.Trim());
+            Note newNote = new Note()
             {
-                checkInput(title, content);
-                var getDay = db.WeekDays.Where(w => w.Day == day.Trim()).FirstOrDefault();
-                var getColour = db.NotesColourCategories.Where(p => p.Colour == colour.Trim()).FirstOrDefault();
-                Note newNote = new Note()
-                {
-                    Title = title.Trim(),
-                    Content = content.Trim(),
-                    NotesColourCategorys = getColour,
-                    WeekDays = getDay
-                };
-
-                db.Notes.Add(newNote);
-                db.SaveChanges();
-            }
+                Title = title.Trim(),
+                Content = content.Trim(),
+                NotesColourCategorys = getColour,
+                WeekDays = getDay
+            };
+            _noteService.AddNote(newNote);
+            _noteService.UpdateNote();
+            
         }
 
         //Edits a selected note
-        //sets new current day and colour
         public void EditNote(int id, string title, string content, string day, string colour)
         {
-            using (var db = new WeeklyPlannerDBContext())
-            {
-                checkInput(title.Trim(), content.Trim(), id);
-                var getDay = db.WeekDays.Where(w => w.Day == day.Trim()).FirstOrDefault();
-                var getColour = db.NotesColourCategories.Where(p => p.Colour == colour.Trim()).FirstOrDefault();
-                var getNote = db.Notes.Where(w => w.NoteId == id).FirstOrDefault();
+            CheckInput(title.Trim(), content.Trim(), id);
 
+            var getDay = _dayService.GetDayByString(day.Trim());
+            var getColour = _notesColourService.GetColourByNoteColourString(colour.Trim());
+            var getNote = _noteService.GetNoteById(id);
 
-                getNote.Title = title.Trim();
-                getNote.Content = content.Trim();
-                getNote.WeekDays = getDay;
-                getNote.NotesColourCategorys = getColour;
-                db.SaveChanges();
+            getNote.Title = title.Trim();
+            getNote.Content = content.Trim();
+            getNote.WeekDays = getDay;
+            getNote.NotesColourCategorys = getColour;
+            _noteService.UpdateNote();
 
-                setSelectedDay(getDay);
-                setSelectedColour(getColour);
-            }
+            SetSelectedDay(getDay);
+            SetSelectedColour(getColour);
         }
 
         //deletes a note
-        public void DeleteNote(int id) //create a generic function -> in base class
+        public void DeleteNote(int id) 
         {
-            using (var db = new WeeklyPlannerDBContext())
-            {
-                var getNote = db.Notes.Where(w => w.NoteId == id).FirstOrDefault();
-                db.Notes.RemoveRange(getNote);
-                db.SaveChanges();
-            }
+            var getNote = _noteService.GetNoteById(id);
+            _noteService.DeleteNote(getNote);
+            _noteService.UpdateNote();   
         }
     }
 }

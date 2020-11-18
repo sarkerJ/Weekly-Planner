@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Weekly_PlannerDataLayer.Services
 {
-    interface IDayService
+    interface IDayService 
     {
         WeekDay GetDayByString(string day);
 
@@ -13,6 +13,8 @@ namespace Weekly_PlannerDataLayer.Services
         List<String> GetListOfDaysString();
 
         WeekDay GetDayByActivity(Activity activity);
+
+        WeekDay GetDayByNote(Note note);
 
     }
 }

@@ -394,13 +394,13 @@ namespace Weekly_PlannetTests
 
                 var getNote = db.Notes.Where(w => w.Title == "Test").FirstOrDefault();
 
-                _crudManager.setSelectedNote(getNote);
+                _crudManager.SetSelectedNote(getNote);
 
-                Assert.AreEqual(getNote.NoteId, _crudManager.currentNote.NoteId);
-                Assert.AreEqual(getNote.Title, _crudManager.currentNote.Title);
-                Assert.AreEqual(getNote.Content, _crudManager.currentNote.Content);
-                Assert.AreEqual(getNote.NotesColourCategoryId, _crudManager.currentColour.NotesColourCategoryId);
-                Assert.AreEqual(getNote.WeekDayId, _crudManager.currentDay.WeekDayId);
+                Assert.AreEqual(getNote.NoteId, _crudManager.CurrentNote.NoteId);
+                Assert.AreEqual(getNote.Title, _crudManager.CurrentNote.Title);
+                Assert.AreEqual(getNote.Content, _crudManager.CurrentNote.Content);
+                Assert.AreEqual(getNote.NotesColourCategoryId, _crudManager.CurrentColour.NotesColourCategoryId);
+                Assert.AreEqual(getNote.WeekDayId, _crudManager.CurrentDay.WeekDayId);
             }
         }
 
@@ -411,10 +411,10 @@ namespace Weekly_PlannetTests
             {
                 var getDay = db.WeekDays.Where(w => w.Day == "Monday").FirstOrDefault();
 
-                _crudManager.setSelectedDay(getDay);
+                _crudManager.SetSelectedDay(getDay);
 
-                Assert.AreEqual(getDay.WeekDayId, _crudManager.currentDay.WeekDayId);
-                Assert.AreEqual(getDay.Day, _crudManager.currentDay.Day);
+                Assert.AreEqual(getDay.WeekDayId, _crudManager.CurrentDay.WeekDayId);
+                Assert.AreEqual(getDay.Day, _crudManager.CurrentDay.Day);
             }
         }
 
@@ -425,10 +425,10 @@ namespace Weekly_PlannetTests
             {
                 var getColour = db.NotesColourCategories.Where(p => p.Colour == "Red").FirstOrDefault();
 
-                _crudManager.setSelectedColour(getColour);
+                _crudManager.SetSelectedColour(getColour);
 
-                Assert.AreEqual(getColour.NotesColourCategoryId, _crudManager.currentColour.NotesColourCategoryId);
-                Assert.AreEqual(getColour.Colour, _crudManager.currentColour.Colour);
+                Assert.AreEqual(getColour.NotesColourCategoryId, _crudManager.CurrentColour.NotesColourCategoryId);
+                Assert.AreEqual(getColour.Colour, _crudManager.CurrentColour.Colour);
             }
         }
     }

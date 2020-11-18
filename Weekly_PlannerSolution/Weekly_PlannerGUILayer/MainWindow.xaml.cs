@@ -209,8 +209,8 @@ namespace Weekly_PlannerGUILayer
                         MessageBox.Show("Updated Activity");
 
                     }
-                    catch (Exception ex)
-                    { MessageBox.Show(ex.Message, "Missing input values!", MessageBoxButton.OK, MessageBoxImage.Warning);}
+                    catch (Exception ex) //there is a bug -> once messagebox dissapear the text content remains with the wrong day until you click out and click back the activity
+                    { MessageBox.Show(ex.Message, "Missing/Wrong input values!", MessageBoxButton.OK, MessageBoxImage.Warning);} 
 
                     bt.Content = "Edit Activity";
                     isDisabled();

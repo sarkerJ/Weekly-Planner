@@ -11,28 +11,21 @@ namespace Weekly_PlannerDataLayer.Services
     {
         private readonly WeeklyPlannerDBContext _context;
 
-        public DayService (WeeklyPlannerDBContext service)
-        {
-            _context = service;
-        }
-
+        public DayService (WeeklyPlannerDBContext context) => _context = context;
         public WeekDay GetDayByActivity(Activity activity)
         {
             var getDay = _context.Activities.Where(a => a.ActivityId == activity.ActivityId).Include(o => o.WeekDays).FirstOrDefault();
-
             return getDay.WeekDays;
-
         }
 
-        public WeekDay GetDayByString(string day)
+        public WeekDay GetDayByNote(Note note)
         {
-           return _context.WeekDays.Where(w => w.Day == day.Trim()).FirstOrDefault();
+            return _context.Notes.Where(a => a.NoteId == note.NoteId).Include(o => o.WeekDays).Select(s => s.WeekDays).FirstOrDefault();
         }
 
-        public List<WeekDay> GetListOfDays()
-        {
-            return _context.WeekDays.ToList();
-        }
+        public WeekDay GetDayByString(string day) => _context.WeekDays.Where(w => w.Day == day.Trim()).FirstOrDefault();
+
+        public List<WeekDay> GetListOfDays() => _context.WeekDays.ToList();
 
         public List<String> GetListOfDaysString()
         {

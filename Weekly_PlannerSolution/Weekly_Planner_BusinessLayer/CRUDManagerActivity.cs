@@ -55,7 +55,7 @@ namespace Weekly_Planner_BusinessLayer
 
             if (id == null)
             {
-                var isCreatedQ = _activityService.GetActivityByName(title.Trim());
+                var isCreatedQ = _activityService.GetActivityByName(title);
                 if (isCreatedQ != null) throw new ArgumentException("An activity with the same name already exists!");
             }
             else
@@ -83,7 +83,7 @@ namespace Weekly_Planner_BusinessLayer
         //Modifying an Activity
         public void EditActivity(int activityID, string title, string content, string day)
         {
-            checkInput(title.Trim(), content.Trim(), day.Trim(), activityID);
+            checkInput(title, content, day, activityID);
 
             var currentActivity = _activityService.GetActivityById(activityID);
             var getDay = _dayService.GetDayByString(day.Trim());

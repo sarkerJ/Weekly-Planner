@@ -12,21 +12,15 @@ namespace Weekly_PlannerDataLayer.Services
         
         public NotesColourService (WeeklyPlannerDBContext context) => _context = context;
 
-        public NotesColourCategory GetColourByNoteColourString(string colour)
-        {
-           return _context.NotesColourCategories.Where(p => p.Colour == colour.Trim()).FirstOrDefault();
-        }
+        //Get Colour
+        public NotesColourCategory GetColourByNoteColourString(string colour) =>_context.NotesColourCategories.Where(p => p.Colour == colour.Trim()).FirstOrDefault();
+        
+        public NotesColourCategory GetColourByNoteId(Note note) => _context.Notes.Where(a => a.NoteId == note.NoteId).Include(o => o.NotesColourCategorys).Select(o => o.NotesColourCategorys).FirstOrDefault();
+        
 
-        public NotesColourCategory GetColourByNoteId(Note note)
-        {
-            return _context.Notes.Where(a => a.NoteId == note.NoteId).Include(o => o.NotesColourCategorys).Select(o => o.NotesColourCategorys).FirstOrDefault();
-        }
-
-        public List<NotesColourCategory> GetListOfColourObjects()
-        {
-            return _context.NotesColourCategories.ToList();
-        }
-
+        //Get Colour List
+        public List<NotesColourCategory> GetListOfColourObjects() => _context.NotesColourCategories.ToList();
+        
         public List<string> GetListOfColourStrings()
         {
             List<String> colours = new List<string>();

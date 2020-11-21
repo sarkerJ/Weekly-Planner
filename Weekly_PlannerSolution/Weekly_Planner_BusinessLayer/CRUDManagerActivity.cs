@@ -51,6 +51,11 @@ namespace Weekly_Planner_BusinessLayer
 
         public List<String> ListOfDaysString() => _dayService.GetListOfDaysString();
         
+        public void IsMaxReached(string day)
+        {
+            var count = _activityService.GetActivitiesCountByDay(day.Trim());
+            if (count > 15) throw new Exception($"Cannot create any more activities for {day.Trim()}");
+        }
 
         public void checkInput(string title, string content, string day, int? id = null )
         {
@@ -58,11 +63,10 @@ namespace Weekly_Planner_BusinessLayer
             if (title.Count() == 0) throw new ArgumentException("Title cannot be empty!");
             if (content.Count() == 0) throw new ArgumentException("The activity's content cannot be empty!");
 
-            var count = _activityService.GetActivitiesCountByDay(day.Trim());
-            if (count > 15) throw new Exception($"Cannot create any more activities for {day.Trim()}");
-
+            
             if (id == null)
             {
+                IsMaxReached(day);
                 var isCreatedQ = _activityService.GetActivityByName(title);
                 if (isCreatedQ != null) throw new ArgumentException("An activity with the same name already exists!");
             }

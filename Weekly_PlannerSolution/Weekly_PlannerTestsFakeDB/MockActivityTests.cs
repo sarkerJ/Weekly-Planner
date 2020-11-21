@@ -16,14 +16,14 @@ namespace Weekly_PlannetTests
     {
         private Mock<IActivityService> _mockActivityService;
         private Mock<IDayService> _mockDayService;
-        private Mock<CRUDManagerActivity> _crudActivity;
+        //private Mock<CRUDManagerActivity> _crudActivity;
 
         private CRUDManagerActivity _crudActivity1;
 
         [SetUp]
         public void SetUp()
         {
-            _crudActivity = new Mock<CRUDManagerActivity>();
+            //_crudActivity = new Mock<CRUDManagerActivity>();
 
             _mockActivityService = new Mock<IActivityService>();
             _mockDayService = new Mock<IDayService>();
@@ -87,7 +87,7 @@ namespace Weekly_PlannetTests
         {
             Activity activity = new Activity() { ActivityId = 1, Name = "Actvity1", Content = "Content", WeekDayId = 2 };
             _mockActivityService.Setup(s => s.GetActivityById(1)).Returns(activity);
-            _crudActivity1.DeleteActivity(1);
+            _crudActivity1.Delete(1);
 
             _mockActivityService.Verify(x => x.DeleteActivity(activity), Times.Once); //spy
             _mockActivityService.Verify(x => x.DeleteActivity(activity), Times.AtMostOnce); //spy

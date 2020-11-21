@@ -270,7 +270,7 @@ namespace Weekly_PlannetTests
 
                 var getNote = db.Notes.Where(w => w.Title == "Test").FirstOrDefault();
 
-                _crudManager.DeleteNote(getNote.NoteId);
+                _crudManager.Delete(getNote.NoteId);
 
                 var newCount = db.Notes.Count();
 

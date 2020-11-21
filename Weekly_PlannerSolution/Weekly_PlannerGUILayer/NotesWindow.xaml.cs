@@ -24,18 +24,18 @@ namespace Weekly_PlannerGUILayer
         public NotesWindow()
         {
             InitializeComponent(); 
-            fillUpComboBox();
+            FillUpComboBox();
             ListBoxNotes.SelectedItem = ListBoxNotes.Items.CurrentItem;
         }
 
         //Populates the data for the 2 Filters in the window (colour, Day)
-        public void fillUpComboBox()
+        public void FillUpComboBox()
         {
             ComboBoxDays.ItemsSource = _crudManager.ListOfDays();
             ComboBoxDays.DisplayMemberPath = "Day";
             ComboBoxColours.ItemsSource = _crudManager.ListOfColours();
             ComboBoxColours.DisplayMemberPath = "Colour";
-            fillListBoxNotes1();
+            FillListBoxNotes1();
 
             ComboBoxDays2.ItemsSource = _crudManager.ListOfDaysString();
             ComboBoxDays2.SelectedItem = ComboBoxDays2.Items.CurrentItem;
@@ -43,13 +43,8 @@ namespace Weekly_PlannerGUILayer
             ComboBoxColours2.SelectedItem = ComboBoxColours2.Items.CurrentItem;
         }
 
-        //public void currentEditMenuItem()
-        //{
-
-        //}
-
         //Populates the main notes listbox depending on current filter or if there are no filters
-        public void fillListBoxNotes1()
+        public void FillListBoxNotes1()
         {
             if (ComboBoxDays.SelectedItem != null)
             {ListBoxNotes.ItemsSource = _crudManager.ListOfNotes(ComboBoxDays.SelectedItem);}
@@ -62,7 +57,7 @@ namespace Weekly_PlannerGUILayer
         }
 
         //resets textbox content
-        public void resetText()
+        public void ResetText()
         {
             TNContent.Text = "";
             TNName.Text = "";
@@ -72,7 +67,7 @@ namespace Weekly_PlannerGUILayer
         //Changes textbox properties so you can edit
         //Changes background so it is obvious that you can edit
         //Shows the 2 drop down menus
-        public void allowEdit()
+        public void AllowEdit()
         {
             TNContent.IsReadOnly = false;
             TNName.IsReadOnly = false;
@@ -87,7 +82,7 @@ namespace Weekly_PlannerGUILayer
 
         //Disables everything that allows user input
         //sets everything to its state before allowEdit was used
-        public void disableEdit()
+        public void DisableEdit()
         {
             TNContent.IsReadOnly = true;
             TNName.IsReadOnly = true;
@@ -101,7 +96,7 @@ namespace Weekly_PlannerGUILayer
         }
         
         //changes foreground of the PriorityTextbox based on content
-        public void changeTextBackground()
+        public void ChangeTextBackground()
         {
             switch (TNPriority.Text)
             {
@@ -142,7 +137,7 @@ namespace Weekly_PlannerGUILayer
                 //Used edit a current note (mainly the day)
                 case "ComboBoxDays2":
                     TNDay.Text = ComboBoxDays2.SelectedItem.ToString();
-                    changeTextBackground();
+                    ChangeTextBackground();
                     break;
 
                 //Used for filtering by colour ONLY
@@ -158,9 +153,18 @@ namespace Weekly_PlannerGUILayer
                 //used to edit a current note (mainly the colour)
                 case "ComboBoxColours2":
                     TNPriority.Text = ComboBoxColours2.SelectedItem.ToString();
-                    changeTextBackground();
+                    ChangeTextBackground();
                     break;
             }
+        }
+
+        public void FillUpText_BasedOnNote()
+        {
+            TNName.Text = _crudManager.CurrentNote.Title;
+            TNPriority.Text = _crudManager.CurrentColour.Colour;
+            TNContent.Text = _crudManager.CurrentNote.Content;
+            TNDay.Text = _crudManager.CurrentDay.Day;
+            ComboBoxDays2.SelectedItem = TNDay.Text;
         }
 
         //Populates text boxes based on selected Note Item
@@ -169,22 +173,14 @@ namespace Weekly_PlannerGUILayer
             if(ListBoxNotes.SelectedItem != null)
             {
                 _crudManager.SetSelectedNote(ListBoxNotes.SelectedItem);
-                TNName.Text = _crudManager.CurrentNote.Title;
-                TNPriority.Text = _crudManager.CurrentColour.Colour;
-                TNContent.Text = _crudManager.CurrentNote.Content;
-                TNDay.Text = _crudManager.CurrentDay.Day;
-                ComboBoxDays2.SelectedItem = TNDay.Text;
-                changeTextBackground();
+                FillUpText_BasedOnNote();
+                ChangeTextBackground();
             }
             else
             {
                 //resetText();
-                TNName.Text = _crudManager.CurrentNote.Title;
-                TNPriority.Text = _crudManager.CurrentColour.Colour;
-                TNContent.Text = _crudManager.CurrentNote.Content;
-                TNDay.Text = _crudManager.CurrentDay.Day;
-                ComboBoxDays2.SelectedItem = TNDay.Text;
-                changeTextBackground();
+                FillUpText_BasedOnNote();
+                ChangeTextBackground();
 
             } 
             
@@ -199,10 +195,10 @@ namespace Weekly_PlannerGUILayer
                 switch (bt.Content)
                 {
                     case "Create New Note":
-                        resetText();
+                        ResetText();
                         TNDay.Text = ComboBoxDays2.SelectedItem.ToString();
                         TNPriority.Text = ComboBoxColours2.SelectedItem.ToString();
-                        allowEdit();
+                        AllowEdit();
                         bt.Content = "Add Note";
                         bt.Background = Brushes.DarkCyan;
                         break;
@@ -210,27 +206,27 @@ namespace Weekly_PlannerGUILayer
                     case "Add Note":
                    
                         _crudManager.CreateNote(TNPriority.Text, TNDay.Text, TNName.Text, TNContent.Text);
-                        disableEdit();
+                        DisableEdit();
                         bt.Content = "Create New Note";
                         MessageBox.Show("Created New Note");
-                        fillListBoxNotes1();
+                        FillListBoxNotes1();
                         ((MainWindow)this.Owner).Focus();
                         bt.Background = Brushes.LightCyan;
                         break;
 
                     case "Delete Note":
                         if (ListBoxNotes.SelectedItem == null) throw new ArgumentException("Nothing is Selected");
-                        _crudManager.DeleteNote(_crudManager.CurrentNote.NoteId);
-                        fillListBoxNotes1();
-                        resetText();
+                        _crudManager.Delete(_crudManager.CurrentNote.NoteId);
+                        FillListBoxNotes1();
+                        ResetText();
                         ((MainWindow)this.Owner).Focus();
-                        resetText();
+                        ResetText();
                         break;
 
                     case "Edit Note":
                     
                         if (ListBoxNotes.SelectedItem == null) throw new ArgumentException("Nothing is Selected");
-                        allowEdit();
+                        AllowEdit();
                         ComboBoxDays2.SelectedItem = TNDay.Text;
                         ComboBoxColours2.SelectedItem = TNPriority.Text;
                         bt.Content = "Update Note";
@@ -243,13 +239,13 @@ namespace Weekly_PlannerGUILayer
                         if (ListBoxNotes.SelectedItem == null) throw new ArgumentException("Nothing is Selected");
                         
                         _crudManager.EditNote(_crudManager.CurrentNote.NoteId, TNName.Text, TNContent.Text, TNDay.Text, TNPriority.Text);
-                        disableEdit();
+                        DisableEdit();
                         bt.Content = "Edit Note";
                         bt.Background = Brushes.LightCyan;
                         TNDay.Text = _crudManager.CurrentDay.Day;
                         TNPriority.Text = _crudManager.CurrentColour.Colour;
                         MessageBox.Show("Updated Note");
-                        fillListBoxNotes1();
+                        FillListBoxNotes1();
                         ((MainWindow)this.Owner).Focus();
                         break;
 
@@ -258,8 +254,8 @@ namespace Weekly_PlannerGUILayer
                         ComboBoxDays.Text = "--Select Day Filter --";
                         ComboBoxColours.SelectedItem = null;
                         ComboBoxColours.Text = "--Select Colour Filter --";
-                        fillListBoxNotes1();
-                        resetText();
+                        FillListBoxNotes1();
+                        ResetText();
                         break;
                 }
             }

@@ -216,7 +216,7 @@ namespace Weekly_PlannetTests
                 db.SaveChanges();
 
                 var getActivity = db.Activities.Where(a => a.Name == "Test").Select(s => new { s.ActivityId }).FirstOrDefault();
-                _crudManager.DeleteActivity(getActivity.ActivityId);
+                _crudManager.Delete(getActivity.ActivityId);
 
                 var deletedActivity = db.Activities.Where(a => a.ActivityId == getActivity.ActivityId).FirstOrDefault();
 

@@ -9,7 +9,7 @@
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAgBAAAAAQBAAAkAAAAAAAAAAAAARAAQAACQAAAiBAQ=</HashCode>
+      <HashCode>AAgBAAAAAQBAAAgAAAAAAAAAAAEARAAQAACQAAAiBAQ=</HashCode>
       <FileName>CRUDManagerActivity.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -37,7 +37,7 @@
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAgBAQAAAAAAAAAgAAEAAECEAAAAAAQIgADQAAIiBAA=</HashCode>
+      <HashCode>AAgBAQAAAAAAAAAgAAEAAECAAAEAAAQIgADQAAIiBAA=</HashCode>
       <FileName>CRUDManagerNotes.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -79,9 +79,9 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Weekly_Planner_BusinessLayer.CRUDManager" Collapsed="true">
-    <Position X="3.25" Y="6.25" Width="1.5" />
+    <Position X="1.75" Y="7" Width="5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAiAAA=</HashCode>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAQAAAiAAA=</HashCode>
       <FileName>CRUDManager.cs</FileName>
     </TypeIdentifier>
   </Class>

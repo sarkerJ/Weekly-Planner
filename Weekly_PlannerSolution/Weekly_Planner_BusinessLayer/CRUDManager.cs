@@ -15,5 +15,9 @@ namespace Weekly_Planner_BusinessLayer
         public abstract List<WeekDay> ListOfDays();
 
         public abstract List<string> ListOfDaysString();
+
+        public abstract void SetSelectedDay();
+
+        public abstract void Delete(int id);
     }
 }

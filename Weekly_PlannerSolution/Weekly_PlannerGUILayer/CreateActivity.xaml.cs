@@ -19,16 +19,15 @@ namespace Weekly_PlannerGUILayer
     /// </summary>
     public partial class CreateActivity : Window
     {
-        CRUDManagerActivity _crudManager = new CRUDManagerActivity();
+        readonly CRUDManagerActivity _crudManager = new CRUDManagerActivity();
         public CreateActivity()
         {
             InitializeComponent();
-            fillUpComboBox();
+            FillUpComboBox();
         }
 
-        public void fillUpComboBox()
+        public void FillUpComboBox()
         {
-            
             ComboBoxDays.ItemsSource = _crudManager.ListOfDays();
             ComboBoxDays.DisplayMemberPath = "Day";
             ComboBoxDays.SelectedItem = ComboBoxDays.Items.CurrentItem;
@@ -46,7 +45,7 @@ namespace Weekly_PlannerGUILayer
             {
                 _crudManager.CreateActivity(TName.Text, TContent.Text, _crudManager.CurrentDay.Day);
                 this.Close();
-                ((MainWindow)this.Owner).fillUpLists();
+                ((MainWindow)this.Owner).FillUpLists();
             }
             catch(Exception ex)
             {

@@ -54,7 +54,7 @@ namespace Weekly_Planner_BusinessLayer
             { SetSelectedDay();}
         }
 
-        public void SetSelectedDay() => CurrentDay = _dayService.GetDayByNote(CurrentNote);            
+        public override void SetSelectedDay() => CurrentDay = _dayService.GetDayByNote(CurrentNote);            
 
         public void SetSelectedColour(object selectedItem)
         {
@@ -151,7 +151,7 @@ namespace Weekly_Planner_BusinessLayer
         }
 
         //deletes a note
-        public void DeleteNote(int id) 
+        public override void Delete(int id) 
         {
             var getNote = _noteService.GetNoteById(id);
             _noteService.DeleteNote(getNote);

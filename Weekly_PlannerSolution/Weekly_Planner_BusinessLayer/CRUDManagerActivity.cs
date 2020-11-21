@@ -10,7 +10,7 @@ namespace Weekly_Planner_BusinessLayer
 {
     public class CRUDManagerActivity : CRUDManager
     {
-        private WeeklyPlannerDBContext _dbContext;
+        private readonly WeeklyPlannerDBContext _dbContext;
         
         private readonly IActivityService _activityService;
         private readonly IDayService _dayService;
@@ -42,7 +42,7 @@ namespace Weekly_Planner_BusinessLayer
 
         public void SetSelectedDay(string day) => CurrentDay = _dayService.GetDayByString(day.Trim());
         
-        public void SetSelectedDay() => CurrentDay = _dayService.GetDayByActivity(CurrentActivity);
+        public override void SetSelectedDay() => CurrentDay = _dayService.GetDayByActivity(CurrentActivity);
         
         //List Methods
         public List<Activity> ListOfActivities(string day) =>  _activityService.GetListOfActivitiesByDay(day.Trim());
@@ -82,12 +82,7 @@ namespace Weekly_Planner_BusinessLayer
         {
             CheckInput(title.Trim(), content.Trim(), day.Trim());
             var getDay = _dayService.GetDayByString(day.Trim());
-            Activity newActivity = new Activity()
-            {
-                Name = title,
-                Content = content,
-                WeekDays = getDay
-            };
+            Activity newActivity = new Activity(){Name = title, Content = content, WeekDays = getDay};
             _activityService.AddActivity(newActivity);
             _activityService.UpdateActivity();
         }
@@ -107,7 +102,7 @@ namespace Weekly_Planner_BusinessLayer
         }
 
         //Deleting an Activity
-        public void DeleteActivity(int activityID)
+        public override void Delete(int activityID)
         {
             var currentActivity = _activityService.GetActivityById(activityID);
             _activityService.DeleteActivity(currentActivity);

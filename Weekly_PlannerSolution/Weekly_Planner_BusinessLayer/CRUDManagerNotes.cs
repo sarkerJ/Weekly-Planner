@@ -8,19 +8,29 @@ using Weekly_PlannerDataLayer.Services;
 
 namespace Weekly_Planner_BusinessLayer
 {
-    public class CRUDManagerNotes
+    public class CRUDManagerNotes : CRUDManager
     {
-        private readonly NoteService _noteService;
-        private readonly DayService _dayService;
-        private readonly NotesColourService _notesColourService;
+        readonly WeeklyPlannerDBContext _dbContext;
+
+        private readonly INoteService _noteService;
+        private readonly IDayService _dayService;
+        private readonly INoteColourService _notesColourService;
 
         public CRUDManagerNotes()
         {
-            WeeklyPlannerDBContext db = new WeeklyPlannerDBContext();
-            _noteService = new NoteService(db);
-            _dayService = new DayService(db);
-            _notesColourService = new NotesColourService(db);
+            _dbContext = new WeeklyPlannerDBContext();
+            _noteService = new NoteService(_dbContext);
+            _dayService = new DayService(_dbContext);
+            _notesColourService = new NotesColourService(_dbContext);
         }
+        
+        public CRUDManagerNotes(INoteService noteService, INoteColourService colourService, IDayService dayService)
+        {
+            _noteService = noteService;
+            _dayService = dayService;
+            _notesColourService = colourService;
+        }
+
 
         public WeekDay CurrentDay { get; set; }
 
@@ -57,9 +67,9 @@ namespace Weekly_Planner_BusinessLayer
         public void SetSelectedColour() => CurrentColour = _notesColourService.GetColourByNoteId(CurrentNote);
         
         //List Methods
-        public List<WeekDay> ListOfDays() => _dayService.GetListOfDays();
+        public override List<WeekDay> ListOfDays() => _dayService.GetListOfDays();
 
-        public List<string> ListOfDaysString() => _dayService.GetListOfDaysString();
+        public override List<string> ListOfDaysString() => _dayService.GetListOfDaysString();
 
         public List<string> ListOfColourStrings()=> _notesColourService.GetListOfColourStrings();
 
@@ -83,7 +93,7 @@ namespace Weekly_Planner_BusinessLayer
 
         public List<Note> ListOfNotes() =>  _noteService.GetListOfNoteObjects();
         
-        public void CheckInput(string title, string content, int? id = null)
+        public override void CheckInput(string title, string content, string day = null, int? id = null)
         {
            
             if (title.Count() == 0) throw new ArgumentException("Title cannot be empty!");
@@ -124,7 +134,7 @@ namespace Weekly_Planner_BusinessLayer
         //Edits a selected note
         public void EditNote(int id, string title, string content, string day, string colour)
         {
-            CheckInput(title.Trim(), content.Trim(), id);
+            CheckInput(title.Trim(), content.Trim(), null ,id);
 
             var getDay = _dayService.GetDayByString(day.Trim());
             var getColour = _notesColourService.GetColourByNoteColourString(colour.Trim());

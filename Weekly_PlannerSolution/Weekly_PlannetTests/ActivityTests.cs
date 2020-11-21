@@ -232,10 +232,10 @@ namespace Weekly_PlannetTests
             {
                 var getDay = db.WeekDays.Where(w => w.Day == "Monday").FirstOrDefault();
 
-                _crudManager.setSelectedDay(getDay);
+                _crudManager.SetSelectedDay(getDay);
 
-                Assert.AreEqual(getDay.WeekDayId, _crudManager.currentDay.WeekDayId);
-                Assert.AreEqual(getDay.Day, _crudManager.currentDay.Day);
+                Assert.AreEqual(getDay.WeekDayId, _crudManager.CurrentDay.WeekDayId);
+                Assert.AreEqual(getDay.Day, _crudManager.CurrentDay.Day);
             }
         }
 
@@ -272,12 +272,12 @@ namespace Weekly_PlannetTests
 
                 var getActivity = db.Activities.Where(a => a.Name == "Test").FirstOrDefault();
 
-                _crudManager.setSelectedActivity(getActivity);
+                _crudManager.SetSelectedActivity(getActivity);
 
-                Assert.AreEqual(getActivity.ActivityId, _crudManager.currentActivity.ActivityId);
-                Assert.AreEqual(getActivity.Name, _crudManager.currentActivity.Name);
-                Assert.AreEqual(getActivity.Content, _crudManager.currentActivity.Content);
-                Assert.AreEqual(getActivity.WeekDayId, _crudManager.currentDay.WeekDayId);
+                Assert.AreEqual(getActivity.ActivityId, _crudManager.CurrentActivity.ActivityId);
+                Assert.AreEqual(getActivity.Name, _crudManager.CurrentActivity.Name);
+                Assert.AreEqual(getActivity.Content, _crudManager.CurrentActivity.Content);
+                Assert.AreEqual(getActivity.WeekDayId, _crudManager.CurrentDay.WeekDayId);
 
             }
         }

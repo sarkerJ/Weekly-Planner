@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Weekly_PlannerDataLayer.Services
 {
-    interface INoteService 
+    public interface INoteService 
     {
         List<Note> GetListOfNoteByColour(NotesColourCategory colour);
         List<Note> GetListOfNoteByDay(WeekDay day);

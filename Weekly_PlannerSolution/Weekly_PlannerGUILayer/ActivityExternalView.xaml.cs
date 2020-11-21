@@ -31,7 +31,7 @@ namespace Weekly_PlannerGUILayer
         {
             if (ComboBoxDays.SelectedItem != null)
             {
-                _crudManager.setSelectedDay(ComboBoxDays.SelectedItem);
+                _crudManager.SetSelectedDay(ComboBoxDays.SelectedItem);
                 populateListBox();
             }
         }
@@ -42,16 +42,16 @@ namespace Weekly_PlannerGUILayer
             ComboBoxDays.ItemsSource = _crudManager.ListOfDays();
             ComboBoxDays.DisplayMemberPath = "Day";
             ComboBoxDays.SelectedItem = ComboBoxDays.Items.CurrentItem;
-            _crudManager.setSelectedDay(ComboBoxDays.SelectedItem);
+            _crudManager.SetSelectedDay(ComboBoxDays.SelectedItem);
             ListBoxActivities.SelectedItem = ListBoxActivities.Items.CurrentItem;
-            _crudManager.setSelectedActivity(ListBoxActivities.SelectedItem);
+            _crudManager.SetSelectedActivity(ListBoxActivities.SelectedItem);
 
         }
 
         //populates the activity listbox
         public void populateListBox()
         {
-            ListBoxActivities.ItemsSource = _crudManager.ListOfActivities(_crudManager.currentDay.Day);
+            ListBoxActivities.ItemsSource = _crudManager.ListOfActivities(_crudManager.CurrentDay.Day);
         }
 
       
@@ -60,7 +60,7 @@ namespace Weekly_PlannerGUILayer
         {
             try
             {
-                _crudManager.EditActivity(_crudManager.currentActivity.ActivityId, TName.Text.Trim(), TContent.Text.Trim(), _crudManager.currentDay.Day);
+                _crudManager.EditActivity(_crudManager.CurrentActivity.ActivityId, TName.Text.Trim(), TContent.Text.Trim(), _crudManager.CurrentDay.Day);
                 populateListBox();
                 ((MainWindow)this.Owner).fillUpLists();
                 MessageBox.Show("Updated Activity");
@@ -79,9 +79,9 @@ namespace Weekly_PlannerGUILayer
         {
             if(ListBoxActivities.SelectedItem != null)
             {
-                _crudManager.setSelectedActivity(ListBoxActivities.SelectedItem);
-                TName.Text = _crudManager.currentActivity.Name;
-                TContent.Text = _crudManager.currentActivity.Content;
+                _crudManager.SetSelectedActivity(ListBoxActivities.SelectedItem);
+                TName.Text = _crudManager.CurrentActivity.Name;
+                TContent.Text = _crudManager.CurrentActivity.Content;
             }
 
             

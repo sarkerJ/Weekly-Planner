@@ -32,19 +32,19 @@ namespace Weekly_PlannerGUILayer
             ComboBoxDays.ItemsSource = _crudManager.ListOfDays();
             ComboBoxDays.DisplayMemberPath = "Day";
             ComboBoxDays.SelectedItem = ComboBoxDays.Items.CurrentItem;
-            _crudManager.setSelectedDay(ComboBoxDays.SelectedItem);
+            _crudManager.SetSelectedDay(ComboBoxDays.SelectedItem);
         }
 
         private void ComboBoxDays_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(ComboBoxDays.SelectedItem != null) _crudManager.setSelectedDay(ComboBoxDays.SelectedItem);
+            if(ComboBoxDays.SelectedItem != null) _crudManager.SetSelectedDay(ComboBoxDays.SelectedItem);
         }
 
         private void BAdd_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                _crudManager.CreateActivity(TName.Text, TContent.Text, _crudManager.currentDay.Day);
+                _crudManager.CreateActivity(TName.Text, TContent.Text, _crudManager.CurrentDay.Day);
                 this.Close();
                 ((MainWindow)this.Owner).fillUpLists();
             }

@@ -8,12 +8,12 @@ using Weekly_PlannerDataLayer.Services;
 
 namespace Weekly_Planner_BusinessLayer
 {
-    public class CRUDManagerActivity
+    public class CRUDManagerActivity : CRUDManager
     {
         private WeeklyPlannerDBContext _dbContext;
         
-        private IActivityService _activityService;
-        private IDayService _dayService;
+        private readonly IActivityService _activityService;
+        private readonly IDayService _dayService;
 
         public CRUDManagerActivity()
         {
@@ -28,28 +28,28 @@ namespace Weekly_Planner_BusinessLayer
             _dayService = dayService;
         }
 
-        public Activity currentActivity { get; set; } 
-        public WeekDay currentDay { get; set; }
+        public Activity CurrentActivity { get; set; } 
+        public WeekDay CurrentDay { get; set; }
 
         //Setting methods
-        public void setSelectedActivity(object selectedItem)
+        public void SetSelectedActivity(object selectedItem)
         {
-            currentActivity = (Activity)selectedItem;
-            setSelectedDay();
+            CurrentActivity = (Activity)selectedItem;
+            SetSelectedDay();
         }
 
-        public void setSelectedDay(object selectedItem) => currentDay = (WeekDay)selectedItem;
+        public void SetSelectedDay(object selectedItem) => CurrentDay = (WeekDay)selectedItem;
 
-        public void setSelectedDay(string day) => currentDay = _dayService.GetDayByString(day.Trim());
+        public void SetSelectedDay(string day) => CurrentDay = _dayService.GetDayByString(day.Trim());
         
-        public void setSelectedDay() => currentDay = _dayService.GetDayByActivity(currentActivity);
+        public void SetSelectedDay() => CurrentDay = _dayService.GetDayByActivity(CurrentActivity);
         
         //List Methods
         public List<Activity> ListOfActivities(string day) =>  _activityService.GetListOfActivitiesByDay(day.Trim());
 
-        public List<WeekDay> ListOfDays() => _dayService.GetListOfDays();
+        public override List<WeekDay> ListOfDays() => _dayService.GetListOfDays();
 
-        public List<String> ListOfDaysString() => _dayService.GetListOfDaysString();
+        public override List<String> ListOfDaysString() => _dayService.GetListOfDaysString();
         
         public void IsMaxReached(string day)
         {
@@ -57,7 +57,7 @@ namespace Weekly_Planner_BusinessLayer
             if (count > 15) throw new Exception($"Cannot create any more activities for {day.Trim()}");
         }
 
-        public void checkInput(string title, string content, string day, int? id = null )
+        public override void CheckInput(string title, string content, string day, int? id = null )
         {
             
             if (title.Count() == 0) throw new ArgumentException("Title cannot be empty!");
@@ -80,7 +80,7 @@ namespace Weekly_Planner_BusinessLayer
         //Create an Activity
         public virtual void CreateActivity(string title, string content, string day)
         {
-            checkInput(title.Trim(), content.Trim(), day.Trim());
+            CheckInput(title.Trim(), content.Trim(), day.Trim());
             var getDay = _dayService.GetDayByString(day.Trim());
             Activity newActivity = new Activity()
             {
@@ -95,7 +95,7 @@ namespace Weekly_Planner_BusinessLayer
         //Modifying an Activity
         public void EditActivity(int activityID, string title, string content, string day)
         {
-            checkInput(title, content, day, activityID);
+            CheckInput(title, content, day, activityID);
 
             var currentActivity = _activityService.GetActivityById(activityID);
             var getDay = _dayService.GetDayByString(day.Trim());

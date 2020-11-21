@@ -62,8 +62,8 @@ namespace Weekly_PlannetTests
         public void GivenAString_SetCurrentDayCorrectly()
         {
             _mockDayService.Setup(s => s.GetDayByString("Tuesday")).Returns(new WeekDay() { WeekDayId = 1, Day = "Tuesday" });
-            _crudActivity1.setSelectedDay("Tuesday");
-            var getDay = _crudActivity1.currentDay;
+            _crudActivity1.SetSelectedDay("Tuesday");
+            var getDay = _crudActivity1.CurrentDay;
             Assert.That(getDay.Day, Is.EqualTo("Tuesday"));
         }
 

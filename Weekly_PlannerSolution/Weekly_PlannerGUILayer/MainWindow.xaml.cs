@@ -70,12 +70,12 @@ namespace Weekly_PlannerGUILayer
                         ListBoxWednesday.SelectedItem = null;
                         ListBoxThursday.SelectedItem = null;
                         ListBoxFriday.SelectedItem = null;
-                        _crudManager.setSelectedActivity(ListBoxMonday.SelectedItem);
+                        _crudManager.SetSelectedActivity(ListBoxMonday.SelectedItem);
                         
                         //make a method for this 
-                        TTitle.Text = _crudManager.currentActivity.Name;
-                        TContent.Text = _crudManager.currentActivity.Content;
-                        TDay.Text = _crudManager.currentDay.Day;
+                        TTitle.Text = _crudManager.CurrentActivity.Name;
+                        TContent.Text = _crudManager.CurrentActivity.Content;
+                        TDay.Text = _crudManager.CurrentDay.Day;
                     }
                     break;
 
@@ -86,12 +86,12 @@ namespace Weekly_PlannerGUILayer
                         ListBoxWednesday.SelectedItem = null;
                         ListBoxThursday.SelectedItem = null;
                         ListBoxFriday.SelectedItem = null;
-                        _crudManager.setSelectedActivity(ListBoxTuesday.SelectedItem);
+                        _crudManager.SetSelectedActivity(ListBoxTuesday.SelectedItem);
 
                         //
-                        TTitle.Text = _crudManager.currentActivity.Name;
-                        TContent.Text = _crudManager.currentActivity.Content;
-                        TDay.Text = _crudManager.currentDay.Day;
+                        TTitle.Text = _crudManager.CurrentActivity.Name;
+                        TContent.Text = _crudManager.CurrentActivity.Content;
+                        TDay.Text = _crudManager.CurrentDay.Day;
                         
                     }
                     break;
@@ -102,12 +102,12 @@ namespace Weekly_PlannerGUILayer
                         ListBoxTuesday.SelectedItem = null;
                         ListBoxThursday.SelectedItem = null;
                         ListBoxFriday.SelectedItem = null;
-                        _crudManager.setSelectedActivity(ListBoxWednesday.SelectedItem);
+                        _crudManager.SetSelectedActivity(ListBoxWednesday.SelectedItem);
 
                         //
-                        TTitle.Text = _crudManager.currentActivity.Name;
-                        TContent.Text = _crudManager.currentActivity.Content;
-                        TDay.Text = _crudManager.currentDay.Day;
+                        TTitle.Text = _crudManager.CurrentActivity.Name;
+                        TContent.Text = _crudManager.CurrentActivity.Content;
+                        TDay.Text = _crudManager.CurrentDay.Day;
                         
                     }
                     break;
@@ -118,10 +118,10 @@ namespace Weekly_PlannerGUILayer
                         ListBoxTuesday.SelectedItem = null;
                         ListBoxWednesday.SelectedItem = null;
                         ListBoxFriday.SelectedItem = null;
-                        _crudManager.setSelectedActivity(ListBoxThursday.SelectedItem);
-                        TTitle.Text = _crudManager.currentActivity.Name;
-                        TContent.Text = _crudManager.currentActivity.Content;
-                        TDay.Text = _crudManager.currentDay.Day;
+                        _crudManager.SetSelectedActivity(ListBoxThursday.SelectedItem);
+                        TTitle.Text = _crudManager.CurrentActivity.Name;
+                        TContent.Text = _crudManager.CurrentActivity.Content;
+                        TDay.Text = _crudManager.CurrentDay.Day;
                         
                     }
                     break;
@@ -132,10 +132,10 @@ namespace Weekly_PlannerGUILayer
                         ListBoxTuesday.SelectedItem = null;
                         ListBoxWednesday.SelectedItem = null;
                         ListBoxThursday.SelectedItem = null;
-                        _crudManager.setSelectedActivity(ListBoxFriday.SelectedItem);
-                        TTitle.Text = _crudManager.currentActivity.Name;
-                        TContent.Text = _crudManager.currentActivity.Content;
-                        TDay.Text = _crudManager.currentDay.Day;
+                        _crudManager.SetSelectedActivity(ListBoxFriday.SelectedItem);
+                        TTitle.Text = _crudManager.CurrentActivity.Name;
+                        TContent.Text = _crudManager.CurrentActivity.Content;
+                        TDay.Text = _crudManager.CurrentDay.Day;
                     }
                     break;
             }
@@ -190,7 +190,7 @@ namespace Weekly_PlannerGUILayer
                 // text boxes and menu are usable
                 case "Edit Activity":
                     isEditable();
-                    ComboBoxDays.SelectedItem = _crudManager.currentDay.Day;
+                    ComboBoxDays.SelectedItem = _crudManager.CurrentDay.Day;
                     bt.Content = "Update Activity";
                     bt.Background = Brushes.DarkCyan;
                     break;
@@ -202,10 +202,10 @@ namespace Weekly_PlannerGUILayer
                 case "Update Activity":
                     try
                     {
-                        if (_crudManager.currentActivity == null) throw new Exception("You have not selected anything!");
-                        _crudManager.EditActivity(_crudManager.currentActivity.ActivityId, TTitle.Text.Trim(), TContent.Text.Trim(), TDay.Text.Trim());
+                        if (_crudManager.CurrentActivity == null) throw new Exception("You have not selected anything!");
+                        _crudManager.EditActivity(_crudManager.CurrentActivity.ActivityId, TTitle.Text.Trim(), TContent.Text.Trim(), TDay.Text.Trim());
                         fillUpLists();
-                        _crudManager.setSelectedDay();
+                        _crudManager.SetSelectedDay();
                         MessageBox.Show("Updated Activity");
 
                     }
@@ -223,8 +223,8 @@ namespace Weekly_PlannerGUILayer
                 case "Delete an Activity":
                     try
                     {
-                        if (_crudManager.currentActivity == null) throw new Exception("You have not selected anything!");
-                        _crudManager.DeleteActivity(_crudManager.currentActivity.ActivityId);
+                        if (_crudManager.CurrentActivity == null) throw new Exception("You have not selected anything!");
+                        _crudManager.DeleteActivity(_crudManager.CurrentActivity.ActivityId);
                         fillUpLists();
                         TTitle.Text = "";
                         TContent.Text = "";
@@ -260,8 +260,8 @@ namespace Weekly_PlannerGUILayer
         {
             if(ComboBoxDays.SelectedItem != null)
             {
-                _crudManager.setSelectedDay(ComboBoxDays.SelectedItem.ToString());
-                TDay.Text = _crudManager.currentDay.Day;
+                _crudManager.SetSelectedDay(ComboBoxDays.SelectedItem.ToString());
+                TDay.Text = _crudManager.CurrentDay.Day;
             }
         }
     }

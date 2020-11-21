@@ -7,13 +7,23 @@ namespace Weekly_PlannerDataLayer
 {
     public class WeeklyPlannerDBContext : DbContext
     {
+        public WeeklyPlannerDBContext() { }
+        public WeeklyPlannerDBContext(DbContextOptions<WeeklyPlannerDBContext> options) : base (options)
+        { }
+
         public DbSet<WeekDay> WeekDays { get; set; }
         public DbSet<NotesColourCategory> NotesColourCategories { get; set; }
         public DbSet<Activity> Activities { get; set; }
         public DbSet<Note> Notes { get; set; }
-       
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB; Initial Catalog=WeeklyPlannerDB;");
+
+        protected override void OnConfiguring(DbContextOptionsBuilder options) 
+        {
+            if (!options.IsConfigured)
+            {
+                options.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB; Initial Catalog=WeeklyPlannerDB;");
+            }
+
+        } 
     }
 
     public partial class WeekDay

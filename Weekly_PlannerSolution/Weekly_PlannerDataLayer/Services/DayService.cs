@@ -14,11 +14,8 @@ namespace Weekly_PlannerDataLayer.Services
         public DayService (WeeklyPlannerDBContext context) => _context = context;
 
         //Get Day
-        public WeekDay GetDayByActivity(Activity activity)
-        {
-            return  _context.Activities.Where(a => a.ActivityId == activity.ActivityId).Include(o => o.WeekDays).Select(o => o.WeekDays).FirstOrDefault();
-        }
-
+        public WeekDay GetDayByActivity(Activity activity) => _context.Activities.Where(a => a.ActivityId == activity.ActivityId).Include(o => o.WeekDays).Select(o => o.WeekDays).FirstOrDefault();
+        
         //Get Day List
         public List<WeekDay> GetListOfDays() => _context.WeekDays.ToList();
         public List<String> GetListOfDaysString()

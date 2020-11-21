@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Weekly_PlannerDataLayer.Services
 {
-    interface IActivityService
+    public interface IActivityService
     {
         Activity GetActivityById(int id);
         Activity GetActivityByName(string name);
@@ -13,7 +13,7 @@ namespace Weekly_PlannerDataLayer.Services
         void DeleteActivity(Activity activity);
         void AddActivity(Activity activity);
         List<Activity> GetListOfActivitiesByDay(string day);
-
         int GetActivitiesCountByDay(string day);
+
     }
 }

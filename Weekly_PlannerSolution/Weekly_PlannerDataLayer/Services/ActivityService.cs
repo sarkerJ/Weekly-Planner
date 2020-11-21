@@ -12,7 +12,9 @@ namespace Weekly_PlannerDataLayer.Services
     {
         private readonly WeeklyPlannerDBContext _context;
         public ActivityService (WeeklyPlannerDBContext context) => _context = context;
+
         
+
         //add/delete/update
         public void AddActivity(Activity activity) => _context.Activities.Add(activity);
         public void DeleteActivity(Activity activity) => _context.Activities.RemoveRange(activity);
@@ -28,8 +30,7 @@ namespace Weekly_PlannerDataLayer.Services
 
         //Get Activity List
         public List<Activity> GetListOfActivitiesByDay(string day) => _context.Activities.Include(o => o.WeekDays).Where(w => w.WeekDays.Day == day.Trim()).ToList();
-        
 
-        
+
     }
 }

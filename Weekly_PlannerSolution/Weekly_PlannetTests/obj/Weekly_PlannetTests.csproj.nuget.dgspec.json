@@ -46,6 +46,10 @@
               "target": "Package",
               "version": "[3.1.9, )"
             },
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[3.1.9, )"
@@ -55,6 +59,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[3.1.9, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.15.1, )"
             }
           },
           "imports": [
@@ -122,6 +130,10 @@
               "target": "Package",
               "version": "[3.1.9, )"
             },
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[3.1.9, )"
@@ -131,6 +143,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[3.1.9, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.15.1, )"
             }
           },
           "imports": [
@@ -197,9 +213,17 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
               "version": "[16.5.0, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.15.1, )"
             },
             "NUnit": {
               "target": "Package",

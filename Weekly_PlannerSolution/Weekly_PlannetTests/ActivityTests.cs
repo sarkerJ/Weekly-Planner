@@ -117,8 +117,8 @@ namespace Weekly_PlannetTests
         public void CreatingAnActivityWithAnEmptyContent_ThrowsAnException()
         {
             using (var db = new WeeklyPlannerDBContext())
-            {
-                var ex = Assert.Throws<ArgumentException>(() => _crudManager.CreateActivity("Test", "", "Monday"));
+            {                var ex = Assert.Throws<ArgumentException>(() => _crudManager.CreateActivity("Test", "", "Monday"));
+
                 Assert.AreEqual("The activity's content cannot be empty!", ex.Message);
 
             }
@@ -170,11 +170,8 @@ namespace Weekly_PlannetTests
                 db.SaveChanges();
 
                 var getActivity = db.Activities.Where(a => a.Name == "Test").Select(s => new { s.ActivityId }).FirstOrDefault();
-          
                 var ex = Assert.Throws<ArgumentException>(() => _crudManager.EditActivity(getActivity.ActivityId, "", "The content and title and day have changed", "Tuesday"));
                 Assert.AreEqual("Title cannot be empty!", ex.Message);
-
-
             }
         }
 

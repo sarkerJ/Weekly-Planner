@@ -46,6 +46,10 @@
               "target": "Package",
               "version": "[3.1.9, )"
             },
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[3.1.9, )"
@@ -55,6 +59,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[3.1.9, )"
+            },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.15.1, )"
             }
           },
           "imports": [

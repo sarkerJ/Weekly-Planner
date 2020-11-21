@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weekly_PlannerDataLayer", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weekly_PlannerGUILayer", "Weekly_PlannerGUILayer\Weekly_PlannerGUILayer.csproj", "{BFF0E523-CC1D-4EEE-B9BA-2A5FF5E59D4C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weekly_PlannetTests", "Weekly_PlannetTests\Weekly_PlannetTests.csproj", "{F409C46F-197E-4248-A392-7DD32EF69CA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Weekly_PlannetTests", "Weekly_PlannetTests\Weekly_PlannetTests.csproj", "{F409C46F-197E-4248-A392-7DD32EF69CA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weekly_PlannerTestsFakeDB", "Weekly_PlannerTestsFakeDB\Weekly_PlannerTestsFakeDB.csproj", "{4AC7B445-CE8D-4FFF-A16C-2298D315FD11}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{F409C46F-197E-4248-A392-7DD32EF69CA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F409C46F-197E-4248-A392-7DD32EF69CA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F409C46F-197E-4248-A392-7DD32EF69CA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AC7B445-CE8D-4FFF-A16C-2298D315FD11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AC7B445-CE8D-4FFF-A16C-2298D315FD11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AC7B445-CE8D-4FFF-A16C-2298D315FD11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AC7B445-CE8D-4FFF-A16C-2298D315FD11}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

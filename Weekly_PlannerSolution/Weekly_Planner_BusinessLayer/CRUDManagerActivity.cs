@@ -10,14 +10,22 @@ namespace Weekly_Planner_BusinessLayer
 {
     public class CRUDManagerActivity
     {
-        private ActivityService _activityService;
-        private DayService _dayService;
+        private WeeklyPlannerDBContext _dbContext;
+        
+        private IActivityService _activityService;
+        private IDayService _dayService;
 
         public CRUDManagerActivity()
         {
-            WeeklyPlannerDBContext db = new WeeklyPlannerDBContext();
-            _activityService = new ActivityService(db);
-            _dayService = new DayService(db);
+            _dbContext = new WeeklyPlannerDBContext();
+            _activityService = new ActivityService(_dbContext);
+            _dayService = new DayService(_dbContext);
+        }
+
+        public CRUDManagerActivity(IActivityService activityService, IDayService dayService)
+        {
+            _activityService = activityService;
+            _dayService = dayService;
         }
 
         public Activity currentActivity { get; set; } 
@@ -66,7 +74,7 @@ namespace Weekly_Planner_BusinessLayer
         }
 
         //Create an Activity
-        public void CreateActivity(string title, string content, string day)
+        public virtual void CreateActivity(string title, string content, string day)
         {
             checkInput(title.Trim(), content.Trim(), day.Trim());
             var getDay = _dayService.GetDayByString(day.Trim());

@@ -11,6 +11,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.9" />
+    <PackageReference Include="Moq" Version="4.15.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Weekly_Planner_BusinessLayer\Weekly_Planner_BusinessLayer.csproj" />
   </ItemGroup>
 

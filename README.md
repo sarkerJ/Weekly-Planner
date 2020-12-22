@@ -1,5 +1,9 @@
 # Weekly-Planner
-A weekly-planner application built using Visual Studio, C#, SQL and Entity Framework
+A weekly-planner 3 tier application built using Visual Studio, C#, SQL and Entity Framework.
+
+* Data Layer (data related methods)
+* Business Layer (application main logic)
+* GUI Layer (front-end logic)
 
 ## Table of Contents
 
